@@ -1,10 +1,14 @@
-import React from "react";
-import Grid from "./components/Grid";
+import React from 'react';
+import Room from './components/Room';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
     <div>
-      <Grid></Grid>
+      <Header></Header>
+      <Room></Room>
+      <Footer></Footer>
     </div>
   );
 };

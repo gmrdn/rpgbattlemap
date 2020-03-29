@@ -1,5 +1,9 @@
-import React from "react";
+import React from 'react';
 
-const Chatbox = () => <div></div>;
+const Chatbox = () => (
+  <div>
+    <p>Chatbow component</p>
+  </div>
+);
 
 export default Chatbox;
