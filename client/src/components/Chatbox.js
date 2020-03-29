@@ -19,10 +19,13 @@ const Chatbox = props => {
   return (
     <>
       <h5>Chatbox component</h5>
-      <ul id="messages-log">
+
+      <ul id="messages-log" className="list-group">
         {chatlogs.logs.map((log, key) => (
-          <li key={key} value={log.nickname}>
-            {log.nickname} : {log.message}
+          <li key={key} value={log.nickname} className="list-group-item align-items-center">
+            <span className="badge badge-light">{log.nickname}</span>
+            <span></span>
+            <span class="font-weight-light">{log.message}</span>
           </li>
         ))}
       </ul>
