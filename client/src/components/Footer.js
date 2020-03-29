@@ -2,9 +2,9 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <>
-      <h5>Footer component</h5>
-    </>
+    <footer className="d-flex justify-content-between bg-success p-3" id="mainFooter">
+      Footer component
+    </footer>
   );
 };
 

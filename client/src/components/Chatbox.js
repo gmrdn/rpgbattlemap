@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
+const divStyle = {
+  height: '300px',
+  overflowY: 'scroll',
+};
+
+function updateScroll() {
+  var element = document.getElementById('messages-log');
+  element.scrollTop = element.scrollHeight;
+}
+
 const Chatbox = props => {
   const [chatlogs, setChatlogs] = useState(null);
 
   async function fetchChatlogs(roomId) {
     const response = await fetch('/chat/' + roomId);
     setChatlogs(await response.json());
+    updateScroll();
   }
 
   useEffect(() => {
@@ -17,19 +28,29 @@ const Chatbox = props => {
   }
 
   return (
-    <>
+    <div className="container">
       <h5>Chatbox component</h5>
 
-      <ul id="messages-log" className="list-group">
+      <div id="messages-log" className="container" style={divStyle}>
         {chatlogs.logs.map((log, key) => (
-          <li key={key} value={log.nickname} className="list-group-item align-items-center">
-            <span className="badge badge-light">{log.nickname}</span>
-            <span></span>
-            <span class="font-weight-light">{log.message}</span>
-          </li>
+          <div key={key} className="row d-flex justify-content-between">
+            <div className="card border-0 mb-0">
+              <div className="card-title mb-0">
+                <div className="badge mr-3">{log.nickname}</div>
+              </div>
+              <div className="card-body">
+                <div className="col-lg shadow-sm p-3 mt-n3 mb-0 bg-light rounded">
+                  {log.message}
+                </div>
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
-    </>
+      </div>
+      <div id="message-input">
+        <input type="text" className="form-control mt-3 mb-1 bg-light"></input>
+      </div>
+    </div>
   );
 };
 

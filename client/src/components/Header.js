@@ -1,9 +1,11 @@
 import React from 'react';
 
 const Header = () => (
-  <div>
-    <h5>Header component</h5>
-  </div>
+  <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a className="navbar-brand" href="#">
+      Header component
+    </a>
+  </nav>
 );
 
 export default Header;
