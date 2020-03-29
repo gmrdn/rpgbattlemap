@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => (
   <div>
-    <p>Header component</p>
+    <h5>Header component</h5>
   </div>
 );
 
