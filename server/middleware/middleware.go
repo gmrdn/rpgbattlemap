@@ -52,6 +52,14 @@ func GetAllRoom(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(payload)
 }
 
+func GetChatLogs(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Context-Type", "application/x-www-form-urlencoded")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	params := mux.Vars(r)
+	payload := getChatlogs(params["id"])
+	json.NewEncoder(w).Encode(payload)
+}
+
 func CreateRoom(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Context-Type", "application/x-www-form-urlencoded")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -123,6 +131,19 @@ func getAllRoom() []primitive.M {
 	}
 
 	cur.Close(context.Background())
+	return results
+}
+
+func getChatlogs(room string) bson.D {
+	fmt.Println(room)
+	id, _ := primitive.ObjectIDFromHex(room)
+	filter := bson.M{"_id": id}
+
+	var results bson.D
+	err := collection.FindOne(context.Background(), filter).Decode(&results)
+	if err != nil {
+		log.Fatal(err)
+	}
 	return results
 }
 
