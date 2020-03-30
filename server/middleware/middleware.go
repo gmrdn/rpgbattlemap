@@ -134,17 +134,19 @@ func getAllRoom() []primitive.M {
 	return results
 }
 
-func getChatlogs(room string) bson.D {
+func getChatlogs(room string) []models.ChatMessage {
 	fmt.Println(room)
 	id, _ := primitive.ObjectIDFromHex(room)
 	filter := bson.M{"_id": id}
 
-	var results bson.D
+	var results models.Room
 	err := collection.FindOne(context.Background(), filter).Decode(&results)
 	if err != nil {
 		log.Fatal(err)
 	}
-	return results
+	var chatmessages []models.ChatMessage 
+	chatmessages = results.ChatMessages
+	return chatmessages
 }
 
 func insertOneRoom(room models.Room) {

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const divStyle = {
-  height: '300px',
-  overflowY: 'scroll',
+  height: "300px",
+  overflowY: "scroll"
 };
 
 function updateScroll() {
-  var element = document.getElementById('messages-log');
+  var element = document.getElementById("messages-log");
   element.scrollTop = element.scrollHeight;
 }
 
@@ -14,7 +14,7 @@ const Chatbox = props => {
   const [chatlogs, setChatlogs] = useState(null);
 
   async function fetchChatlogs(roomId) {
-    const response = await fetch('/chat/' + roomId);
+    const response = await fetch("/api/chatlogs/" + roomId);
     setChatlogs(await response.json());
     updateScroll();
   }
@@ -24,7 +24,7 @@ const Chatbox = props => {
   }, [props.roomId]);
 
   if (!chatlogs) {
-    return 'loading...';
+    return "loading...";
   }
 
   return (
@@ -32,11 +32,13 @@ const Chatbox = props => {
       <h5>Chatbox component</h5>
 
       <div id="messages-log" className="container" style={divStyle}>
-        {chatlogs.logs.map((log, key) => (
+        {chatlogs.map((log, key) => (
           <div key={key} className="row d-flex justify-content-between">
             <div className="card border-0 mb-0">
               <div className="card-title mb-0">
-                <div className="badge badge-pill badge-info mr-3">{log.nickname}</div>
+                <div className="badge badge-pill badge-info mr-3">
+                  {log.nickname}
+                </div>
               </div>
               <div className="card-body">
                 <div className="col-lg shadow-sm p-3 mt-n3 mb-0 bg-light rounded">

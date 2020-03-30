@@ -1,9 +1,9 @@
-import React from 'react';
-import Grid from './Grid';
-import Chatbox from './Chatbox';
-import Dicetray from './Dicetray';
+import React from "react";
+import Grid from "./Grid";
+import Chatbox from "./Chatbox";
+import Dicetray from "./Dicetray";
 
-const roomId = 'AALKJF2';
+const roomId = "5e820efb1ddf9a37923593d1";
 const Room = () => (
   <div className="container-fluid border">
     <h5>Room component</h5>
