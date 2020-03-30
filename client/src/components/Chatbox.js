@@ -36,7 +36,7 @@ const Chatbox = props => {
           <div key={key} className="row d-flex justify-content-between">
             <div className="card border-0 mb-0">
               <div className="card-title mb-0">
-                <div className="badge mr-3">{log.nickname}</div>
+                <div className="badge badge-pill badge-info mr-3">{log.nickname}</div>
               </div>
               <div className="card-body">
                 <div className="col-lg shadow-sm p-3 mt-n3 mb-0 bg-light rounded">
