@@ -3,17 +3,17 @@ import Grid from "./Grid";
 import Chatbox from "./Chatbox";
 import Dicetray from "./Dicetray";
 
-const roomId = "5e820efb1ddf9a37923593d1";
+const roomId = "5e8254d4cf0dbd2c4c0402ff";
 const Room = () => (
-  <div className="container-fluid border">
+  <div className="container-fluid">
     <h5>Room component</h5>
     <h1>Room {roomId}</h1>
-    <Grid />
+    <Grid roomId={roomId} />
     <div className="d-flex justify-content-between">
       <div className="p-2 flex-grow-1 bd-highlight">
         <Chatbox className="flex-grow-1" roomId={roomId} />
       </div>
-      <div class="p-2 bd-highlight">
+      <div className="p-2 bd-highlight">
         <Dicetray></Dicetray>
       </div>
     </div>

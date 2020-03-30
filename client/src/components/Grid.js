@@ -1,31 +1,43 @@
-import React from 'react';
-import { useFetch } from '../hooks';
+import React, { useState, useEffect } from "react";
 
-const Grid = () => {
-  const [data, loading] = useFetch('/grid');
+const Grid = props => {
+  const [grid, setGrid] = useState(null);
+
+  async function fetchGrid(roomId) {
+    const response = await fetch("/api/grid/" + roomId);
+    setGrid(await response.json());
+  }
+
+  useEffect(() => {
+    fetchGrid(props.roomId);
+  }, [props.roomId]);
+
+  if (!grid) {
+    return "loading...";
+  }
 
   return (
     <div className="container border">
       <h5>Grid component</h5>
-      {loading ? (
-        'Loading...'
-      ) : (
-        <div>
-          <p>{data.grid}</p>
-          <p>{data.grid}</p>
-          <p>{data.grid}</p>
-          <p>{data.grid}</p>
-          <p>{data.grid}</p>
-          <p>{data.grid}</p>
-          <p>{data.grid}</p>
-          <p>{data.grid}</p>
-          <p>{data.grid}</p>
-          <p>{data.grid}</p>
-          <p>{data.grid}</p>
-          <p>{data.grid}</p>
-          <p>{data.grid}</p>
-        </div>
-      )}
+      <div>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+        <p>{grid.name}</p>
+      </div>
     </div>
   );
 };

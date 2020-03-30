@@ -15,6 +15,9 @@ func Router() *mux.Router {
 	// router.HandleFunc("/api/undoRoom/{id}", middleware.UndoRoom).Methods("PUT", "OPTIONS")
 	router.HandleFunc("/api/deleteRoom/{id}", middleware.DeleteRoom).Methods("DELETE", "OPTIONS")
 	router.HandleFunc("/api/deleteAllRoom", middleware.DeleteAllRoom).Methods("DELETE", "OPTIONS")
+	// endpoints used by the actual react app
 	router.HandleFunc("/api/chatlogs/{id}", middleware.GetChatLogs).Methods("GET", "OPTIONS")
+	router.HandleFunc("/api/grid/{id}", middleware.GetGrid).Methods("GET", "OPTIONS")
+
 	return router
 }
