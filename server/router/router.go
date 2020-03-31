@@ -1,7 +1,7 @@
 package router
 
 import (
-	"../middleware"
+	"github.com/gmrdn/dndbattlemap/middleware"
 	"github.com/gorilla/mux"
 )
 

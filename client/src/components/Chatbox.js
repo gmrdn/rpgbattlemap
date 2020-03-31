@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { connect, sendMsg } from "../api";
+import { connect, sendMsg } from "../socket";
 
 const divStyle = {
   height: "300px",
@@ -11,10 +11,12 @@ function updateScroll() {
   element.scrollTop = element.scrollHeight;
 }
 
-function send() {
-  console.log("console log");
-  sendMsg("sending hello");
-}
+const send = event => {
+  if (event.keyCode === 13) {
+    sendMsg(event.target.value);
+    event.target.value = "";
+  }
+};
 
 const Chatbox = props => {
   const [chatlogs, setChatlogs] = useState(null);
@@ -57,8 +59,11 @@ const Chatbox = props => {
         ))}
       </div>
       <div id="message-input">
-        <input type="text" className="form-control mt-3 mb-1 bg-light"></input>
-        <button onClick={send()}>Hit</button>
+        <input
+          type="text"
+          className="form-control mt-3 mb-1 bg-light"
+          onKeyDown={send}
+        ></input>
       </div>
     </div>
   );

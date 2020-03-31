@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"os"
 
-	"../models"
+	"github.com/gmrdn/dndbattlemap/models"
 
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
@@ -117,6 +117,21 @@ func DeleteAllRoom(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	count := deleteAllRoom()
 	json.NewEncoder(w).Encode(count)
+}
+
+// define our WebSocket endpoint
+func ServeWs(w http.ResponseWriter, r *http.Request) {
+    fmt.Println(r.Host)
+
+  // upgrade this connection to a WebSocket
+  // connection
+    ws, err := upgrader.Upgrade(w, r, nil)
+    if err != nil {
+        log.Println(err)
+  }
+  // listen indefinitely for new messages coming
+  // through on our WebSocket connection
+    reader(ws)
 }
 
 func getAllRoom() []primitive.M {
@@ -264,17 +279,4 @@ func reader(conn *websocket.Conn) {
 	}
 }
 
-// define our WebSocket endpoint
-func ServeWs(w http.ResponseWriter, r *http.Request) {
-    fmt.Println(r.Host)
 
-  // upgrade this connection to a WebSocket
-  // connection
-    ws, err := upgrader.Upgrade(w, r, nil)
-    if err != nil {
-        log.Println(err)
-  }
-  // listen indefinitely for new messages coming
-  // through on our WebSocket connection
-    reader(ws)
-}

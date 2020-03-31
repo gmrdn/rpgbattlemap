@@ -5,8 +5,7 @@ import (
 	"log"
 	"net/http"
 
-
-	"./router"
+	"github.com/gmrdn/dndbattlemap/router"
 )
 
 func main() {
