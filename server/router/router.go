@@ -5,6 +5,9 @@ import (
 	"github.com/gorilla/mux"
 )
 
+
+
+
 func Router() *mux.Router {
 
 	router := mux.NewRouter()
@@ -18,6 +21,7 @@ func Router() *mux.Router {
 	// endpoints used by the actual react app
 	router.HandleFunc("/api/chatlogs/{id}", middleware.GetChatLogs).Methods("GET", "OPTIONS")
 	router.HandleFunc("/api/grid/{id}", middleware.GetGrid).Methods("GET", "OPTIONS")
+	router.HandleFunc("/ws", middleware.ServeWs)
 
 	return router
 }
