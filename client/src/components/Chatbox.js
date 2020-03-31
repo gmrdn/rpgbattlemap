@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { connect, sendMsg } from "../api";
 
 const divStyle = {
   height: "300px",
@@ -10,12 +11,18 @@ function updateScroll() {
   element.scrollTop = element.scrollHeight;
 }
 
+function send() {
+  console.log("console log");
+  sendMsg("sending hello");
+}
+
 const Chatbox = props => {
   const [chatlogs, setChatlogs] = useState(null);
 
   async function fetchChatlogs(roomId) {
     const response = await fetch("/api/chatlogs/" + roomId);
     setChatlogs(await response.json());
+    connect();
     updateScroll();
   }
 
@@ -51,6 +58,7 @@ const Chatbox = props => {
       </div>
       <div id="message-input">
         <input type="text" className="form-control mt-3 mb-1 bg-light"></input>
+        <button onClick={send()}>Hit</button>
       </div>
     </div>
   );
