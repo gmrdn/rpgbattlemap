@@ -2,9 +2,9 @@
   "name": "dndbattlemap",
   "version": "1.0.0",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon ./index.js --exec babel-node -e js"
+    "start": "nodemon ./server.js --exec babel-node -e js"
   },
   "repository": {
     "type": "git",

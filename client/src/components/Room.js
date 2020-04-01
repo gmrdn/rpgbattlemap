@@ -3,7 +3,7 @@ import Grid from "./Grid";
 import Chatbox from "./Chatbox";
 import Dicetray from "./Dicetray";
 
-const roomId = "5e8254d4cf0dbd2c4c0402ff";
+const roomId = "TRTL1KSQ";
 const Room = () => (
   <div className="container-fluid">
     <h5>Room component</h5>
