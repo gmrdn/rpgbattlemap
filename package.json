@@ -1,0 +1,28 @@
+{
+  "name": "dndbattlemap",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmrdn/dndbattlemap.git"
+  },
+  "author": "Guillaume Rondon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gmrdn/dndbattlemap/issues"
+  },
+  "homepage": "https://github.com/gmrdn/dndbattlemap#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
