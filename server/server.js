@@ -21,7 +21,7 @@ mongoose.connect(connectionString, {
 
 // body parser setup
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json);
+app.use(bodyParser.json());
 
 routes(app);
 
@@ -30,19 +30,19 @@ routes(app);
 //   res.json(data)
 // );
 app.get("/api/chatlogs/:id", (req, res) => {
-  const filtered = data.rooms.filter(room => room.RoomID == req.params.id);
-  res.json(filtered[0].ChatMessages);
+  const filtered = data.rooms.filter(room => room._id == req.params.id);
+  res.json(filtered[0].chatMessages);
 });
 
 app.get("/api/grid/:id", (req, res) => {
-  const filtered = data.rooms.filter(room => room.RoomID == req.params.id);
-  res.json(filtered[0].Grid);
+  const filtered = data.rooms.filter(room => room._id == req.params.id);
+  res.json(filtered[0].grid);
 });
 
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send(`Whoops ! ${err.stack}`);
-});
+// app.use((err, req, res, next) => {
+//   console.error(err.stack);
+//   res.status(500).send(`Whoops ! ${err.stack}`);
+// });
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

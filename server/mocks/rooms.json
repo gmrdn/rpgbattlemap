@@ -1,7 +1,7 @@
 {
   "rooms": [
     {
-      "RoomID": "BTLSDKA",
+      "_id": "5e8652b29e6f56c6b0ff1d80",
       "ChatMessages": [
         {
           "nickname": "Ringo",
@@ -27,30 +27,56 @@
       }
     },
     {
-      "RoomID": "TRTL1KSQ",
-      "ChatMessages": [
+      "_id": "5e8652b29e6f56c6b0ff1d79",
+      "chatMessages": [
         {
+          "_id": "5e8652b29e6f56c6b0ff1d7a",
           "nickname": "Donatello",
           "message": "Hi everyone"
         },
         {
+          "_id": "5e8652b29e6f56c6b0ff1d7b",
           "nickname": "Raphaël",
           "message": "Hi Don, how are you ?"
         },
         {
+          "_id": "5e8652b29e6f56c6b0ff1d7c",
           "nickname": "Michelangelo",
           "message": "Lol"
         },
         {
+          "_id": "5e8652b29e6f56c6b0ff1d7d",
+          "nickname": "Leonardo",
+          "message": "I can't wait to start this campaign"
+        },
+        {
+          "_id": "5e8652b29e6f56c6b0ff1d7e",
+          "nickname": "Donatello",
+          "message": "Hi everyone"
+        },
+        {
+          "_id": "5e8652b29e6f56c6b0ff1d7f",
+          "nickname": "Raphaël",
+          "message": "Hi Don, how are you ?"
+        },
+        {
+          "_id": "5e8652b29e6f56c6b0ff1d80",
+          "nickname": "Michelangelo",
+          "message": "Lol"
+        },
+        {
+          "_id": "5e8652b29e6f56c6b0ff1d81",
           "nickname": "Leonardo",
           "message": "I can't wait to start this campaign"
         }
       ],
-      "CreationDate": "01/04/2020",
-      "Grid": {
-        "name": "Lair of the Turtle Dragon",
-        "tokens": ["a1,b2", "c2,d4"]
-      }
+      "creationDate": "2020-01-03T23:00:00.000Z",
+      "grid": {
+        "_id": "5e8652b29e6f56c6b0ff1d82",
+        "tokens": [],
+        "name": "Lair of the Turtle Dragon"
+      },
+      "__v": 0
     }
   ]
 }
