@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect, sendMsg } from "../socket";
+import axios from "axios";
 
 const divStyle = {
   height: "300px",
@@ -22,9 +23,9 @@ const Chatbox = props => {
   const [chatlogs, setChatlogs] = useState(null);
 
   async function fetchChatlogs(roomId) {
-    const response = await fetch("/api/chatlogs/" + roomId);
-    setChatlogs(await response.json());
-    connect();
+    const response = await axios(`/api/room/${roomId}/chatmessages`);
+    setChatlogs(await response.data);
+    // connect();
     updateScroll();
   }
 

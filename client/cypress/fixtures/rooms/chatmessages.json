@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "5e8652b29e6f56c6b0ff1d7a",
+    "nickname": "Donatello",
+    "message": "Hi everyone"
+  },
+  {
+    "_id": "5e8652b29e6f56c6b0ff1d7b",
+    "nickname": "Raphaël",
+    "message": "Hi Don, how are you ?"
+  },
+  {
+    "_id": "5e8652b29e6f56c6b0ff1d7c",
+    "nickname": "Michelangelo",
+    "message": "Lol"
+  },
+  {
+    "_id": "5e8652b29e6f56c6b0ff1d7d",
+    "nickname": "Leonardo",
+    "message": "I can't wait to start this campaign"
+  },
+  {
+    "_id": "5e8652b29e6f56c6b0ff1d7e",
+    "nickname": "Donatello",
+    "message": "Hi everyone"
+  },
+  {
+    "_id": "5e8652b29e6f56c6b0ff1d7f",
+    "nickname": "Raphaël",
+    "message": "Hi Don, how are you ?"
+  },
+  {
+    "_id": "5e8652b29e6f56c6b0ff1d80",
+    "nickname": "Michelangelo",
+    "message": "Lol"
+  },
+  {
+    "_id": "5e8652b29e6f56c6b0ff1d81",
+    "nickname": "Leonardo",
+    "message": "Last message"
+  }
+]

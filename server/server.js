@@ -25,15 +25,6 @@ app.use(bodyParser.json());
 
 routes(app);
 
-// app.get("/api/rooms", (req, res) =>
-//   // get data first
-//   res.json(data)
-// );
-app.get("/api/chatlogs/:id", (req, res) => {
-  const filtered = data.rooms.filter(room => room._id == req.params.id);
-  res.json(filtered[0].chatMessages);
-});
-
 app.get("/api/grid/:id", (req, res) => {
   const filtered = data.rooms.filter(room => room._id == req.params.id);
   res.json(filtered[0].grid);

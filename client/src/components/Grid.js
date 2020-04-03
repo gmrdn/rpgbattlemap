@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Grid = props => {
   const [grid, setGrid] = useState(null);
 
   async function fetchGrid(roomId) {
-    const response = await fetch("/api/grid/" + roomId);
-    setGrid(await response.json());
+    const response = await axios(`/api/room/${roomId}/grid`);
+    setGrid(await response.data);
   }
 
   useEffect(() => {

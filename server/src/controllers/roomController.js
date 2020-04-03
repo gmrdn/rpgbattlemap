@@ -32,6 +32,24 @@ export const getRoomByID = (req, res) => {
   });
 };
 
+export const getChatMessages = (req, res) => {
+  Room.findById(req.params.id, (err, room) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(room.chatMessages);
+  });
+};
+
+export const getGrid = (req, res) => {
+  Room.findById(req.params.id, (err, room) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(room.grid);
+  });
+};
+
 export const updateRoom = (req, res) => {
   Room.findOneAndUpdate(
     { _id: req.params.id },
