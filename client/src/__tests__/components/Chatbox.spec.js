@@ -1,7 +1,10 @@
 import React from "react";
+import axios from "axios";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import Chatbox from "../../components/Chatbox";
+
+jest.mock("axios");
 
 describe("Chatbox", () => {
   let container = null;
@@ -19,16 +22,14 @@ describe("Chatbox", () => {
   });
 
   it("should display the list of messages of the room", async () => {
-    const fakeLogs = [
-      { nickname: "John", message: "Hello everyone" },
-      { nickname: "Paul", message: "Hi John, what's up ?" }
-    ];
+    const fakeLogs = {
+      data: [
+        { nickname: "John", message: "Hello everyone" },
+        { nickname: "Paul", message: "Hi John, what's up ?" }
+      ]
+    };
+    axios.mockImplementation(() => Promise.resolve(fakeLogs));
 
-    jest.spyOn(global, "fetch").mockImplementation(() =>
-      Promise.resolve({
-        json: () => Promise.resolve(fakeLogs)
-      })
-    );
     await act(async () => {
       render(<Chatbox />, container);
     });
