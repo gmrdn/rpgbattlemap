@@ -13,9 +13,6 @@ const Header = () => (
     >
       Room Selection
     </NavLink>
-    <NavLink to="/room" className="navbar-brand" id="nav-current-room">
-      Current Room
-    </NavLink>
   </nav>
 );
 
