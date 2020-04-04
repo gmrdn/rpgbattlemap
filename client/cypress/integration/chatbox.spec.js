@@ -8,7 +8,7 @@ context("Chatbox", () => {
       response: "fixture:rooms/chatmessages.json"
     }).as("getChatMessages");
 
-    cy.visit("/");
+    cy.visit("/room/5e8652d99e6f56c6b0ff1d99");
   });
 
   it("should render previous history", () => {
@@ -17,16 +17,6 @@ context("Chatbox", () => {
   });
 
   it("should scroll to the last messages", () => {
-    cy.server();
-    cy.route(
-      {
-        method: "GET",
-        url: "**/api/room/*"
-      },
-      "fixture:rooms/chatmessages.json"
-    ).as("getChatMessages");
-
-    cy.visit("/");
     cy.wait("@getChatMessages");
     cy.get("#messages-log").scrollIntoView();
     cy.contains("Last message").should("be.visible");
