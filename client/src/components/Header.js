@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a className="navbar-brand" href="#">
+    <NavLink to="/" className="navbar-brand" id="nav-home">
       RPG Battle Map{" "}
-    </a>
+    </NavLink>
     <NavLink
       to="/roomselection"
       className="navbar-brand"
