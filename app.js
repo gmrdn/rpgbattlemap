@@ -9,10 +9,7 @@ require("dotenv").config();
 const app = express();
 
 // mongoose connection
-const connectionString =
-  "mongodb+srv://admin:" +
-  process.env.MONGOPWD +
-  "@dndbattlemap-1236i.mongodb.net/test?retryWrites=true&w=majority";
+const connectionString = process.env.MONGODB_URL;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(connectionString, {
