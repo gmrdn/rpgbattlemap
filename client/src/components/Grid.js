@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Grid = props => {
+const divStyle = {
+  height: "50vh",
+  overflowY: "scroll",
+};
+
+const Grid = (props) => {
   const [grid, setGrid] = useState(null);
 
   async function fetchGrid(roomId) {
@@ -18,7 +23,7 @@ const Grid = props => {
   }
 
   return (
-    <div className="container border">
+    <div className="container border" style={divStyle}>
       <h5>Grid component</h5>
       <div>
         <p>{grid.name}</p>

@@ -3,8 +3,8 @@ import { connect, sendMsg } from "../socket";
 import axios from "axios";
 
 const divStyle = {
-  height: "300px",
-  overflowY: "scroll"
+  height: "20vh",
+  overflowY: "scroll",
 };
 
 function updateScroll() {
@@ -12,14 +12,14 @@ function updateScroll() {
   element.scrollTop = element.scrollHeight;
 }
 
-const send = event => {
+const send = (event) => {
   if (event.keyCode === 13) {
     sendMsg(event.target.value);
     event.target.value = "";
   }
 };
 
-const Chatbox = props => {
+const Chatbox = (props) => {
   const [chatlogs, setChatlogs] = useState(null);
 
   async function fetchChatlogs(roomId) {
@@ -43,8 +43,16 @@ const Chatbox = props => {
 
       <div id="messages-log" className="container" style={divStyle}>
         {chatlogs.map((log, key) => (
-          <div key={key} className="row d-flex justify-content-between">
-            <div className="card border-0 mb-0">
+          <div key={key} className="row d-flex">
+            <div className="align-center ml-3">
+              <div className="mb-1">
+                <small>
+                  <b>{log.nickname} :</b> {log.message}
+                </small>
+              </div>
+            </div>
+
+            {/* <div className="card border-1 mb-0">
               <div className="card-title mb-0">
                 <div className="badge badge-pill badge-info mr-3">
                   {log.nickname}
@@ -55,14 +63,14 @@ const Chatbox = props => {
                   {log.message}
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         ))}
       </div>
       <div id="message-input">
         <input
           type="text"
-          className="form-control mt-3 mb-1 bg-light"
+          className="form-control mt-3 mb-1 bg-light rounded-pill"
           onKeyDown={send}
         ></input>
       </div>
