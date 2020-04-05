@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon ./server.js --exec babel-node -e js",
-    "heroku-postbuild": "cd client && yarn run build"
+    "heroku-postbuild": "cd client && yarn install --prod && yarn run build"
   },
   "engines": {
     "node": "13.8.0"
