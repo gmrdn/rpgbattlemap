@@ -4,8 +4,7 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon ./server.js --exec babel-node -e js",
-    "test": "jest"
+    "start": "nodemon ./server.js --exec babel-node -e js"
   },
   "repository": {
     "type": "git",
@@ -17,12 +16,6 @@
     "url": "https://github.com/gmrdn/dndbattlemap/issues"
   },
   "homepage": "https://github.com/gmrdn/dndbattlemap#readme",
-  "jest": {
-    "testEnvironment": "node",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ]
-  },
   "dependencies": {
     "@babel/node": "^7.8.7",
     "@babel/polyfill": "^7.8.7",
@@ -35,9 +28,6 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
-    "babel-jest": "^25.2.6",
-    "jest": "^25.2.7",
-    "superagent": "^5.2.2",
     "supertest": "^4.0.2"
   }
 }
