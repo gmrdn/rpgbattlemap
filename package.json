@@ -21,16 +21,17 @@
   },
   "homepage": "https://github.com/gmrdn/dndbattlemap#readme",
   "dependencies": {
-    "@babel/node": "^7.8.7",
-    "@babel/polyfill": "^7.8.7",
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/polyfill": "^7.8.7",
     "@babel/preset-env": "^7.9.0",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.7",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "shortid": "^2.2.15"
   },
   "devDependencies": {}
 }

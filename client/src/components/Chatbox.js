@@ -3,7 +3,7 @@ import { connect, sendMsg } from "../socket";
 import axios from "axios";
 
 const divStyle = {
-  height: "20vh",
+  height: "15vh",
   overflowY: "scroll",
 };
 
@@ -39,8 +39,6 @@ const Chatbox = (props) => {
 
   return (
     <div className="container">
-      <h5>Chatbox component</h5>
-
       <div id="messages-log" className="container" style={divStyle}>
         {chatlogs.map((log, key) => (
           <div key={key} className="row d-flex">

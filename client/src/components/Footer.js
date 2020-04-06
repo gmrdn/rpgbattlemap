@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer
-      className="flex-grow-1 justify-content-between bg-success p-3"
+      className="navbar fixed-bottom navbar-light bg-secondary"
       id="mainFooter"
     >
       Footer component

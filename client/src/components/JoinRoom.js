@@ -3,15 +3,22 @@ import { NavLink } from "react-router-dom";
 
 const JoinRoom = () => (
   <>
-    <div className="card mx-auto mb-5" style={{ width: "18rem" }}>
-      <h5>JoinRoom Component</h5>
-      <input id="txt-room-id"></input>
-      <NavLink
-        to="/joinroom"
-        className="btn mx-auto btn-primary btn-sm"
-        id="btn-create"
-      >
-        Join room
+    <div
+      className="card mx-auto mb-5 border-0 d-flex justify-content-center"
+      style={{ width: "15rem", "min-height": "50vh" }}
+    >
+      <div class="input-group input-group-lg">
+        <input
+          id="txt-room-id"
+          className="form-control mb-3"
+          placeholder="Room ID"
+          aria-label="Room ID"
+        ></input>
+      </div>
+      <NavLink to="/joinroom" className="btn btn-dark btn-lg" id="btn-join">
+        <strong>
+          <large>Enter</large>
+        </strong>
       </NavLink>
     </div>
   </>
