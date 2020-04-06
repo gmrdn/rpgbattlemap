@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const CreateRoom = () => (
   <>
     <div
-      className="card mx-auto mb-5 border-0 d-flex justify-content-end"
+      className="card mx-auto mb-5 border-0 d-flex justify-content-end bg-transparent"
       style={{ width: "15rem", "min-height": "20vh" }}
     >
       <NavLink

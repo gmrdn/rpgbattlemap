@@ -1,82 +1,56 @@
-{
-  "rooms": [
-    {
-      "_id": "5e8652b29e6f56c6b0ff1d80",
-      "ChatMessages": [
-        {
-          "nickname": "Ringo",
-          "message": "Hello room"
-        },
-        {
-          "nickname": "Georges",
-          "message": "Hi Ringo, what's up ?"
-        },
-        {
-          "nickname": "John",
-          "message": "Imagine there's no countries It isn't hard to do Nothing to kill or die for And no religion, too Imagine all the people Living life in peace You, you may say I'm a dreamer But I'm not the only one I hope someday you will join us And the world will be as one Imagine no possessions I wonder if you can No need for greed or hunger A brotherhood of man Imagine…"
-        },
-        {
-          "nickname": "Paul",
-          "message": "Nice song."
-        }
-      ],
-      "CreationDate": "30/03/2020",
-      "Grid": {
-        "name": "Battle map for Dungeon of the black Dragon",
-        "tokens": ["a1,b2", "c2,d4"]
-      }
+[
+  {
+    "_id": "dIAHyZ55S",
+    "grid": {
+      "_id": "5e8b82a5ce1e03446a14ae80",
+      "tokens": [],
+      "name": "Newly created grid"
     },
-    {
-      "_id": "5e8652b29e6f56c6b0ff1d79",
-      "chatMessages": [
-        {
-          "_id": "5e8652b29e6f56c6b0ff1d7a",
-          "nickname": "Donatello",
-          "message": "Hi everyone"
-        },
-        {
-          "_id": "5e8652b29e6f56c6b0ff1d7b",
-          "nickname": "Raphaël",
-          "message": "Hi Don, how are you ?"
-        },
-        {
-          "_id": "5e8652b29e6f56c6b0ff1d7c",
-          "nickname": "Michelangelo",
-          "message": "Lol"
-        },
-        {
-          "_id": "5e8652b29e6f56c6b0ff1d7d",
-          "nickname": "Leonardo",
-          "message": "I can't wait to start this campaign"
-        },
-        {
-          "_id": "5e8652b29e6f56c6b0ff1d7e",
-          "nickname": "Donatello",
-          "message": "Hi everyone"
-        },
-        {
-          "_id": "5e8652b29e6f56c6b0ff1d7f",
-          "nickname": "Raphaël",
-          "message": "Hi Don, how are you ?"
-        },
-        {
-          "_id": "5e8652b29e6f56c6b0ff1d80",
-          "nickname": "Michelangelo",
-          "message": "Lol"
-        },
-        {
-          "_id": "5e8652b29e6f56c6b0ff1d81",
-          "nickname": "Leonardo",
-          "message": "I can't wait to start this campaign"
-        }
-      ],
-      "creationDate": "2020-01-03T23:00:00.000Z",
-      "grid": {
-        "_id": "5e8652b29e6f56c6b0ff1d82",
-        "tokens": [],
-        "name": "Lair of the Turtle Dragon"
+    "creationDate": "2020-04-06T19:27:33.202Z",
+    "chatMessages": [],
+    "__v": 0
+  },
+  {
+    "_id": "KFMcCRwUd",
+    "grid": {
+      "_id": "5e8b83a64350d744b96b9a8e",
+      "tokens": [],
+      "name": "Newly created grid"
+    },
+    "creationDate": "2020-04-06T19:31:50.422Z",
+    "chatMessages": [],
+    "__v": 0
+  },
+  {
+    "_id": "jIvEPTjGW",
+    "chatMessages": [
+      {
+        "_id": "5e8ba5cc98252a49d5683199",
+        "nickname": "Ringo",
+        "message": "Hello room"
       },
-      "__v": 0
-    }
-  ]
-}
+      {
+        "_id": "5e8ba5cc98252a49d568319a",
+        "nickname": "Georges",
+        "message": "Hi Ringo, what's up ?"
+      },
+      {
+        "_id": "5e8ba5cc98252a49d568319b",
+        "nickname": "John",
+        "message": "Imagine there's no countries It isn't hard to do Nothing to kill or die for And no religion, too Imagine all the people Living life in peace You, you may say I'm a dreamer But I'm not the only one I hope someday you will join us And the world will be as one Imagine no possessions I wonder if you can No need for greed or hunger A brotherhood of man Imagine…"
+      },
+      {
+        "_id": "5e8ba5cc98252a49d568319c",
+        "nickname": "Paul",
+        "message": "Nice song."
+      }
+    ],
+    "grid": {
+      "_id": "5e8ba5cc98252a49d568319d",
+      "tokens": [],
+      "name": "Battle map for Dungeon of the black Dragon"
+    },
+    "creationDate": "2020-04-06T21:57:32.664Z",
+    "__v": 0
+  }
+]

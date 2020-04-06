@@ -11,7 +11,7 @@ const rowStyle = {
   "flex-wrap": "nowrap",
 };
 
-const gridSize = { width: 35, height: 35 };
+const gridSize = { width: 60, height: 60 };
 
 const Grid = (props) => {
   const [grid, setGrid] = useState(null);
