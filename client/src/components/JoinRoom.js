@@ -10,7 +10,7 @@ const JoinRoom = () => (
       <div class="input-group input-group-lg">
         <input
           id="txt-room-id"
-          className="form-control mb-3"
+          className="form-control mb-3 border-success"
           placeholder="Room ID"
           aria-label="Room ID"
         ></input>

@@ -9,7 +9,7 @@ const CreateRoom = () => (
     >
       <NavLink
         to="/createroom"
-        className="btn mx-auto btn-outline-primary btn-sm"
+        className="btn mx-auto btn-outline-secondary btn-sm"
         id="btn-create"
       >
         Create your own room

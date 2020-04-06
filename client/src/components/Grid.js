@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Cell from "./Cell";
 
 const divStyle = {
   height: "50vh",
-  overflowY: "scroll",
 };
+
+const rowStyle = {
+  "white-space": "nowrap",
+  "flex-wrap": "nowrap",
+};
+
+const gridSize = { width: 35, height: 35 };
 
 const Grid = (props) => {
   const [grid, setGrid] = useState(null);
@@ -23,26 +30,18 @@ const Grid = (props) => {
   }
 
   return (
-    <div className="container border" style={divStyle}>
-      <h5>Grid component</h5>
+    <div className="container border overflow-auto" style={divStyle}>
+      <h5>{grid.name}</h5>
       <div>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
-        <p>{grid.name}</p>
+        {[...Array(gridSize.height)].map((_, i) => (
+          <div className="row" style={rowStyle}>
+            {[...Array(gridSize.width)].map((_, i) => (
+              <div className="col-sm pr-0 pl-0">
+                <Cell></Cell>
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   );
