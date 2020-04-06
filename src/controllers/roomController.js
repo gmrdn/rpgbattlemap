@@ -37,7 +37,11 @@ export const getChatMessages = (req, res) => {
     if (err) {
       res.send(err);
     }
-    res.json(room.chatMessages);
+    if (!room) {
+      console.log("Room not found");
+    } else {
+      res.json(room.chatMessages);
+    }
   });
 };
 
@@ -46,7 +50,11 @@ export const getGrid = (req, res) => {
     if (err) {
       res.send(err);
     }
-    res.json(room.grid);
+    if (!room) {
+      console.log("Room not found");
+    } else {
+      res.json(room.grid);
+    }
   });
 };
 
