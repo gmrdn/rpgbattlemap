@@ -3,9 +3,7 @@ import Grid from "../components/Grid";
 import Chatbox from "../components/Chatbox";
 import Dicetray from "../components/Dicetray";
 
-// const roomId = "5e8652b29e6f56c6b0ff1d79";
-
-const Room = props => {
+const Room = (props) => {
   if (!props.match.params.id) {
     return <div>No Room ID</div>;
   }
