@@ -1,30 +1,31 @@
 import React from "react";
+import Dice from "./Dice";
 
 const Dicetray = () => (
   <div className="container">
     <div class="container">
       <div class="row">
         <div class="col">
-          <div className="card">D20</div>
+          <Dice dice="D20"></Dice>
         </div>
         <div class="col">
-          <div className="card">D12</div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div className="card">D10</div>
-        </div>
-        <div class="col">
-          <div className="card">D8</div>
+          <Dice dice="D12"></Dice>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <div className="card">D6</div>
+          <Dice dice="D10"></Dice>
         </div>
         <div class="col">
-          <div className="card">D4</div>
+          <Dice dice="D8"></Dice>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <Dice dice="D6"></Dice>
+        </div>
+        <div class="col">
+          <Dice dice="D4"></Dice>
         </div>
       </div>
     </div>
