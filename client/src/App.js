@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import RoomSelection from "./pages/RoomSelection";
 import RoomCreation from "./pages/RoomCreation";
+import RoomJoining from "./pages/RoomJoining";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/roomselection">
             <RoomSelection />
           </Route>
+          <Route path="/joinroom/:id" component={RoomJoining} />
           <Route path="/room/:id" component={Room} />
           <Route path="/createroom" component={RoomCreation} />
         </Switch>

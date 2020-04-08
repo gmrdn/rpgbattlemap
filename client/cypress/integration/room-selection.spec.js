@@ -22,12 +22,20 @@ context("Room Selection", () => {
     cy.wait("@getRooms");
     cy.get("#room-0")
       .click()
+      .get("#nickname")
+      .type("Cypress FakeUser")
+      .get("#btn-join")
+      .click()
       .get("#room-name")
       .should("have.text", "Newly created grid");
 
     cy.visit("/roomselection");
 
     cy.get("#room-3")
+      .click()
+      .get("#nickname")
+      .type("Cypress FakeUser")
+      .get("#btn-join")
       .click()
       .get("#room-id")
       .should("have.text", "Room dIAHccx5S");

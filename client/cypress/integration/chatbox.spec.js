@@ -5,10 +5,10 @@ context("Chatbox", () => {
     cy.route({
       method: "GET",
       url: "api/room/*/chatmessages",
-      response: "fixture:rooms/chatmessages.json"
+      response: "fixture:rooms/chatmessages.json",
     }).as("getChatMessages");
 
-    cy.visit("/room/5e8652d99e6f56c6b0ff1d99");
+    cy.visit("/room/dIAHyZ55S");
   });
 
   it("should render previous history", () => {
