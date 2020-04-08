@@ -9,8 +9,20 @@ const NicknameSelection = (props) => {
   return (
     <div>
       <h5 id="room-id">Joining room {props.roomId}</h5>
-      <input id="nickname"></input>
-      <NavLink id="btn-join" to={`/room/${props.roomId}`}>
+      <input
+        id="nickname"
+        className="form-control mb-3 border-success"
+        placeholder="Room ID"
+        aria-label="Room ID"
+        onChange={handleChange}
+      ></input>{" "}
+      <NavLink
+        id="btn-join"
+        to={{
+          pathname: `/room/${props.roomId}`,
+          state: { nickname: nickname },
+        }}
+      >
         Join
       </NavLink>
     </div>

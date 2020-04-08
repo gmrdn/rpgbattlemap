@@ -9,6 +9,7 @@ context("Chatbox", () => {
     }).as("getChatMessages");
 
     cy.visit("/room/dIAHyZ55S");
+    cy.get("#nickname").type("Cypress FakeUser").get("#btn-join").click();
   });
 
   it("should render previous history", () => {
