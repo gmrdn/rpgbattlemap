@@ -3,7 +3,7 @@ import { connect, sendMsg } from "../socket";
 import axios from "axios";
 
 const divStyle = {
-  height: "15vh",
+  height: "20vh",
   overflowY: "scroll",
 };
 
@@ -39,7 +39,7 @@ const Chatbox = (props) => {
 
   return (
     <div className="container">
-      <div id="messages-log" className="container" style={divStyle}>
+      <div id="messages-log" className="container mb-0" style={divStyle}>
         {chatlogs.map((log, key) => (
           <div key={key} className="row d-flex">
             <div className="align-center ml-3">
@@ -49,19 +49,6 @@ const Chatbox = (props) => {
                 </small>
               </div>
             </div>
-
-            {/* <div className="card border-1 mb-0">
-              <div className="card-title mb-0">
-                <div className="badge badge-pill badge-info mr-3">
-                  {log.nickname}
-                </div>
-              </div>
-              <div className="card-body">
-                <div className="col-lg shadow-sm p-3 mt-n3 mb-0 bg-light rounded">
-                  {log.message}
-                </div>
-              </div>
-            </div> */}
           </div>
         ))}
       </div>

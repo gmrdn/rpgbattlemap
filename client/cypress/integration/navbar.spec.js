@@ -8,6 +8,6 @@ context("Navigation Bar", () => {
     cy.get("#nav-room-selection").click();
     cy.contains("Room Selection Component");
     cy.get("#nav-home").click();
-    cy.contains("Home Component");
+    cy.contains("Enter");
   });
 });

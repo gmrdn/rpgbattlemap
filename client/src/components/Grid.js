@@ -31,7 +31,7 @@ const Grid = (props) => {
 
   return (
     <div className="container border overflow-auto bg-light" style={divStyle}>
-      <h5>{grid.name}</h5>
+      <h5 id="room-name">{grid.name}</h5>
       <div>
         {[...Array(gridSize.height)].map((_, i) => (
           <div className="row" style={rowStyle}>

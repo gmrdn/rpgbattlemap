@@ -4,7 +4,6 @@ import CreateRoom from "../components/CreateRoom";
 
 const Home = () => (
   <div className="d-flex flex-column" style={{ "min-height": "85vh" }}>
-    <div>Home Component</div>
     <JoinRoom></JoinRoom>
     <CreateRoom></CreateRoom>
   </div>

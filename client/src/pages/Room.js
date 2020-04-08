@@ -9,14 +9,13 @@ const Room = (props) => {
   }
   return (
     <div className="container-fluid">
-      <h5>Room component</h5>
-      <h1>Room {props.match.params.id}</h1>
+      <h5 id="room-id">Room {props.match.params.id}</h5>
       <Grid roomId={props.match.params.id} />
       <div className="d-flex justify-content-between">
-        <div className="p-2 flex-grow-1 bd-highlight">
+        <div className="bg-blackflex-grow-1 bd-highlight">
           <Chatbox className="flex-grow-1" roomId={props.match.params.id} />
         </div>
-        <div className="p-2 bd-highlight">
+        <div className="bd-highlight">
           <Dicetray></Dicetray>
         </div>
       </div>

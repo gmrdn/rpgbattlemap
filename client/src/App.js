@@ -9,7 +9,7 @@ import RoomCreation from "./pages/RoomCreation";
 
 const App = () => {
   return (
-    <div style={{ "padding-bottom": "70px" }}>
+    <div style={{ "padding-bottom": "50px" }}>
       <Router>
         <Header></Header>
         <Switch>

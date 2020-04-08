@@ -20,10 +20,16 @@ context("Room Selection", () => {
 
   it("should navigate to the selected room", () => {
     cy.wait("@getRooms");
-    cy.get("#room-0").click().get("h1").should("have.text", "Room dIAHyZ55S");
+    cy.get("#room-0")
+      .click()
+      .get("#room-name")
+      .should("have.text", "Newly created grid");
 
     cy.visit("/roomselection");
 
-    cy.get("#room-3").click().get("h1").should("have.text", "Room dIAHccx5S");
+    cy.get("#room-3")
+      .click()
+      .get("#room-id")
+      .should("have.text", "Room dIAHccx5S");
   });
 });
