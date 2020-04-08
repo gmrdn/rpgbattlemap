@@ -15,7 +15,7 @@ const JoinRoom = () => {
         <div class="input-group input-group-lg">
           <input
             id="txt-room-id"
-            className="form-control mb-3 border-success"
+            className="form-control mb-3 border-secondary"
             placeholder="Room ID"
             aria-label="Room ID"
             onChange={handleChange}

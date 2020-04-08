@@ -7,25 +7,32 @@ const NicknameSelection = (props) => {
   const handleChange = (event) => setNickname(event.target.value);
 
   return (
-    <div>
-      <h5 id="room-id">Joining room {props.roomId}</h5>
-      <input
-        id="nickname"
-        className="form-control mb-3 border-success"
-        placeholder="Room ID"
-        aria-label="Room ID"
-        onChange={handleChange}
-      ></input>{" "}
-      <NavLink
-        id="btn-join"
-        to={{
-          pathname: `/room/${props.roomId}`,
-          state: { nickname: nickname },
-        }}
+    <>
+      <div
+        className="card mx-auto mb-5 border-0 d-flex justify-content-center bg-transparent"
+        style={{ width: "15rem", "min-height": "50vh" }}
       >
-        Join
-      </NavLink>
-    </div>
+        <div class="input-group input-group-lg">
+          <input
+            id="nickname"
+            className="form-control mb-3 border-secondary"
+            placeholder="Nickname"
+            aria-label="Nickname"
+            onChange={handleChange}
+          ></input>
+        </div>
+        <NavLink
+          id="btn-join"
+          to={{
+            pathname: `/room/${props.roomId}`,
+            state: { nickname: nickname },
+          }}
+          className="btn btn-dark btn-lg"
+        >
+          <strong>Join</strong>
+        </NavLink>
+      </div>
+    </>
   );
 };
 

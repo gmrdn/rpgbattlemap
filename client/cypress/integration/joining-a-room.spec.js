@@ -17,8 +17,6 @@ context("Joining a room", () => {
     cy.get("#btn-join").click();
 
     cy.url().should("contain", "/joinroom/dIAHyZ55S");
-    cy.get("#room-id").should("contain.text", "dIAHyZ55S");
-
     cy.get("#nickname").type("Cypress FakeUser");
 
     cy.get("#btn-join").click();
