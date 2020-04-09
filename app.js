@@ -14,7 +14,7 @@ const connectionString = process.env.MONGODB_URL;
 mongoose.Promise = global.Promise;
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
 
 // body parser setup

@@ -26,9 +26,7 @@ const JoinRoom = () => {
           className="btn btn-dark btn-lg"
           id="btn-join"
         >
-          <strong>
-            <large>Enter</large>
-          </strong>
+          <strong>Enter</strong>
         </NavLink>
       </div>
     </>
