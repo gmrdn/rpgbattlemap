@@ -1,50 +1,55 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
-import Cell from "./Cell";
 
-const divStyle = {
-  height: "50vh",
-};
+const gridSize = { width: 60, height: 60 };
+const tileSide = 40;
 
-const rowStyle = {
-  "white-space": "nowrap",
-  "flex-wrap": "nowrap",
-};
+class Grid extends React.Component {
+  constructor(props) {
+    super(props);
+    this.gridRef = React.createRef();
+    this.state = {
+      gridData: {},
+    };
+    this.fetchGrid(props.roomId);
+  }
 
-const gridSize = { width: 40, height: 40 };
+  componentDidMount() {
+    const canvas = this.refs.gridCanvas;
+    const ctx = canvas.getContext("2d");
+    this.drawGrid(ctx);
+  }
 
-const Grid = (props) => {
-  const [grid, setGrid] = useState(null);
+  drawGrid(ctx) {
+    for (var y = 0; y < gridSize.height; y++) {
+      for (var x = 0; x < gridSize.width; x++) {
+        ctx.lineWidth = 0.2;
+        ctx.beginPath();
 
-  async function fetchGrid(roomId) {
+        ctx.rect(x * tileSide, y * tileSide, tileSide, tileSide);
+        ctx.stroke();
+      }
+    }
+  }
+
+  async fetchGrid(roomId) {
     const response = await axios(`/api/room/${roomId}/grid`);
-    setGrid(await response.data);
+    this.setState({ gridData: await response.data });
   }
 
-  useEffect(() => {
-    fetchGrid(props.roomId);
-  }, [props.roomId]);
-
-  if (!grid) {
-    return "loading...";
-  }
-
-  return (
-    <div className="container border overflow-auto bg-light" style={divStyle}>
-      <h5 id="room-name">{grid.name}</h5>
-      <div>
-        {[...Array(gridSize.height)].map((_, i) => (
-          <div className="row" style={rowStyle}>
-            {[...Array(gridSize.width)].map((_, i) => (
-              <div className="col-sm pr-0 pl-0">
-                <Cell></Cell>
-              </div>
-            ))}
-          </div>
-        ))}
+  render() {
+    return (
+      <div
+        className="container border overflow-auto bg-light"
+        style={{ height: "50vh" }}
+      >
+        <h5 id="room-name">{this.state.gridData.name}</h5>
+        <div>
+          <canvas ref="gridCanvas" width="2400" height="2400"></canvas>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Grid;
