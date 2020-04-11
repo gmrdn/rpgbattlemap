@@ -7,7 +7,7 @@ const divStyle = {
   overflowY: "scroll",
 };
 
-const socket = io(":5000");
+const socket = io();
 
 class Chatbox extends React.Component {
   constructor(props) {
