@@ -30,9 +30,11 @@ io.on("connection", (socket) => {
     });
   });
 
-  socket.on("chat message", function ({ nickname, msg }) {
-    io.emit("chat message", { nickname, msg });
+  socket.on("/msg", function ({ room, nickname, message }) {
+    console.log(`Received message ${message} from ${nickname} in room ${room}`);
+    io.to(room).emit("/msg", { nickname: nickname, message: message });
   });
+
   socket.on("disconnect", () => {
     console.log("Client disconnected");
     socket.emit("broadcast", "user disconnected");

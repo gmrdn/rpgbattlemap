@@ -14,8 +14,28 @@ class Chatbox extends React.Component {
     super(props);
 
     this.state = {
+      currentMessage: "",
       chatlogs: [],
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({
+      currentMessage: e.target.value,
+    });
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    socket.emit("/msg", {
+      room: this.props.roomId,
+      nickname: this.props.nickname,
+      message: this.state.currentMessage,
+    });
+    this.setState({
+      currentMessage: "",
+    });
   }
 
   componentDidMount() {
@@ -27,6 +47,9 @@ class Chatbox extends React.Component {
     });
     socket.on("/join", (data) => this.addMessage("_server", data));
     socket.on("/leave", (data) => this.addMessage("_server", data));
+    socket.on("/msg", ({ nickname, message }) =>
+      this.addMessage(nickname, message)
+    );
     this.updateScroll();
   }
 
@@ -99,11 +122,16 @@ class Chatbox extends React.Component {
             }}
           ></div>
         </div>
-        <div id="message-input">
-          <input
-            type="text"
-            className="form-control mt-3 mb-1 bg-light rounded-pill"
-          ></input>
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <input
+              id="message-input"
+              type="text"
+              className="form-control mt-3 mb-1 bg-light rounded-pill"
+              value={this.state.currentMessage}
+              onChange={this.handleChange}
+            ></input>
+          </form>
         </div>
       </div>
     );

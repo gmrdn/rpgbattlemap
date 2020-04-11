@@ -29,4 +29,10 @@ context("Chatbox", () => {
       "Cypress FakeUser has joined the room."
     );
   });
+
+  it("should type and display new messages", () => {
+    cy.get("#message-input").type("New message{enter}");
+    cy.get("#message-input").should("be.empty");
+    cy.get("#messages-log").should("contain", "Cypress FakeUser : New message");
+  });
 });
