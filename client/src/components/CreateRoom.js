@@ -5,7 +5,7 @@ const CreateRoom = () => (
   <>
     <div
       className="card mx-auto mb-5 border-0 d-flex justify-content-end bg-transparent"
-      style={{ width: "15rem", "min-height": "20vh" }}
+      style={{ width: "15rem", minHeight: "20vh" }}
     >
       <NavLink
         to="/createroom"

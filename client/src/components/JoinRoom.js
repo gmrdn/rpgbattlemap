@@ -10,9 +10,9 @@ const JoinRoom = () => {
     <>
       <div
         className="card mx-auto mb-5 border-0 d-flex justify-content-center bg-transparent"
-        style={{ width: "15rem", "min-height": "50vh" }}
+        style={{ width: "15rem", minHeight: "50vh" }}
       >
-        <div class="input-group input-group-lg">
+        <div className="input-group input-group-lg">
           <input
             id="txt-room-id"
             className="form-control mb-3 border-secondary"

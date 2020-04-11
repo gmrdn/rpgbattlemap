@@ -7,6 +7,8 @@ const divStyle = {
   overflowY: "scroll",
 };
 
+var socket;
+
 class Chatbox extends React.Component {
   constructor(props) {
     super(props);
@@ -14,12 +16,13 @@ class Chatbox extends React.Component {
     this.state = {
       chatlogs: [],
     };
+
+    socket = io(":5000");
   }
 
   componentDidMount() {
     this.fetchChatlogs(this.props.roomId);
 
-    const socket = io(":5000");
     socket.on("broadcast", (data) => this.addMessage("_server", data));
     //   this.setState({
     //     chatlogs: (chatlogs) => [
@@ -32,6 +35,7 @@ class Chatbox extends React.Component {
 
   componentWillUnmount() {
     console.log("unmounting chat box");
+    socket.off("broadcast");
   }
 
   addMessage = (nck, msg) => {
