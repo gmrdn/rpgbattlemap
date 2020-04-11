@@ -7,7 +7,7 @@ const divStyle = {
   overflowY: "scroll",
 };
 
-var socket;
+const socket = io(":5000");
 
 class Chatbox extends React.Component {
   constructor(props) {
@@ -16,45 +16,67 @@ class Chatbox extends React.Component {
     this.state = {
       chatlogs: [],
     };
-
-    socket = io(":5000");
   }
 
   componentDidMount() {
     this.fetchChatlogs(this.props.roomId);
 
-    socket.on("broadcast", (data) => this.addMessage("_server", data));
-    //   this.setState({
-    //     chatlogs: (chatlogs) => [
-    //       ...chatlogs,
-    //       { nickname: "_server", message: data },
-    //     ],
-    //   })
-    // );
+    socket.emit("/join", {
+      nickname: this.props.nickname,
+      room: this.props.roomId,
+    });
+    socket.on("/join", (data) => this.addMessage("_server", data));
+    socket.on("/leave", (data) => this.addMessage("_server", data));
+    this.updateScroll();
+  }
+
+  componentDidUpdate() {
+    this.updateScroll();
   }
 
   componentWillUnmount() {
     console.log("unmounting chat box");
-    socket.off("broadcast");
+    socket.emit("/leave", {
+      nickname: this.props.nickname,
+      room: this.props.roomId,
+    });
   }
 
   addMessage = (nck, msg) => {
-    console.log("adding message : " + msg);
-
+    console.log("adding message in state : " + msg);
     this.setState((prevState) => ({
       chatlogs: [...prevState.chatlogs, { nickname: nck, message: msg }],
     }));
   };
 
   updateScroll() {
-    var element = document.getElementById("messages-log");
-    element.scrollTop = element.scrollHeight;
+    this.messagesEnd.scrollIntoView();
   }
 
   async fetchChatlogs(roomId) {
-    const response = await axios(`/api/room/${roomId}/chatmessages`);
-    this.setState({ chatlogs: await response.data });
-    this.updateScroll();
+    axios.get(`/api/room/${roomId}/chatmessages`).then((response) => {
+      this.setState((prevState) => ({
+        chatlogs: [...prevState.chatlogs, ...response.data],
+      }));
+    });
+
+    // this.updateScroll();
+  }
+
+  renderMessage(nickname, message) {
+    if (nickname === "_server") {
+      return (
+        <small className="text-secondary">
+          <i>{message}</i>
+        </small>
+      );
+    } else {
+      return (
+        <small>
+          <b>{nickname} :</b> {message}
+        </small>
+      );
+    }
   }
 
   render() {
@@ -65,13 +87,17 @@ class Chatbox extends React.Component {
             <div key={key} className="row d-flex">
               <div className="align-center ml-3">
                 <div className="mb-1">
-                  <small>
-                    <b>{log.nickname} :</b> {log.message}
-                  </small>
+                  {this.renderMessage(log.nickname, log.message)}
                 </div>
               </div>
             </div>
           ))}
+          <div
+            style={{ float: "left", clear: "both" }}
+            ref={(el) => {
+              this.messagesEnd = el;
+            }}
+          ></div>
         </div>
         <div id="message-input">
           <input

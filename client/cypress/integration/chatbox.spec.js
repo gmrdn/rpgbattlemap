@@ -22,4 +22,11 @@ context("Chatbox", () => {
     cy.get("#messages-log").scrollIntoView();
     cy.contains("Last message").should("be.visible");
   });
+
+  it("should display an information when a user joins the room", () => {
+    cy.get("#messages-log").should(
+      "contain.text",
+      "Cypress FakeUser has joined the room."
+    );
+  });
 });

@@ -20,7 +20,11 @@ const Room = (props) => {
       <Grid roomId={props.match.params.id} />
       <div className="d-flex justify-content-between">
         <div className="p-2 flex-grow-1 bd-highlight">
-          <Chatbox className="flex-grow-1" roomId={props.match.params.id} />
+          <Chatbox
+            className="flex-grow-1"
+            nickname={props.location.state.nickname}
+            roomId={props.match.params.id}
+          />
         </div>
         <div className="p-2 bd-highlight">
           <Dicetray></Dicetray>
