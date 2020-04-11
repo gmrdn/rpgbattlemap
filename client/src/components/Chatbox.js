@@ -20,7 +20,7 @@ class Chatbox extends React.Component {
     this.fetchChatlogs(this.props.roomId);
 
     const socket = io(":5000");
-    // socket.on("broadcast", (data) =>
+    socket.on("broadcast", (data) => this.addMessage("_server", data));
     //   this.setState({
     //     chatlogs: (chatlogs) => [
     //       ...chatlogs,
@@ -29,6 +29,18 @@ class Chatbox extends React.Component {
     //   })
     // );
   }
+
+  componentWillUnmount() {
+    console.log("unmounting chat box");
+  }
+
+  addMessage = (nck, msg) => {
+    console.log("adding message : " + msg);
+
+    this.setState((prevState) => ({
+      chatlogs: [...prevState.chatlogs, { nickname: nck, message: msg }],
+    }));
+  };
 
   updateScroll() {
     var element = document.getElementById("messages-log");
