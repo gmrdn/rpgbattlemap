@@ -11,10 +11,10 @@ class Grid extends React.Component {
     this.state = {
       gridData: {},
     };
-    this.fetchGrid(props.roomId);
   }
 
   componentDidMount() {
+    this.fetchGrid(this.props.roomId);
     const canvas = this.refs.gridCanvas;
     const ctx = canvas.getContext("2d");
     this.drawGrid(ctx);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import io from "socket.io-client";
 import axios from "axios";
 
@@ -7,61 +7,65 @@ const divStyle = {
   overflowY: "scroll",
 };
 
-function updateScroll() {
-  var element = document.getElementById("messages-log");
-  element.scrollTop = element.scrollHeight;
-}
+class Chatbox extends React.Component {
+  constructor(props) {
+    super(props);
 
-const Chatbox = (props) => {
-  async function fetchChatlogs(roomId) {
-    const response = await axios(`/api/room/${roomId}/chatmessages`);
-    setChatlogs(await response.data);
-
-    updateScroll();
+    this.state = {
+      chatlogs: [],
+    };
   }
 
-  const [chatlogs, setChatlogs] = useState([]);
-  useEffect(() => {
-    fetchChatlogs(props.roomId);
-  }, [props.roomId]);
+  componentDidMount() {
+    this.fetchChatlogs(this.props.roomId);
 
-  useEffect(() => {
     const socket = io(":5000");
-    socket.on("broadcast", (data) =>
-      setChatlogs((chatlogs) => [
-        ...chatlogs,
-        { nickname: "_server", message: data },
-      ])
-    );
-  }, 0);
-
-  if (!chatlogs) {
-    return "loading...";
+    // socket.on("broadcast", (data) =>
+    //   this.setState({
+    //     chatlogs: (chatlogs) => [
+    //       ...chatlogs,
+    //       { nickname: "_server", message: data },
+    //     ],
+    //   })
+    // );
   }
 
-  return (
-    <div className="container">
-      <div id="messages-log" className="container mb-0" style={divStyle}>
-        {chatlogs.map((log, key) => (
-          <div key={key} className="row d-flex">
-            <div className="align-center ml-3">
-              <div className="mb-1">
-                <small>
-                  <b>{log.nickname} :</b> {log.message}
-                </small>
+  updateScroll() {
+    var element = document.getElementById("messages-log");
+    element.scrollTop = element.scrollHeight;
+  }
+
+  async fetchChatlogs(roomId) {
+    const response = await axios(`/api/room/${roomId}/chatmessages`);
+    this.setState({ chatlogs: await response.data });
+    this.updateScroll();
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <div id="messages-log" className="container mb-0" style={divStyle}>
+          {this.state.chatlogs.map((log, key) => (
+            <div key={key} className="row d-flex">
+              <div className="align-center ml-3">
+                <div className="mb-1">
+                  <small>
+                    <b>{log.nickname} :</b> {log.message}
+                  </small>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div id="message-input">
+          <input
+            type="text"
+            className="form-control mt-3 mb-1 bg-light rounded-pill"
+          ></input>
+        </div>
       </div>
-      <div id="message-input">
-        <input
-          type="text"
-          className="form-control mt-3 mb-1 bg-light rounded-pill"
-        ></input>
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Chatbox;
