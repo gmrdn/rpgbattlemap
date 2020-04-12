@@ -10,6 +10,8 @@ jobs:
         run: yarn install
       - name: Server side unit tests
         run: yarn test
+        env:
+          MONGODB_URL: ${{ secrets.MONGODB_URL }}
       - name: Start server
         run: yarn run start &
         env:
