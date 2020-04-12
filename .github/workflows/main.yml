@@ -1,0 +1,17 @@
+name: End-to-end tests
+on: [push]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Start server
+        uses: yarn run start &
+      - name: Cypress run
+        uses: cypress-io/github-action@v1
+        with:
+          working-directory: client
+          build: yarn run build
+          start: yarn run start
+          wait-on: http://localhost:3000
