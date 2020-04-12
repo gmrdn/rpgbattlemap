@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+      - name: Install server dependencies
+        run: yarn install --prod
       - name: Start server
         run: yarn run start &
       - name: Cypress run
