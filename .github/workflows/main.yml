@@ -7,7 +7,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Install server dependencies
-        run: yarn install --prod
+        run: yarn install
+      - name: Server side unit tests
+        run: yarn test
       - name: Start server
         run: yarn run start &
         env:
@@ -19,7 +21,8 @@ jobs:
           build: yarn run build
           start: yarn run start
           wait-on: http://localhost:3000
-      - uses: actions/upload-artifact@v1
+      - name: Archive screenshots
+        uses: actions/upload-artifact@v1
         if: failure()
         with:
           working-directory: client
