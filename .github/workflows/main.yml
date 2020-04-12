@@ -7,7 +7,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Start server
-        uses: yarn run start &
+        run: yarn run start &
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:
