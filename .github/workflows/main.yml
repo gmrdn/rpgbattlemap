@@ -10,6 +10,8 @@ jobs:
         run: yarn install --prod
       - name: Start server
         run: yarn run start &
+        env:
+          MONGODB_URL: ${{ secrets.MONGODB_URL }}
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:
