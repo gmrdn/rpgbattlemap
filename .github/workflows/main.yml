@@ -1,18 +1,22 @@
 name: End-to-end tests
 on: [push]
 jobs:
-  cypress-run:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+      - name: Setup NodeJs
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
       - name: Install server dependencies
         run: yarn install
-      - name: Server side unit tests
+      - name: Server side Unit Tests
         run: yarn test
         env:
           MONGODB_URL: ${{ secrets.MONGODB_URL }}
-      - name: Start server
+      - name: Start server for e2e tests
         run: yarn run start &
         env:
           MONGODB_URL: ${{ secrets.MONGODB_URL }}
