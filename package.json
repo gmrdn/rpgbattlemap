@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --ignore 'client/' ./server.js --exec babel-node -e js",
     "heroku-postbuild": "cd client && yarn install --prod && yarn run build",
-    "test": "mocha --require @babel/register src/tests/*.js --exit"
+    "e2e": "mocha --require @babel/register src/tests/e2e/*.js --exit"
   },
   "repository": {
     "type": "git",
