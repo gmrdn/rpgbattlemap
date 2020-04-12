@@ -7,9 +7,6 @@
     "start": "nodemon --ignore 'client/' ./server.js --exec babel-node -e js",
     "heroku-postbuild": "cd client && yarn install --prod && yarn run build"
   },
-  "engines": {
-    "node": "13.8.0"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gmrdn/dndbattlemap.git"
