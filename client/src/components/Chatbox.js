@@ -123,7 +123,7 @@ class Chatbox extends React.Component {
           ></div>
         </div>
         <div>
-          <form onSubmit={this.handleSubmit}>
+          <form autocomplete="off" onSubmit={this.handleSubmit}>
             <input
               id="message-input"
               type="text"
