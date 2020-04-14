@@ -1,11 +1,10 @@
-import * as actions from "../actions/SessionActions";
-import * as types from "../constants/ActionTypes";
+import * as actions from "../actions";
 
 describe("actions", () => {
   it("should create an action to set a nickname", () => {
     const nickname = "Jest User";
     const expectedAction = {
-      type: types.SET_NICKNAME,
+      type: "SET_NICKNAME",
       nickname,
     };
     expect(actions.setUserName(nickname)).toEqual(expectedAction);
@@ -14,7 +13,7 @@ describe("actions", () => {
   it("should create an action to set a roomId", () => {
     const roomId = "ABCDEFGH";
     const expectedAction = {
-      type: types.SET_ROOMID,
+      type: "SET_ROOMID",
       roomId,
     };
     expect(actions.setRoomId(roomId)).toEqual(expectedAction);

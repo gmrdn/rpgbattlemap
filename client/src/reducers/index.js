@@ -1,8 +1,6 @@
-import { SET_NICKNAME, SET_ROOMID } from "../constants/ActionTypes";
-
 function nickname(state = "", action) {
   switch (action.type) {
-    case SET_NICKNAME:
+    case "SET_NICKNAME":
       return action.nickname;
     default:
       return state;
@@ -11,7 +9,7 @@ function nickname(state = "", action) {
 
 function roomId(state = "", action) {
   switch (action.type) {
-    case SET_ROOMID:
+    case "SET_ROOMID":
       return action.roomId;
     default:
       return state;

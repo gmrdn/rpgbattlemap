@@ -1,7 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-const Header = () => (
+export const Header = (props) => (
   <header className="header">
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <NavLink to="/" className="navbar-brand" id="nav-home">
@@ -14,8 +15,28 @@ const Header = () => (
       >
         Room Selection
       </NavLink>
+      <NavLink to="/" id="nickname" className="navbar-brand">
+        {props.nickname}
+      </NavLink>
+      <NavLink to="/" id="room-id" className="navbar-brand">
+        {props.roomId}
+      </NavLink>
     </nav>
   </header>
 );
 
-export default Header;
+// const mapStateToProps = (state) => {
+//   return {
+//     nickname: state.nickname,
+//     roomId: state.roomId,
+//   };
+// };
+
+const mapStateToProps = (state) => {
+  return {
+    nickname: state.nickname,
+    roomId: state.roomId,
+  };
+};
+
+export default connect(mapStateToProps)(Header);

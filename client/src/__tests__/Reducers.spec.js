@@ -1,5 +1,4 @@
-import reducer from "../reducers/Session";
-import * as types from "../constants/ActionTypes";
+import reducer from "../reducers";
 
 describe("Session reducer", () => {
   it("should return the initial state", () => {
@@ -14,7 +13,7 @@ describe("Session reducer", () => {
       reducer(
         {},
         {
-          type: types.SET_NICKNAME,
+          type: "SET_NICKNAME",
           nickname: "Jest User",
         }
       )
@@ -29,7 +28,7 @@ describe("Session reducer", () => {
       reducer(
         {},
         {
-          type: types.SET_ROOMID,
+          type: "SET_ROOMID",
           roomId: "ABCDEFG",
         }
       )
