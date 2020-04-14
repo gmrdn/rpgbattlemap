@@ -15,10 +15,10 @@ export const Header = (props) => (
       >
         Room Selection
       </NavLink>
-      <NavLink to="/" id="nickname" className="navbar-brand">
+      <NavLink to="/" id="header-nickname" className="navbar-brand">
         {props.nickname}
       </NavLink>
-      <NavLink to="/" id="room-id" className="navbar-brand">
+      <NavLink to="/" id="header-room-id" className="navbar-brand">
         {props.roomId}
       </NavLink>
     </nav>

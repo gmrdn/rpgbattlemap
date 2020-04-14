@@ -18,8 +18,8 @@ describe("components", () => {
       expect(enzymeWrapper.find("#nav-room-selection").text()).toBe(
         "Room Selection"
       );
-      expect(enzymeWrapper.find("#nickname").text()).toBe("Enzyme User");
-      expect(enzymeWrapper.find("#room-id").text()).toBe("ABCDEFG");
+      expect(enzymeWrapper.find("#header-nickname").text()).toBe("Enzyme User");
+      expect(enzymeWrapper.find("#header-room-id").text()).toBe("ABCDEFG");
     });
 
     // it("should display the current user name", () => {});
