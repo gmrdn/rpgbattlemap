@@ -37,7 +37,7 @@ context("Room Selection", () => {
       .type("Cypress FakeUser")
       .get("#btn-join")
       .click()
-      .get("#room-id")
-      .should("have.text", "Room dIAHccx5S");
+      .get("#header-room-id")
+      .should("have.text", "dIAHccx5S");
   });
 });

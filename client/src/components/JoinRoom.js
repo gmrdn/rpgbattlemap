@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import { setRoomId } from "../actions";
 
-const JoinRoom = () => {
-  const [roomId, setRoomId] = useState("");
-
-  const handleChange = (event) => setRoomId(event.target.value);
+const JoinRoom = (props) => {
+  const handleChange = (event) => {
+    props.setRoomId(event.target.value);
+  };
 
   return (
     <>
@@ -22,7 +24,7 @@ const JoinRoom = () => {
           ></input>
         </div>
         <NavLink
-          to={`/joinroom/${roomId}`}
+          to={`/joinroom/${props.roomId}`}
           className="btn btn-dark btn-lg"
           id="btn-join"
         >
@@ -33,4 +35,13 @@ const JoinRoom = () => {
   );
 };
 
-export default JoinRoom;
+const mapStateToProps = (state) => {
+  return {
+    nickname: state.nickname,
+    roomId: state.roomId,
+  };
+};
+
+const mapDispatchToProps = { setRoomId };
+
+export default connect(mapStateToProps, mapDispatchToProps)(JoinRoom);

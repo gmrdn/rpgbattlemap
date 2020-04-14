@@ -1,29 +1,30 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { setUserName, setRoomId } from "../actions";
 import Grid from "../components/Grid";
 import Chatbox from "../components/Chatbox";
 import Dicetray from "../components/Dicetray";
 
 const Room = (props) => {
   if (!props.match.params.id) {
-    return <div>No Room ID</div>;
+    return <Redirect to={`/`} />;
   }
 
-  if (!props.location.state) {
+  if (props.nickname === "") {
+    props.setRoomId(props.match.params.roomId);
     return <Redirect to={`/joinroom/${props.match.params.id}`} />;
   }
 
   return (
     <div className="container-fluid">
-      <h5 id="room-id">Room {props.match.params.id}</h5>
-      <div id="nickname">{props.location.state.nickname}</div>
-      <Grid roomId={props.match.params.id} />
+      <Grid roomId={props.roomId} />
       <div className="d-flex justify-content-between">
         <div className="p-2 flex-grow-1 bd-highlight">
           <Chatbox
             className="flex-grow-1"
-            nickname={props.location.state.nickname}
-            roomId={props.match.params.id}
+            nickname={props.nickname}
+            roomId={props.roomId}
           />
         </div>
         <div className="p-2 bd-highlight">
@@ -34,4 +35,13 @@ const Room = (props) => {
   );
 };
 
-export default Room;
+const mapStateToProps = (state) => {
+  return {
+    nickname: state.nickname,
+    roomId: state.roomId,
+  };
+};
+
+const mapDispatchToProps = { setUserName, setRoomId };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Room);

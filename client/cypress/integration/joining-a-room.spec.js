@@ -22,8 +22,7 @@ context("Joining a room", () => {
     cy.get("#btn-join").click();
 
     cy.url().should("contain", "/room/dIAHyZ55S");
-
-    cy.get("#room-id").should("contain.text", "dIAHyZ55S");
-    cy.get("#nickname").should("have.text", "Cypress FakeUser");
+    cy.get("#header-room-id").should("have.text", "dIAHyZ55S");
+    cy.get("#header-nickname").should("have.text", "Cypress FakeUser");
   });
 });

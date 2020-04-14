@@ -40,7 +40,7 @@ class Grid extends React.Component {
   render() {
     return (
       <div
-        className="container border overflow-auto bg-light"
+        className="container-fluid border overflow-auto bg-light mt-3"
         style={{ height: "50vh" }}
       >
         <h5 id="room-name">{this.state.gridData.name}</h5>
