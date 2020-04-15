@@ -1,6 +1,8 @@
 import React from "react";
 import io from "socket.io-client";
 import axios from "axios";
+import { connect } from "react-redux";
+import { setUserName, setRoomId, addToken } from "../actions";
 
 const divStyle = {
   height: "20vh",
@@ -39,13 +41,15 @@ class Chatbox extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchChatlogs(this.props.roomId);
+    this.fetchRoomData(this.props.roomId);
 
     socket.emit("/join", {
       nickname: this.props.nickname,
       room: this.props.roomId,
     });
-    socket.on("/join", (data) => this.addMessage("_server", data));
+    socket.on("/join", (data) => {
+      this.addMessage("_server", data);
+    });
     socket.on("/leave", (data) => this.addMessage("_server", data));
     socket.on("/msg", ({ nickname, message }) =>
       this.addMessage(nickname, message)
@@ -76,7 +80,7 @@ class Chatbox extends React.Component {
     this.messagesEnd.scrollIntoView();
   }
 
-  async fetchChatlogs(roomId) {
+  async fetchRoomData(roomId) {
     axios
       .get(`/api/room/${roomId}`)
       .then((response) => {
@@ -142,4 +146,14 @@ class Chatbox extends React.Component {
   }
 }
 
-export default Chatbox;
+const mapStateToProps = (state) => {
+  return {
+    nickname: state.nickname,
+    roomId: state.roomId,
+    tokens: state.tokens,
+  };
+};
+
+const mapDispatchToProps = { setUserName, setRoomId, addToken };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chatbox);

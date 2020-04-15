@@ -29,5 +29,16 @@ describe("Rooms", () => {
           done();
         });
     });
+
+    it("should return 404 when room is not found", (done) => {
+      const id = "aaaaa";
+      chai
+        .request(app)
+        .get(`/api/room/${id}`)
+        .end((err, res) => {
+          res.should.have.status(404);
+          done();
+        });
+    });
   });
 });

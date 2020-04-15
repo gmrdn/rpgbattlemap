@@ -6,34 +6,40 @@ import Grid from "../components/Grid";
 import Chatbox from "../components/Chatbox";
 import Dicetray from "../components/Dicetray";
 
-const Room = (props) => {
-  if (!props.match.params.id) {
-    return <Redirect to={`/`} />;
-  }
+class Room extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  // }
 
-  if (props.nickname === "") {
-    props.setRoomId(props.match.params.id);
-    return <Redirect to={`/joinroom/${props.match.params.id}`} />;
-  }
+  render() {
+    if (!this.props.match.params.id) {
+      return <Redirect to={`/`} />;
+    }
 
-  return (
-    <div className="container-fluid">
-      <Grid roomId={props.roomId} />
-      <div className="d-flex justify-content-between">
-        <div className="p-2 flex-grow-1 bd-highlight">
-          <Chatbox
-            className="flex-grow-1"
-            nickname={props.nickname}
-            roomId={props.roomId}
-          />
-        </div>
-        <div className="p-2 bd-highlight">
-          <Dicetray></Dicetray>
+    if (this.props.nickname === "") {
+      this.props.setRoomId(this.props.match.params.id);
+      return <Redirect to={`/joinroom/${this.props.match.params.id}`} />;
+    }
+
+    return (
+      <div className="container-fluid">
+        <Grid roomId={this.props.roomId} />
+        <div className="d-flex justify-content-between">
+          <div className="p-2 flex-grow-1 bd-highlight">
+            <Chatbox
+              className="flex-grow-1"
+              nickname={this.props.nickname}
+              roomId={this.props.roomId}
+            />
+          </div>
+          <div className="p-2 bd-highlight">
+            <Dicetray></Dicetray>
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 const mapStateToProps = (state) => {
   return {

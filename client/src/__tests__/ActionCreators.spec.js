@@ -20,7 +20,7 @@ describe("actions", () => {
   });
 
   it("should create an action to add a token", () => {
-    const token = { x: 1, y: 1, color: "00F", name: "Jest Token" };
+    const token = { x: 1, y: 1, color: "green", name: "Jest Token" };
     const expectedAction = {
       type: "ADD_TOKEN",
       x: token.x,

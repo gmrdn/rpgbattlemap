@@ -14,5 +14,7 @@ context("Tokens", () => {
 
   it("should display previous tokens", () => {
     cy.wait("@getTokens");
+    cy.get("#btn-token[title='The first one']").should("be.visible");
+    cy.get("#btn-token[title='Number Five']").should("be.visible");
   });
 });
