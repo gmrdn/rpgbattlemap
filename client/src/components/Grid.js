@@ -22,11 +22,11 @@ class Grid extends React.Component {
     this.drawGrid(ctx);
   }
 
-  componentDidUpdate() {
-    const canvas = this.refs.gridCanvas;
-    const ctx = canvas.getContext("2d");
-    // this.drawTokens(ctx);
-  }
+  // componentDidUpdate() {
+  // const canvas = this.refs.gridCanvas;
+  // const ctx = canvas.getContext("2d");
+  // this.drawTokens(ctx);
+  // }
 
   drawGrid(ctx) {
     for (var y = 0; y < gridSize.height; y++) {
@@ -39,26 +39,26 @@ class Grid extends React.Component {
     }
   }
 
-  drawTokens(ctx) {
-    this.props.tokens.map((token) => {
-      //rounds
-      ctx.beginPath();
-      ctx.arc(
-        token.x * tileSide + tileSide / 2,
-        token.y * tileSide + tileSide / 2,
-        tileSide / 2,
-        0,
-        2 * Math.PI,
-        false
-      );
-      ctx.fillStyle = token.color;
-      ctx.fill();
+  // drawTokens(ctx) {
+  //   this.props.tokens.map((token) => {
+  //     //rounds
+  //     ctx.beginPath();
+  //     ctx.arc(
+  //       token.x * tileSide + tileSide / 2,
+  //       token.y * tileSide + tileSide / 2,
+  //       tileSide / 2,
+  //       0,
+  //       2 * Math.PI,
+  //       false
+  //     );
+  //     ctx.fillStyle = token.color;
+  //     ctx.fill();
 
-      //rectangles
-      // ctx.fillStyle = token.color;
-      // ctx.fillRect(token.x * tileSide, token.y * tileSide, tileSide, tileSide);
-    });
-  }
+  //     //rectangles
+  //     // ctx.fillStyle = token.color;
+  //     // ctx.fillRect(token.x * tileSide, token.y * tileSide, tileSide, tileSide);
+  //   });
+  // }
 
   async fetchGrid(roomId) {
     try {
