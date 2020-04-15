@@ -4,8 +4,8 @@ context("Chatbox", () => {
     cy.server();
     cy.route({
       method: "GET",
-      url: "api/room/*/chatmessages",
-      response: "fixture:rooms/chatmessages.json",
+      url: "api/room/*",
+      response: "fixture:rooms/room-with-chatmessages.json",
     }).as("getChatMessages");
 
     cy.visit("/room/dIAHyZ55S");

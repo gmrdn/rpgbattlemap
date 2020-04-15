@@ -28,32 +28,10 @@ export const getRoomByID = (req, res) => {
     if (err) {
       res.send(err);
     }
-    res.json(room);
-  });
-};
-
-export const getChatMessages = (req, res) => {
-  Room.findById(req.params.id, (err, room) => {
-    if (err) {
-      res.send(err);
-    }
-    if (!room) {
-      console.log("Room not found");
+    if (room) {
+      res.json(room);
     } else {
-      res.json(room.chatMessages);
-    }
-  });
-};
-
-export const getGrid = (req, res) => {
-  Room.findById(req.params.id, (err, room) => {
-    if (err) {
-      res.send(err);
-    }
-    if (!room) {
-      console.log("Room not found");
-    } else {
-      res.json(room.grid);
+      res.status(404).send("Room not found");
     }
   });
 };

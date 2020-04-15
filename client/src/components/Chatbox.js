@@ -77,13 +77,17 @@ class Chatbox extends React.Component {
   }
 
   async fetchChatlogs(roomId) {
-    axios.get(`/api/room/${roomId}/chatmessages`).then((response) => {
-      this.setState((prevState) => ({
-        chatlogs: [...prevState.chatlogs, ...response.data],
-      }));
-    });
-
-    // this.updateScroll();
+    axios
+      .get(`/api/room/${roomId}`)
+      .then((response) => {
+        this.setState((prevState) => ({
+          chatlogs: [...prevState.chatlogs, ...response.data.chatMessages],
+        }));
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
   }
 
   renderMessage(nickname, message) {
@@ -123,7 +127,7 @@ class Chatbox extends React.Component {
           ></div>
         </div>
         <div>
-          <form autocomplete="off" onSubmit={this.handleSubmit}>
+          <form autoComplete="off" onSubmit={this.handleSubmit}>
             <input
               id="message-input"
               type="text"

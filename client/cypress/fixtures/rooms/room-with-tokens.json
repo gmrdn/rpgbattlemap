@@ -1,0 +1,65 @@
+{
+  "_id": "BdAdj192k",
+  "chatMessages": [
+    {
+      "_id": "5e8652d99e6f56c6b0ff1d9a",
+      "nickname": "Donatello",
+      "message": "Hi everyone"
+    },
+    {
+      "_id": "5e8652d99e6f56c6b0ff1d9b",
+      "nickname": "Raphaël",
+      "message": "Hi Don, how are you ?"
+    },
+    {
+      "_id": "5e8652d99e6f56c6b0ff1d9c",
+      "nickname": "Michelangelo",
+      "message": "Lol"
+    },
+    {
+      "_id": "5e8652d99e6f56c6b0ff1d9d",
+      "nickname": "Leonardo",
+      "message": "I can't wait to start this campaign"
+    },
+    {
+      "_id": "5e8652d99e6f56c6b0ff1d9e",
+      "nickname": "Donatello",
+      "message": "Hi everyone"
+    },
+    {
+      "_id": "5e8652d99e6f56c6b0ff1d9f",
+      "nickname": "Raphaël",
+      "message": "Hi Don, how are you ?"
+    },
+    {
+      "_id": "5e8652d99e6f56c6b0ff1da0",
+      "nickname": "Michelangelo",
+      "message": "Lol"
+    },
+    {
+      "_id": "5e8652d99e6f56c6b0ff1da1",
+      "nickname": "Leonardo",
+      "message": "I can't wait to start this campaign"
+    }
+  ],
+  "creationDate": "2020-01-03T23:00:00.000Z",
+  "grid": {
+    "_id": "5e8652d99e6f56c6b0ff1da2",
+    "tokens": [
+      {
+        "x": 1,
+        "y": 1,
+        "name": "The first one",
+        "color": "00F"
+      },
+      {
+        "x": 5,
+        "y": 15,
+        "name": "Number Five",
+        "color": "0FF"
+      }
+    ],
+    "name": "Lair of the Turtle Dragon"
+  },
+  "__v": 0
+}

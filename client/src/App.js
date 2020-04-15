@@ -20,6 +20,7 @@ const App = () => {
           </Route>
           <Route path="/joinroom/:id" component={RoomJoining} />
           <Route path="/room/:id" component={Room} />
+          <Route path="/room" component={Home} />
           <Route path="/createroom" component={RoomCreation} />
         </Switch>
       </Router>

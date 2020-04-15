@@ -9,9 +9,10 @@ const ChatMessage = new Schema({
 });
 
 const Token = new Schema({
-  pos_x: Number,
-  pos_y: Number,
-  represents: String,
+  x: Number,
+  y: Number,
+  name: String,
+  color: String,
 });
 
 const Grid = new Schema({

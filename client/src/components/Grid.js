@@ -33,8 +33,12 @@ class Grid extends React.Component {
   }
 
   async fetchGrid(roomId) {
-    const response = await axios(`/api/room/${roomId}/grid`);
-    this.setState({ gridData: await response.data });
+    try {
+      const response = await axios(`/api/room/${roomId}`);
+      this.setState({ gridData: await response.data.grid });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   render() {

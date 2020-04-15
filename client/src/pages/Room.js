@@ -12,7 +12,7 @@ const Room = (props) => {
   }
 
   if (props.nickname === "") {
-    props.setRoomId(props.match.params.roomId);
+    props.setRoomId(props.match.params.id);
     return <Redirect to={`/joinroom/${props.match.params.id}`} />;
   }
 
