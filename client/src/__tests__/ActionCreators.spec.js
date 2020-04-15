@@ -18,4 +18,16 @@ describe("actions", () => {
     };
     expect(actions.setRoomId(roomId)).toEqual(expectedAction);
   });
+
+  it("should create an action to add a token", () => {
+    const token = { x: 1, y: 1, color: "00F", name: "Jest Token" };
+    const expectedAction = {
+      type: "ADD_TOKEN",
+      x: token.x,
+      y: token.y,
+      name: token.name,
+      color: token.color,
+    };
+    expect(actions.addToken(token)).toEqual(expectedAction);
+  });
 });

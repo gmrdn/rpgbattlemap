@@ -11,3 +11,13 @@ export function setRoomId(roomId) {
     roomId,
   };
 }
+
+export function addToken(token) {
+  return {
+    type: "ADD_TOKEN",
+    x: token.x,
+    y: token.y,
+    name: token.name,
+    color: token.color,
+  };
+}
