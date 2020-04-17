@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { setUserName, setRoomId, addToken } from "../actions";
+import Token from "../components/Token";
 
 const gridSize = { width: 60, height: 60 };
 const tileSide = 40;
@@ -22,12 +23,6 @@ class Grid extends React.Component {
     this.drawGrid(ctx);
   }
 
-  // componentDidUpdate() {
-  // const canvas = this.refs.gridCanvas;
-  // const ctx = canvas.getContext("2d");
-  // this.drawTokens(ctx);
-  // }
-
   drawGrid(ctx) {
     for (var y = 0; y < gridSize.height; y++) {
       for (var x = 0; x < gridSize.width; x++) {
@@ -38,27 +33,6 @@ class Grid extends React.Component {
       }
     }
   }
-
-  // drawTokens(ctx) {
-  //   this.props.tokens.map((token) => {
-  //     //rounds
-  //     ctx.beginPath();
-  //     ctx.arc(
-  //       token.x * tileSide + tileSide / 2,
-  //       token.y * tileSide + tileSide / 2,
-  //       tileSide / 2,
-  //       0,
-  //       2 * Math.PI,
-  //       false
-  //     );
-  //     ctx.fillStyle = token.color;
-  //     ctx.fill();
-
-  //     //rectangles
-  //     // ctx.fillStyle = token.color;
-  //     // ctx.fillRect(token.x * tileSide, token.y * tileSide, tileSide, tileSide);
-  //   });
-  // }
 
   async fetchGrid(roomId) {
     try {
@@ -91,21 +65,7 @@ class Grid extends React.Component {
           ></canvas>
 
           {this.props.tokens.map((token) => {
-            return (
-              <button
-                id="btn-token"
-                className="btn btn-outline-dark"
-                title={token.name}
-                style={{
-                  position: "absolute",
-                  left: `${token.x * tileSide}px`,
-                  top: `${token.y * tileSide}px`,
-                  color: token.color,
-                }}
-              >
-                X
-              </button>
-            );
+            return <Token token={token} tileSide={tileSide}></Token>;
           })}
         </div>
       </div>
