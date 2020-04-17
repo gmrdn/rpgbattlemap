@@ -1,7 +1,6 @@
 import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Badge from "@material-ui/core/Badge";
-import { deepOrange, deepPurple } from "@material-ui/core/colors";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 const StyledBadge = withStyles((theme) => ({
@@ -32,14 +31,6 @@ const StyledBadge = withStyles((theme) => ({
     },
   },
 }))(Badge);
-
-const SmallAvatar = withStyles((theme) => ({
-  root: {
-    width: 22,
-    height: 22,
-    border: `2px solid ${theme.palette.background.paper}`,
-  },
-}))(Avatar);
 
 const useStyles = makeStyles((theme) => ({
   root: {
