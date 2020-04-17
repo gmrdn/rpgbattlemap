@@ -12,16 +12,60 @@
     "_id": "5e8652d99e6f56c6b0ff1da2",
     "tokens": [
       {
+        "_id": "5e9a1a39152f9a9ce03b933e",
         "x": 1,
         "y": 1,
         "name": "The first one",
         "color": "green"
       },
       {
+        "_id": "5e9a1a39152f9a9ce03b933f",
         "x": 5,
         "y": 5,
         "name": "Number Five",
         "color": "red"
+      },
+      {
+        "_id": "5e9a1a39152f9a9ce03b9340",
+        "x": 2,
+        "y": 3,
+        "name": "Gobelin",
+        "color": "blue"
+      },
+      {
+        "_id": "5e9a1a39152f9a9ce03b9341",
+        "x": 7,
+        "y": 2,
+        "name": "Olive",
+        "color": "DarkOliveGreen"
+      },
+      {
+        "_id": "5e9a1a39152f9a9ce03b9342",
+        "x": 4,
+        "y": 2,
+        "name": "Khaki",
+        "color": "Khaki"
+      },
+      {
+        "_id": "5e9a1a39152f9a9ce03b9343",
+        "x": 31,
+        "y": 32,
+        "name": "FireBrick",
+        "color": "FireBrick"
+      },
+      {
+        "_id": "5e9a1a39152f9a9ce03b9344",
+        "x": 32,
+        "y": 33,
+        "name": "Indigo",
+        "color": "Indigo"
+      },
+      {
+        "_id": "5e9a1a39152f9a9ce03b9345",
+        "x": 6,
+        "y": 3,
+        "name": "Tomato",
+        "color": "tomato"
       }
     ],
     "name": "Lair of the Spider"
