@@ -5,6 +5,7 @@ import { setUserName, setRoomId } from "../actions";
 import Grid from "../components/Grid";
 import Chatbox from "../components/Chatbox";
 import Dicetray from "../components/Dicetray";
+import TokenBar from "../components/TokenBar";
 
 class Room extends React.Component {
   // constructor(props) {
@@ -31,7 +32,9 @@ class Room extends React.Component {
           <div className="p-2 flex-grow-1 bd-highlight">
             <Grid roomId={this.props.roomId} />
           </div>
-          <div className="p-2 bd-highlight">Tokens bar</div>
+          <div className="p-2 bd-highlight">
+            <TokenBar></TokenBar>
+          </div>
         </div>
         <div className="d-flex justify-content-between">
           <div className="p-2 flex-grow-1 bd-highlight">

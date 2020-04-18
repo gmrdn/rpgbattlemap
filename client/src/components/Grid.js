@@ -47,7 +47,7 @@ class Grid extends React.Component {
   render() {
     return (
       <div
-        className="container-fluid border overflow-auto bg-light mt-3"
+        className="container-fluid border overflow-auto mt-3"
         style={{ height: "50vh" }}
       >
         <h5 id="room-name">{this.state.gridData.name}</h5>
@@ -65,7 +65,13 @@ class Grid extends React.Component {
           ></canvas>
 
           {this.props.tokens.map((token) => {
-            return <Token token={token} tileSide={tileSide}></Token>;
+            return (
+              <Token
+                token={token}
+                tileSide={tileSide}
+                position="absolute"
+              ></Token>
+            );
           })}
         </div>
       </div>
