@@ -23,7 +23,12 @@ class Room extends React.Component {
 
     return (
       <div className="container-fluid">
-        <Grid roomId={this.props.roomId} />
+        <div className="d-flex justify-content-between">
+          <div className="p-2 flex-grow-1 bd-highlight">
+            <Grid roomId={this.props.roomId} />
+          </div>
+          <div className="p-2 bd-highlight">Tokens bar</div>
+        </div>
         <div className="d-flex justify-content-between">
           <div className="p-2 flex-grow-1 bd-highlight">
             <Chatbox
