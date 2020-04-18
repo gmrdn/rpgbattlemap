@@ -6,6 +6,7 @@ import { setUserName } from "../actions";
 class NicknameSelection extends React.Component {
   handleSetNickname = () => {
     this.props.setUserName(this.nickname.value);
+    localStorage.setItem("nickname", this.nickname.value);
   };
 
   render() {

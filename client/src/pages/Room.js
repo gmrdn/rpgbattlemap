@@ -18,7 +18,11 @@ class Room extends React.Component {
 
     if (this.props.nickname === "") {
       this.props.setRoomId(this.props.match.params.id);
-      return <Redirect to={`/joinroom/${this.props.match.params.id}`} />;
+      if (localStorage.getItem("nickname")) {
+        this.props.setUserName(localStorage.getItem("nickname"));
+      } else {
+        return <Redirect to={`/joinroom/${this.props.match.params.id}`} />;
+      }
     }
 
     return (
