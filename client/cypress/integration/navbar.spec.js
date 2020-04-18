@@ -6,7 +6,6 @@ context("Navigation Bar", () => {
 
   it("should navigate to all pages", () => {
     cy.get("#nav-room-selection").click();
-    cy.contains("Room Selection Component");
     cy.get("#nav-home").click();
     cy.contains("Enter");
   });
