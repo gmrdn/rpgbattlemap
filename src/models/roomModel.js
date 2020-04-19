@@ -17,6 +17,7 @@ const Token = new Schema({
 
 const Grid = new Schema({
   name: String,
+  background: String,
   tokens: [Token],
 });
 

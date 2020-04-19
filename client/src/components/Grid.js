@@ -61,7 +61,10 @@ class Grid extends React.Component {
             ref="gridCanvas"
             width="2400"
             height="2400"
-            style={{ position: "absolute" }}
+            style={{
+              position: "absolute",
+              background: `url(/${this.state.gridData.background})`,
+            }}
           ></canvas>
 
           {this.props.tokens.map((token) => {
