@@ -19,5 +19,6 @@ export function addToken(token) {
     y: token.y,
     name: token.name,
     color: token.color,
+    image: token.image,
   };
 }

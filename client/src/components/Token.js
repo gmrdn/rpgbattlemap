@@ -21,7 +21,7 @@ const Token = (props) => {
       >
         <Avatar
           alt={props.token.name}
-          src="/broken-image.jpg"
+          src={`/tokens/${props.token.image}`}
           style={{ position: "absolute", backgroundColor: props.token.color }}
         />
       </IconButton>

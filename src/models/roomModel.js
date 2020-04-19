@@ -13,6 +13,7 @@ const Token = new Schema({
   y: Number,
   name: String,
   color: String,
+  image: String,
 });
 
 const Grid = new Schema({

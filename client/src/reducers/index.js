@@ -21,7 +21,13 @@ function tokens(state = [], action) {
     case "ADD_TOKEN":
       return [
         ...state,
-        { x: action.x, y: action.y, name: action.name, color: action.color },
+        {
+          x: action.x,
+          y: action.y,
+          name: action.name,
+          color: action.color,
+          image: action.image,
+        },
       ];
     default:
       return state;
