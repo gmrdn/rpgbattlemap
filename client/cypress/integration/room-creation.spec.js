@@ -1,13 +1,23 @@
 /// <reference types="cypress" />
 context("Room Creation", () => {
   beforeEach(() => {
+    cy.server();
+    cy.route({
+      method: "POST",
+      url: "api/room",
+    }).as("newRoom");
+
     cy.visit("/");
   });
 
-  it("should open the room creation form", () => {
+  it("should allow a user to create a new room", () => {
     cy.get("#btn-create").click();
     cy.url().should("contain", "createroom");
-    cy.get("#txt-grid-name").should("be.visible");
-    cy.get("#btn-validate").should("be.visible");
+    cy.get("#txt-room-name")
+      .should("be.visible")
+      .type("Mansion on the Cypress Hill");
+    cy.get("#background-grass").should("be.visible");
+    cy.get("#btn-create").should("be.visible").click();
+    // cy.wait("@newRoom").should("have.any.keys", "name");
   });
 });

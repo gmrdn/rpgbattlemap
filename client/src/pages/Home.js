@@ -1,11 +1,11 @@
 import React from "react";
 import JoinRoom from "../components/JoinRoom";
-import CreateRoom from "../components/CreateRoom";
+import CreateRoomButton from "../components/CreateRoomButton";
 
 const Home = () => (
   <div className="d-flex flex-column" style={{ minHeight: "85vh" }}>
     <JoinRoom></JoinRoom>
-    <CreateRoom></CreateRoom>
+    <CreateRoomButton></CreateRoomButton>
   </div>
 );
 

@@ -1,11 +1,6 @@
 import React from "react";
+import RoomCreationForm from "../components/RoomCreationForm";
 
-const RoomCreation = () => (
-  <>
-    <div>Room Creation Component</div>
-    <input id="txt-grid-name"></input>
-    <button id="btn-validate">Create</button>
-  </>
-);
+const RoomCreation = () => <RoomCreationForm></RoomCreationForm>;
 
 export default RoomCreation;

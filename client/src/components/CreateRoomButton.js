@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const CreateRoom = () => (
+const CreateRoomButton = () => (
   <>
     <div
       className="card mx-auto mb-5 border-0 d-flex justify-content-end bg-transparent"
@@ -17,4 +17,4 @@ const CreateRoom = () => (
     </div>
   </>
 );
-export default CreateRoom;
+export default CreateRoomButton;
