@@ -7,7 +7,7 @@ const Token = (props) => {
     <div
       id={`avatar-${props.token.x}-${props.token.y}`}
       style={{
-        position: props.position,
+        position: "absolute",
         left: `${props.token.x * props.tileSide}px`,
         top: `${props.token.y * props.tileSide}px`,
       }}

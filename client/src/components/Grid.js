@@ -68,13 +68,7 @@ class Grid extends React.Component {
           ></canvas>
 
           {this.props.tokens.map((token) => {
-            return (
-              <Token
-                token={token}
-                tileSide={tileSide}
-                position="absolute"
-              ></Token>
-            );
+            return <Token token={token} tileSide={tileSide}></Token>;
           })}
         </div>
       </div>

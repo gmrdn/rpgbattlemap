@@ -1,5 +1,5 @@
 import React from "react";
-import Token from "./Token";
+import TokenChip from "./TokenChip";
 import { connect } from "react-redux";
 import { addToken } from "../actions";
 
@@ -12,8 +12,8 @@ const TokenBar = (props) => {
       <ul className="list-group border-0">
         {props.tokens.map((token) => {
           return (
-            <li className="list-group-item border-0 pl-1 pr-2">
-              <Token token={token} tileSide={40} position="static"></Token>
+            <li className="list-group-item border-0 pl-0 pr-2 pb-0 pt-0">
+              <TokenChip token={token} tileSide={40}></TokenChip>
             </li>
           );
         })}

@@ -44,3 +44,9 @@ io.on("connection", (socket) => {
 server.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+process.once("SIGUSR2", function () {
+  server.close(function () {
+    process.kill(process.pid, "SIGUSR2");
+  });
+});
