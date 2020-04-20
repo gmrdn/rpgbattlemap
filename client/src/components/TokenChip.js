@@ -1,7 +1,6 @@
 import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Chip from "@material-ui/core/Chip";
-import IconButton from "@material-ui/core/IconButton";
 
 const TokenChip = (props) => {
   const handleDelete = () => {
