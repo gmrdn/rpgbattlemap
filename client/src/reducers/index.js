@@ -29,6 +29,8 @@ function tokens(state = [], action) {
           image: action.image,
         },
       ];
+    case "RESET_TOKENS":
+      return [];
     default:
       return state;
   }

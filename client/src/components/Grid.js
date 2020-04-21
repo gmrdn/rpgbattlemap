@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { setUserName, setRoomId, addToken } from "../actions";
+import { setUserName, setRoomId, addToken, resetTokens } from "../actions";
 import Token from "../components/Token";
 
 const gridSize = { width: 60, height: 60 };
@@ -14,6 +14,7 @@ class Grid extends React.Component {
     this.state = {
       gridData: {},
     };
+    this.props.resetTokens();
   }
 
   componentDidMount() {
@@ -84,6 +85,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = { setUserName, setRoomId, addToken };
+const mapDispatchToProps = { setUserName, setRoomId, addToken, resetTokens };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Grid);

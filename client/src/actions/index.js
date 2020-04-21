@@ -22,3 +22,9 @@ export function addToken(token) {
     image: token.image,
   };
 }
+
+export function resetTokens() {
+  return {
+    type: "RESET_TOKENS",
+  };
+}

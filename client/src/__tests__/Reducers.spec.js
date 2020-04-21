@@ -43,7 +43,6 @@ describe("Session reducer", () => {
 
   it("should handle ADD_TOKEN", () => {
     const token1 = { x: 1, y: 1, color: "green", name: "Jest Token 1" };
-    const token2 = { x: 99, y: 99, color: "red", name: "Jest Token 2" };
 
     expect(
       reducer(
@@ -60,6 +59,21 @@ describe("Session reducer", () => {
       nickname: "",
       roomId: "",
       tokens: [token1],
+    });
+  });
+
+  it("should handle RESET_TOKENS", () => {
+    expect(
+      reducer(
+        {},
+        {
+          type: "RESET_TOKENS",
+        }
+      )
+    ).toEqual({
+      nickname: "",
+      roomId: "",
+      tokens: [],
     });
   });
 });

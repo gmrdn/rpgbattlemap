@@ -48,4 +48,11 @@ describe("actions", () => {
     };
     expect(actions.addToken(token)).toEqual(expectedAction);
   });
+
+  it("should create an action to reset the tokens to initial state", () => {
+    const expectedAction = {
+      type: "RESET_TOKENS",
+    };
+    expect(actions.resetTokens()).toEqual(expectedAction);
+  });
 });
