@@ -23,6 +23,7 @@ const TokenChip = (props) => {
           />
         }
         label={props.token.name}
+        color={props.token.selected ? "secondary" : "primary"}
         onClick={handleClick}
         onDelete={handleDelete}
       />
