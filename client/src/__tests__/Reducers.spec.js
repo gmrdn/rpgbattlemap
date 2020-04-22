@@ -152,4 +152,62 @@ describe("Session reducer", () => {
       ],
     });
   });
+
+  it("should handle SELECT_TOKEN when one token is already selected", () => {
+    expect(
+      reducer(
+        {
+          nickname: "",
+          roomId: "",
+          tokens: [
+            {
+              _id: "54321abcd",
+              x: 1,
+              y: 2,
+              image: undefined,
+              color: "green",
+              name: "Jest Token 1",
+              selected: true,
+            },
+            {
+              _id: "12345zyxw",
+              x: 3,
+              y: 4,
+              image: "2.png",
+              color: "blue",
+              name: "Jest Token 2",
+              selected: false,
+            },
+          ],
+        },
+        {
+          type: "SELECT_TOKEN",
+          tokenId: "12345zyxw",
+        }
+      )
+    ).toEqual({
+      nickname: "",
+      roomId: "",
+      tokens: [
+        {
+          _id: "54321abcd",
+          x: 1,
+          y: 2,
+          image: undefined,
+          color: "green",
+          name: "Jest Token 1",
+          selected: false,
+        },
+        {
+          _id: "12345zyxw",
+          x: 3,
+          y: 4,
+          image: "2.png",
+          color: "blue",
+          name: "Jest Token 2",
+          selected: true,
+        },
+      ],
+    });
+  });
 });
