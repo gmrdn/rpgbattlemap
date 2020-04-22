@@ -35,7 +35,7 @@ function tokens(state = [], action) {
       return [];
     case "SELECT_TOKEN":
       return state.map((token) => {
-        if (token._id == action.tokenId) {
+        if (token._id === action.tokenId) {
           return {
             ...token,
             selected: true,
