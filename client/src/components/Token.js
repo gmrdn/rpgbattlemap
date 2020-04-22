@@ -11,6 +11,7 @@ const Token = (props) => {
         left: `${props.token.x * props.tileSide}px`,
         top: `${props.token.y * props.tileSide}px`,
       }}
+      onClick={props.onClick}
     >
       <IconButton
         alt={props.token.name}
@@ -22,6 +23,7 @@ const Token = (props) => {
         <Avatar
           alt={props.token.name}
           src={`/tokens/${props.token.image}`}
+          id={props.token._id}
           style={{ position: "absolute", backgroundColor: props.token.color }}
         />
       </IconButton>

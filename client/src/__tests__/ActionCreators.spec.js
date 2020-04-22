@@ -55,4 +55,13 @@ describe("actions", () => {
     };
     expect(actions.resetTokens()).toEqual(expectedAction);
   });
+
+  it("should create an action to select a token", () => {
+    const id = "5e9a1a39152f9a9ce03b9343";
+    const expectedAction = {
+      type: "SELECT_TOKEN",
+      tokenId: id,
+    };
+    expect(actions.selectToken(id)).toEqual(expectedAction);
+  });
 });

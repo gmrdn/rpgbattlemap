@@ -22,15 +22,32 @@ function tokens(state = [], action) {
       return [
         ...state,
         {
+          _id: action._id,
           x: action.x,
           y: action.y,
           name: action.name,
           color: action.color,
           image: action.image,
+          selected: false,
         },
       ];
     case "RESET_TOKENS":
       return [];
+    case "SELECT_TOKEN":
+      return state.map((token) => {
+        if (token._id == action.tokenId) {
+          return {
+            ...token,
+            selected: true,
+          };
+        } else {
+          return {
+            ...token,
+            selected: false,
+          };
+        }
+      });
+
     default:
       return state;
   }

@@ -1,7 +1,13 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { setUserName, setRoomId, addToken, resetTokens } from "../actions";
+import {
+  setUserName,
+  setRoomId,
+  addToken,
+  resetTokens,
+  selectToken,
+} from "../actions";
 import Token from "../components/Token";
 
 const gridSize = { width: 60, height: 60 };
@@ -15,6 +21,7 @@ class Grid extends React.Component {
       gridData: {},
     };
     this.props.resetTokens();
+    this.handleClickOnToken = this.handleClickOnToken.bind(this);
   }
 
   componentDidMount() {
@@ -45,6 +52,18 @@ class Grid extends React.Component {
     }
   }
 
+  handleClickOnToken = (e) => {
+    e.preventDefault();
+    var tokenId = "";
+    if (e.target.id) {
+      tokenId = e.target.id;
+    } else {
+      tokenId = e.target.parentNode.id;
+    }
+    console.info("You clicked the Token.");
+    console.log(tokenId);
+    this.props.selectToken(tokenId);
+  };
   render() {
     return (
       <div
@@ -69,7 +88,13 @@ class Grid extends React.Component {
           ></canvas>
 
           {this.props.tokens.map((token) => {
-            return <Token token={token} tileSide={tileSide}></Token>;
+            return (
+              <Token
+                token={token}
+                tileSide={tileSide}
+                onClick={this.handleClickOnToken}
+              ></Token>
+            );
           })}
         </div>
       </div>
@@ -85,6 +110,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = { setUserName, setRoomId, addToken, resetTokens };
+const mapDispatchToProps = {
+  setUserName,
+  setRoomId,
+  addToken,
+  resetTokens,
+  selectToken,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Grid);

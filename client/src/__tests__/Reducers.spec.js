@@ -42,23 +42,41 @@ describe("Session reducer", () => {
   });
 
   it("should handle ADD_TOKEN", () => {
-    const token1 = { x: 1, y: 1, color: "green", name: "Jest Token 1" };
+    const token1 = {
+      _id: "54321abcd",
+      x: 1,
+      y: 1,
+      color: "green",
+      name: "Jest Token 1",
+    };
 
     expect(
       reducer(
         {},
         {
           type: "ADD_TOKEN",
+          _id: token1._id,
           x: token1.x,
           y: token1.y,
           name: token1.name,
           color: token1.color,
+          selected: false,
         }
       )
     ).toEqual({
       nickname: "",
       roomId: "",
-      tokens: [token1],
+      tokens: [
+        {
+          _id: "54321abcd",
+          x: 1,
+          y: 1,
+          image: undefined,
+          color: "green",
+          name: "Jest Token 1",
+          selected: false,
+        },
+      ],
     });
   });
 
@@ -74,6 +92,64 @@ describe("Session reducer", () => {
       nickname: "",
       roomId: "",
       tokens: [],
+    });
+  });
+
+  it("should handle SELECT_TOKEN when no token is selected", () => {
+    expect(
+      reducer(
+        {
+          nickname: "",
+          roomId: "",
+          tokens: [
+            {
+              _id: "54321abcd",
+              x: 1,
+              y: 2,
+              image: undefined,
+              color: "green",
+              name: "Jest Token 1",
+              selected: false,
+            },
+            {
+              _id: "12345zyxw",
+              x: 3,
+              y: 4,
+              image: "2.png",
+              color: "blue",
+              name: "Jest Token 2",
+              selected: false,
+            },
+          ],
+        },
+        {
+          type: "SELECT_TOKEN",
+          tokenId: "54321abcd",
+        }
+      )
+    ).toEqual({
+      nickname: "",
+      roomId: "",
+      tokens: [
+        {
+          _id: "54321abcd",
+          x: 1,
+          y: 2,
+          image: undefined,
+          color: "green",
+          name: "Jest Token 1",
+          selected: true,
+        },
+        {
+          _id: "12345zyxw",
+          x: 3,
+          y: 4,
+          image: "2.png",
+          color: "blue",
+          name: "Jest Token 2",
+          selected: false,
+        },
+      ],
     });
   });
 });

@@ -15,6 +15,7 @@ export function setRoomId(roomId) {
 export function addToken(token) {
   return {
     type: "ADD_TOKEN",
+    _id: token._id,
     x: token.x,
     y: token.y,
     name: token.name,
@@ -26,5 +27,12 @@ export function addToken(token) {
 export function resetTokens() {
   return {
     type: "RESET_TOKENS",
+  };
+}
+
+export function selectToken(tokenId) {
+  return {
+    type: "SELECT_TOKEN",
+    tokenId,
   };
 }
