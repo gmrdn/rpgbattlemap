@@ -64,4 +64,25 @@ describe("actions", () => {
     };
     expect(actions.selectToken(id)).toEqual(expectedAction);
   });
+
+  it("should create an action to move a token", () => {
+    const token = {
+      x: 1,
+      y: 1,
+      color: "green",
+      name: "Jest Token",
+      image: "/tokens/1.png",
+      selected: true,
+    };
+    const newPosition = {
+      x: 21,
+      y: 12,
+    };
+    const expectedAction = {
+      type: "MOVE_TOKEN",
+      token: token,
+      newPosition: newPosition,
+    };
+    expect(actions.moveToken(token, newPosition)).toEqual(expectedAction);
+  });
 });

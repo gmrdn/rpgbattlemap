@@ -36,3 +36,11 @@ export function selectToken(tokenId) {
     tokenId,
   };
 }
+
+export function moveToken(token, newPosition) {
+  return {
+    type: "MOVE_TOKEN",
+    token,
+    newPosition,
+  };
+}

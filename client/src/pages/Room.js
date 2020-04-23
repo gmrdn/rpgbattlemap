@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { setUserName, setRoomId } from "../actions";
 import Grid from "../components/Grid";
 import Chatbox from "../components/Chatbox";
-import Dicetray from "../components/Dicetray";
+// import Dicetray from "../components/Dicetray";
 import TokenBar from "../components/TokenBar";
 
 class Room extends React.Component {
@@ -44,9 +44,7 @@ class Room extends React.Component {
               roomId={this.props.roomId}
             />
           </div>
-          <div className="p-2 bd-highlight">
-            <Dicetray></Dicetray>
-          </div>
+          <div className="p-2 bd-highlight">{/* <Dicetray></Dicetray> */}</div>
         </div>
       </div>
     );

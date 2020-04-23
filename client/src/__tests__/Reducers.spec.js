@@ -210,4 +210,74 @@ describe("Session reducer", () => {
       ],
     });
   });
+
+  it("should handle MOVE_TOKEN", () => {
+    expect(
+      reducer(
+        {
+          nickname: "",
+          roomId: "",
+          tokens: [
+            {
+              _id: "54321abcd",
+              x: 1,
+              y: 2,
+              image: undefined,
+              color: "green",
+              name: "Jest Token 1",
+              selected: true,
+            },
+            {
+              _id: "12345zyxw",
+              x: 3,
+              y: 4,
+              image: "2.png",
+              color: "blue",
+              name: "Jest Token 2",
+              selected: false,
+            },
+          ],
+        },
+        {
+          type: "MOVE_TOKEN",
+          token: {
+            _id: "54321abcd",
+            x: 1,
+            y: 2,
+            image: undefined,
+            color: "green",
+            name: "Jest Token 1",
+            selected: true,
+          },
+          newPosition: {
+            x: 21,
+            y: 22,
+          },
+        }
+      )
+    ).toEqual({
+      nickname: "",
+      roomId: "",
+      tokens: [
+        {
+          _id: "54321abcd",
+          x: 21,
+          y: 22,
+          image: undefined,
+          color: "green",
+          name: "Jest Token 1",
+          selected: true,
+        },
+        {
+          _id: "12345zyxw",
+          x: 3,
+          y: 4,
+          image: "2.png",
+          color: "blue",
+          name: "Jest Token 2",
+          selected: false,
+        },
+      ],
+    });
+  });
 });

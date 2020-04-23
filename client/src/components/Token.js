@@ -10,8 +10,8 @@ const useStyles = makeStyles({
     borderColor: "yellow",
   },
   notselected: {
-    boxShadow: "2px 2px 1px 0px",
     border: "3px solid",
+    boxShadow: "2px 2px 2px 1px dimgray",
   },
 });
 

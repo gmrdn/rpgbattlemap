@@ -47,7 +47,18 @@ function tokens(state = [], action) {
           };
         }
       });
-
+    case "MOVE_TOKEN":
+      return state.map((token) => {
+        if (token._id === action.token._id) {
+          return {
+            ...token,
+            x: action.newPosition.x,
+            y: action.newPosition.y,
+          };
+        } else {
+          return { ...token };
+        }
+      });
     default:
       return state;
   }
