@@ -85,4 +85,13 @@ describe("actions", () => {
     };
     expect(actions.moveToken(token, newPosition)).toEqual(expectedAction);
   });
+
+  it("should create an action to delete a token", () => {
+    const id = "5e9a1a39152f9a9ce03b9343";
+    const expectedAction = {
+      type: "DELETE_TOKEN",
+      tokenId: id,
+    };
+    expect(actions.deleteToken(id)).toEqual(expectedAction);
+  });
 });

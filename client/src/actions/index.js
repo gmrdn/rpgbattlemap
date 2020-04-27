@@ -37,6 +37,13 @@ export function selectToken(tokenId) {
   };
 }
 
+export function deleteToken(tokenId) {
+  return {
+    type: "DELETE_TOKEN",
+    tokenId,
+  };
+}
+
 export function moveToken(token, newPosition) {
   return {
     type: "MOVE_TOKEN",

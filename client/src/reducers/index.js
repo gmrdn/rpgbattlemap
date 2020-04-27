@@ -47,6 +47,10 @@ function tokens(state = [], action) {
           };
         }
       });
+    case "DELETE_TOKEN":
+      return state.filter((token) => {
+        return token._id !== action.tokenId;
+      });
     case "MOVE_TOKEN":
       return state.map((token) => {
         if (token._id === action.token._id) {
