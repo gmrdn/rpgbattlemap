@@ -36,4 +36,17 @@ context("Tokens", () => {
     cy.get("#avatar-1-1").should("not.exist");
     cy.get("#avatar-5-5").should("not.exist");
   });
+
+  it("should delete token", () => {
+    cy.wait("@getTokens1");
+    cy.get("#avatar-2-3").should("be.visible");
+    cy.get("#tokenchip-2-3 svg.MuiChip-deleteIcon").click();
+    cy.get("#confirmation-popin").should("be.visible");
+    cy.get("#btn-cancel").click();
+    cy.get("#avatar-2-3").should("be.visible");
+    cy.get("#tokenchip-2-3 svg.MuiChip-deleteIcon").click();
+    cy.get("#confirmation-popin").should("be.visible");
+    cy.get("#btn-confirm-delete").click();
+    cy.get("#tokenchip-2-3 svg.MuiChip-deleteIcon").should("not.exist");
+  });
 });
