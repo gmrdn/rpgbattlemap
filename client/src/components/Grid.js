@@ -154,6 +154,7 @@ class Grid extends React.Component {
           {this.props.tokens.map((token) => {
             return (
               <Token
+                key={token._id}
                 token={token}
                 tileSide={tileSide}
                 onClick={this.handleClickOnToken}
