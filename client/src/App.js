@@ -10,7 +10,7 @@ import RoomJoining from "./pages/RoomJoining";
 
 const App = () => {
   return (
-    <div style={{ paddingBottom: "50px" }}>
+    <div>
       <Router>
         <Header></Header>
         <Switch>

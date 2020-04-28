@@ -129,7 +129,7 @@ class Grid extends React.Component {
     return (
       <div
         className="container-fluid overflow-auto mt-3"
-        style={{ height: "50vh" }}
+        style={{ height: "80vh" }}
       >
         <h5 id="room-name">{this.state.gridData.name}</h5>
         <div

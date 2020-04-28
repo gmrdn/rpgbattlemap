@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const RoomCreationForm = () => {
   return (
     <form>
-      <div className="form-group">
+      <div className="d-flex form-group">
         <input
           id="txt-room-name"
           className="form-control mb-3 border-secondary"

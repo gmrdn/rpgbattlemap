@@ -3,14 +3,27 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { setUserName, setRoomId } from "../actions";
 import Grid from "../components/Grid";
+import Drawer from "@material-ui/core/Drawer";
 import Chatbox from "../components/Chatbox";
 // import Dicetray from "../components/Dicetray";
 import TokenBar from "../components/TokenBar";
 
 class Room extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      chatOpen: true,
+      tokenBarOpen: false,
+    };
+  }
+
+  handleDrawerOpenChat = () => {
+    if (this.state.chatOpen) {
+      this.setState({ chatOpen: false });
+    } else {
+      this.setState({ chatOpen: true });
+    }
+  };
 
   render() {
     if (!this.props.match.params.id) {
@@ -27,26 +40,26 @@ class Room extends React.Component {
     }
 
     return (
-      <div className="container-fluid">
-        <div className="d-flex justify-content-between">
-          <div className="p-2 flex-grow-1 bd-highlight">
-            <Grid roomId={this.props.roomId} />
+      <>
+        <button onClick={this.handleDrawerOpenChat}>Chatbox</button>
+
+        <div class="d-flex bd-highlight">
+          <div class="p-2 w-100 bd-highlight">
+            <Grid roomId={this.props.roomId}></Grid>
           </div>
-          <div className="p-2 bd-highlight">
-            <TokenBar></TokenBar>
+          <div class="p-2 flex-shrink-1 bd-highlight">
+            <TokenBar></TokenBar>{" "}
           </div>
         </div>
-        <div className="d-flex justify-content-between">
-          <div className="p-2 flex-grow-1 bd-highlight">
-            <Chatbox
-              className="flex-grow-1"
-              nickname={this.props.nickname}
-              roomId={this.props.roomId}
-            />
-          </div>
-          <div className="p-2 bd-highlight">{/* <Dicetray></Dicetray> */}</div>
-        </div>
-      </div>
+
+        <Drawer variant="persistent" anchor="bottom" open={this.state.chatOpen}>
+          <Chatbox
+            className="flex-grow-1"
+            nickname={this.props.nickname}
+            roomId={this.props.roomId}
+          />
+        </Drawer>
+      </>
     );
   }
 }
