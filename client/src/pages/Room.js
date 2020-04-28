@@ -59,7 +59,7 @@ class Room extends React.Component {
             type="button"
             data-toggle="collapse"
             data-target="#token-bar"
-            aria-expanded="false"
+            aria-expanded="true"
             aria-controls="token-bar"
           >
             Token Bar
@@ -69,7 +69,7 @@ class Room extends React.Component {
           <div className="p-2 w-100 bd-highlight">
             <Grid roomId={this.props.roomId}></Grid>
           </div>
-          <div id="token-bar" className="p-2 flex-shrink-1 bd-highlight">
+          <div id="token-bar" className="collapse">
             <TokenBar></TokenBar>
           </div>
         </div>
