@@ -50,11 +50,16 @@ class Room extends React.Component {
     return (
       <>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <button className="btn" onClick={this.handleDrawerOpenChat}>
+          <button
+            id="btn-chatbox"
+            className="btn"
+            onClick={this.handleDrawerOpenChat}
+          >
             Chatbox
           </button>
 
           <button
+            id="btn-tokenbar"
             class="btn"
             type="button"
             data-toggle="collapse"
