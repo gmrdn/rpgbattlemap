@@ -5,7 +5,6 @@ import { setUserName, setRoomId } from "../actions";
 import Grid from "../components/Grid";
 import Drawer from "@material-ui/core/Drawer";
 import Chatbox from "../components/Chatbox";
-// import Dicetray from "../components/Dicetray";
 import TokenBar from "../components/TokenBar";
 
 class Room extends React.Component {
