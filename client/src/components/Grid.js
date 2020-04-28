@@ -69,67 +69,34 @@ class Grid extends React.Component {
   };
 
   handleMouseDown(event) {
-    console.log("mouse down");
-    const selectedToken = this.props.tokens.filter((token) => {
-      return token.selected === true;
-    })[0];
+    if (event.button === 0) {
+      const selectedToken = this.props.tokens.filter((token) => {
+        return token.selected === true;
+      })[0];
 
-    if (selectedToken) {
-      var BB = canvas.getBoundingClientRect();
-      const offsetX = BB.left;
-      const offsetY = BB.top;
+      if (selectedToken) {
+        var BB = canvas.getBoundingClientRect();
+        const offsetX = BB.left;
+        const offsetY = BB.top;
 
-      const newPosition = {
-        x: Math.floor((event.clientX - offsetX) / 40),
-        y: Math.floor((event.clientY - offsetY) / 40),
-      };
-      console.log(newPosition);
-      this.props.moveToken(selectedToken, newPosition);
+        const newPosition = {
+          x: Math.floor((event.clientX - offsetX) / 40),
+          y: Math.floor((event.clientY - offsetY) / 40),
+        };
+        console.log(newPosition);
+        this.props.moveToken(selectedToken, newPosition);
+      }
     }
   }
 
-  handleMouseMove(event) {
-    return;
-    // const selectedToken = this.props.tokens.filter((token) => {
-    //   return token.selected === true;
-    // })[0];
-    // if (selectedToken) {
-    //   const fromX = selectedToken.x;
-    //   const fromY = selectedToken.y;
-    //   console.log(
-    //     `from ${fromX}, ${fromY} to ${event.clientX}, ${event.clientY}`
-    //   );
-    //   this.drawLine(
-    //     ctx,
-    //     fromX * tileSide + tileSide / 2,
-    //     fromY * tileSide + tileSide / 2,
-    //     event.clientX - canvas.offsetLeft,
-    //     event.clientY - canvas.offsetTop
-    //   );
-    // } else {
-    //   console.log(`from nowhere to ${event.clientX}, ${event.clientY}`);
-    // }
-  }
-
-  // drawLine(ctx, fromX, fromY, toX, toY) {
-  //   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  //   ctx.lineWidth = 1;
-  //   ctx.beginPath();
-
-  //   ctx.moveTo(fromX, fromY);
-  //   ctx.lineTo(toX, toY);
-  //   ctx.stroke();
-  // }
-
-  handleMouseUp(event) {
-    console.log("mouse up");
-  }
+  handleMouseUp(event) {}
 
   render() {
     return (
       <div
         className="container-fluid overflow-auto mt-3"
         style={{ height: "80vh" }}
+        oncontextmenu="return false;"
       >
         <h5 id="room-name">{this.state.gridData.name}</h5>
         <div
@@ -147,7 +114,6 @@ class Grid extends React.Component {
               background: `url(/${this.state.gridData.background})`,
             }}
             onMouseDown={this.handleMouseDown.bind(this)}
-            onMouseMove={this.handleMouseMove.bind(this)}
             onMouseUp={this.handleMouseUp.bind(this)}
           ></canvas>
 

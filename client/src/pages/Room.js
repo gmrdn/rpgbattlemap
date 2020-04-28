@@ -13,7 +13,7 @@ class Room extends React.Component {
     super(props);
     this.state = {
       chatOpen: true,
-      tokenBarOpen: false,
+      tokenBarOpen: true,
     };
   }
 
@@ -22,6 +22,14 @@ class Room extends React.Component {
       this.setState({ chatOpen: false });
     } else {
       this.setState({ chatOpen: true });
+    }
+  };
+
+  handleDrawerOpenTokenBar = () => {
+    if (this.state.tokenBarOpen) {
+      this.setState({ tokenBarOpen: false });
+    } else {
+      this.setState({ tokenBarOpen: true });
     }
   };
 
@@ -41,14 +49,28 @@ class Room extends React.Component {
 
     return (
       <>
-        <button onClick={this.handleDrawerOpenChat}>Chatbox</button>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <button className="btn" onClick={this.handleDrawerOpenChat}>
+            Chatbox
+          </button>
 
-        <div class="d-flex bd-highlight">
-          <div class="p-2 w-100 bd-highlight">
+          <button
+            class="btn"
+            type="button"
+            data-toggle="collapse"
+            data-target="#token-bar"
+            aria-expanded="false"
+            aria-controls="token-bar"
+          >
+            Token Bar
+          </button>
+        </nav>
+        <div className="d-flex bd-highlight">
+          <div className="p-2 w-100 bd-highlight">
             <Grid roomId={this.props.roomId}></Grid>
           </div>
-          <div class="p-2 flex-shrink-1 bd-highlight">
-            <TokenBar></TokenBar>{" "}
+          <div id="token-bar" className="p-2 flex-shrink-1 bd-highlight">
+            <TokenBar></TokenBar>
           </div>
         </div>
 

@@ -5,11 +5,7 @@ import { addToken } from "../actions";
 
 const TokenBar = (props) => {
   return (
-    <div
-      className="container-fluid overflow-auto mt-3 p-0"
-      style={{ height: "100%" }}
-    >
-      <h5>Token Bar</h5>
+    <div className="container-fluid overflow-auto mt-3 p-0">
       <ul className="list-group border-0">
         {props.tokens.map((token) => {
           return (
