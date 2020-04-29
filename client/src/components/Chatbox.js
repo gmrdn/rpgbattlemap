@@ -1,5 +1,4 @@
 import React from "react";
-import io from "socket.io-client";
 import axios from "axios";
 import { connect } from "react-redux";
 import { setUserName, setRoomId, addToken } from "../actions";
@@ -8,8 +7,6 @@ const divStyle = {
   height: "20vh",
   overflowY: "scroll",
 };
-
-const socket = io();
 
 class Chatbox extends React.Component {
   constructor(props) {
@@ -30,7 +27,7 @@ class Chatbox extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    socket.emit("/msg", {
+    this.props.socket.emit("/msg", {
       room: this.props.roomId,
       nickname: this.props.nickname,
       message: this.state.currentMessage,
@@ -43,15 +40,15 @@ class Chatbox extends React.Component {
   componentDidMount() {
     this.fetchRoomData(this.props.roomId);
 
-    socket.emit("/join", {
+    this.props.socket.emit("/join", {
       nickname: this.props.nickname,
       room: this.props.roomId,
     });
-    socket.on("/join", (data) => {
+    this.props.socket.on("/join", (data) => {
       this.addMessage("_server", data);
     });
-    socket.on("/leave", (data) => this.addMessage("_server", data));
-    socket.on("/msg", ({ nickname, message }) =>
+    this.props.socket.on("/leave", (data) => this.addMessage("_server", data));
+    this.props.socket.on("/msg", ({ nickname, message }) =>
       this.addMessage(nickname, message)
     );
     this.updateScroll();
@@ -63,7 +60,7 @@ class Chatbox extends React.Component {
 
   componentWillUnmount() {
     console.log("unmounting chat box");
-    socket.emit("/leave", {
+    this.props.socket.emit("/leave", {
       nickname: this.props.nickname,
       room: this.props.roomId,
     });

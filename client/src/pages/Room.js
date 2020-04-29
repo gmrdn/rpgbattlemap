@@ -1,4 +1,5 @@
 import React from "react";
+import io from "socket.io-client";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { setUserName, setRoomId } from "../actions";
@@ -7,6 +8,7 @@ import Drawer from "@material-ui/core/Drawer";
 import Chatbox from "../components/Chatbox";
 import TokenBar from "../components/TokenBar";
 
+var socket;
 class Room extends React.Component {
   constructor(props) {
     super(props);
@@ -14,6 +16,7 @@ class Room extends React.Component {
       chatOpen: true,
       tokenBarOpen: true,
     };
+    socket = io();
   }
 
   handleDrawerOpenChat = () => {
@@ -71,7 +74,7 @@ class Room extends React.Component {
         </nav>
         <div className="d-flex bd-highlight">
           <div className="p-2 w-100 bd-highlight">
-            <Grid roomId={this.props.roomId}></Grid>
+            <Grid socket={socket} roomId={this.props.roomId}></Grid>
           </div>
           <div id="token-bar" className="collapse">
             <TokenBar></TokenBar>
@@ -81,6 +84,7 @@ class Room extends React.Component {
         <Drawer variant="persistent" anchor="bottom" open={this.state.chatOpen}>
           <Chatbox
             className="flex-grow-1"
+            socket={socket}
             nickname={this.props.nickname}
             roomId={this.props.roomId}
           />

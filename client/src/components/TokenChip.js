@@ -116,5 +116,4 @@ const mapDispatchToProps = {
   deleteToken,
 };
 
-// export default TokenChip;
 export default connect(mapStateToProps, mapDispatchToProps)(TokenChip);

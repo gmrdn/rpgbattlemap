@@ -66,24 +66,17 @@ describe("actions", () => {
   });
 
   it("should create an action to move a token", () => {
-    const token = {
-      x: 1,
-      y: 1,
-      color: "green",
-      name: "Jest Token",
-      image: "/tokens/1.png",
-      selected: true,
-    };
+    const id = "5e9a1a39152f9a9ce03b9343";
     const newPosition = {
       x: 21,
       y: 12,
     };
     const expectedAction = {
       type: "MOVE_TOKEN",
-      token: token,
+      tokenId: id,
       newPosition: newPosition,
     };
-    expect(actions.moveToken(token, newPosition)).toEqual(expectedAction);
+    expect(actions.moveToken(id, newPosition)).toEqual(expectedAction);
   });
 
   it("should create an action to delete a token", () => {

@@ -240,15 +240,7 @@ describe("Session reducer", () => {
         },
         {
           type: "MOVE_TOKEN",
-          token: {
-            _id: "54321abcd",
-            x: 1,
-            y: 2,
-            image: undefined,
-            color: "green",
-            name: "Jest Token 1",
-            selected: true,
-          },
+          tokenId: "54321abcd",
           newPosition: {
             x: 21,
             y: 22,

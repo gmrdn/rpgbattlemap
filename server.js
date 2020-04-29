@@ -35,6 +35,13 @@ io.on("connection", (socket) => {
     io.to(room).emit("/msg", { nickname: nickname, message: message });
   });
 
+  socket.on("moveToken", function ({ room, user, tokenid, x, y }) {
+    console.log(
+      `Received moveToken from ${user} in room ${room} for token id ${tokenid} to ${x}, ${y}`
+    );
+    io.to(room).emit("moveToken", { tokenid, x, y });
+  });
+
   socket.on("disconnect", () => {
     console.log("Client disconnected");
     socket.emit("broadcast", "user disconnected");

@@ -32,6 +32,11 @@ class Grid extends React.Component {
     canvas = this.refs.gridCanvas;
     ctx = canvas.getContext("2d");
     this.drawGrid(ctx);
+
+    this.props.socket.on("moveToken", ({ tokenid, x, y }) => {
+      console.log(`move token received from server for token ${tokenid}`);
+      this.props.moveToken(tokenid, { x, y });
+    });
   }
 
   drawGrid(ctx) {
@@ -84,7 +89,17 @@ class Grid extends React.Component {
           y: Math.floor((event.clientY - offsetY) / 40),
         };
         console.log(newPosition);
-        this.props.moveToken(selectedToken, newPosition);
+
+        let moveTokenData = {
+          room: this.props.roomId,
+          user: this.props.nickname,
+          tokenid: selectedToken._id,
+          x: newPosition.x,
+          y: newPosition.y,
+        };
+        this.props.socket.emit("moveToken", moveTokenData);
+
+        this.props.moveToken(selectedToken._id, newPosition);
       }
     }
   }

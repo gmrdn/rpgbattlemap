@@ -53,7 +53,7 @@ function tokens(state = [], action) {
       });
     case "MOVE_TOKEN":
       return state.map((token) => {
-        if (token._id === action.token._id) {
+        if (token._id === action.tokenId) {
           return {
             ...token,
             x: action.newPosition.x,

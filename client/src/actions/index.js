@@ -44,10 +44,10 @@ export function deleteToken(tokenId) {
   };
 }
 
-export function moveToken(token, newPosition) {
+export function moveToken(tokenId, newPosition) {
   return {
     type: "MOVE_TOKEN",
-    token,
+    tokenId,
     newPosition,
   };
 }
