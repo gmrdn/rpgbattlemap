@@ -10,8 +10,9 @@ This is a web application allowing multiple users to join in a private virtual r
 
 - **MongoDB** for the database
 - **Express** for the API
-- **React** for the front end
 - **Nodejs** for the back end
+- **React** for the front end
+- **Redux** for the front end state management
 - **Socket.io** to manage real-time events
 - **Cypress** for the end to end tests
 - **Github** Actions to run continuous integration
