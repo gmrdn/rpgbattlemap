@@ -35,11 +35,18 @@ io.on("connection", (socket) => {
     io.to(room).emit("/msg", { nickname: nickname, message: message });
   });
 
-  socket.on("moveToken", function ({ room, user, tokenid, x, y }) {
+  socket.on("moveToken", function ({ room, user, tokenId, x, y }) {
     console.log(
-      `Received moveToken from ${user} in room ${room} for token id ${tokenid} to ${x}, ${y}`
+      `Received moveToken from ${user} in room ${room} for token id ${tokenId} to ${x}, ${y}`
     );
-    io.to(room).emit("moveToken", { tokenid, x, y });
+    io.to(room).emit("moveToken", { tokenId, x, y });
+  });
+
+  socket.on("deleteToken", function ({ room, user, tokenId }) {
+    console.log(
+      `Received deleteToken from ${user} in room ${room} for token id ${tokenId}`
+    );
+    io.to(room).emit("deleteToken", { tokenId });
   });
 
   socket.on("disconnect", () => {

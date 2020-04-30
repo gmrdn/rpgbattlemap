@@ -30,6 +30,12 @@ class TokenChip extends React.Component {
     e.preventDefault();
     const tokenId = e.target.parentNode.dataset.tokenid;
     this.props.deleteToken(tokenId);
+    let deleteTokenData = {
+      room: this.props.roomId,
+      user: this.props.nickname,
+      tokenId: tokenId,
+    };
+    this.props.socket.emit("deleteToken", deleteTokenData);
     this.setState({ open: false });
   };
 

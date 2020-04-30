@@ -77,7 +77,7 @@ class Room extends React.Component {
             <Grid socket={socket} roomId={this.props.roomId}></Grid>
           </div>
           <div id="token-bar" className="collapse">
-            <TokenBar></TokenBar>
+            <TokenBar socket={socket}></TokenBar>
           </div>
         </div>
 

@@ -13,7 +13,11 @@ const TokenBar = (props) => {
               key={token._id}
               className="list-group-item border-0 pl-0 pr-2 pb-0 pt-0"
             >
-              <TokenChip token={token} tileSide={40}></TokenChip>
+              <TokenChip
+                token={token}
+                tileSide={40}
+                socket={props.socket}
+              ></TokenChip>
             </li>
           );
         })}

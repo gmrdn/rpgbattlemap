@@ -8,6 +8,7 @@ import {
   resetTokens,
   selectToken,
   moveToken,
+  deleteToken,
 } from "../actions";
 import Token from "../components/Token";
 
@@ -33,9 +34,14 @@ class Grid extends React.Component {
     ctx = canvas.getContext("2d");
     this.drawGrid(ctx);
 
-    this.props.socket.on("moveToken", ({ tokenid, x, y }) => {
-      console.log(`move token received from server for token ${tokenid}`);
-      this.props.moveToken(tokenid, { x, y });
+    this.props.socket.on("moveToken", ({ tokenId, x, y }) => {
+      console.log(`move token received from server for token ${tokenId}`);
+      this.props.moveToken(tokenId, { x, y });
+    });
+
+    this.props.socket.on("deleteToken", ({ tokenId }) => {
+      console.log(`delete token received from server for token ${tokenId}`);
+      this.props.deleteToken(tokenId);
     });
   }
 
@@ -93,7 +99,7 @@ class Grid extends React.Component {
         let moveTokenData = {
           room: this.props.roomId,
           user: this.props.nickname,
-          tokenid: selectedToken._id,
+          tokenId: selectedToken._id,
           x: newPosition.x,
           y: newPosition.y,
         };
@@ -163,6 +169,7 @@ const mapDispatchToProps = {
   resetTokens,
   selectToken,
   moveToken,
+  deleteToken,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Grid);
