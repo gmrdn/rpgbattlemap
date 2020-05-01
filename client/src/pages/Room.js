@@ -85,7 +85,7 @@ class Room extends React.Component {
           variant="persistent"
           anchor="bottom"
           open={this.state.chatOpen}
-          style={{ opacity: "0.5;" }}
+          style={{ opacity: "0.8" }}
         >
           <Chatbox
             className="flex-grow-1"
