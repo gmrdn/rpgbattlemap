@@ -43,6 +43,13 @@ class Grid extends React.Component {
       console.log(`delete token received from server for token ${tokenId}`);
       this.props.deleteToken(tokenId);
     });
+
+    this.props.socket.on("addToken", (token) => {
+      console.log(
+        `add token received from server for token with name ${token.name}`
+      );
+      this.props.addToken(token);
+    });
   }
 
   drawGrid(ctx) {
@@ -117,7 +124,6 @@ class Grid extends React.Component {
       <div
         className="container-fluid overflow-auto mt-3"
         style={{ height: "80vh" }}
-        oncontextmenu="return false;"
       >
         <h5 id="room-name">{this.state.gridData.name}</h5>
         <div

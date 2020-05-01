@@ -106,6 +106,33 @@ export function listen(server) {
       );
     });
 
+    socket.on("addToken", function ({ room, user, token }) {
+      console.log(
+        `Received addToken from ${user} in room ${room} for token named ${token.name}`
+      );
+
+      Room.findOneAndUpdate(
+        { _id: room },
+        {
+          $push: {
+            "grid.tokens": token,
+          },
+        },
+        { new: true, useFindAndModify: false },
+        (err, updatedRoom) => {
+          if (err) {
+            console.log(err);
+          }
+          let newToken =
+            updatedRoom.grid.tokens[updatedRoom.grid.tokens.length - 1];
+          console.log(
+            `Database updated : added token with name ${newToken.name} and id ${newToken._id} from room ${room}`
+          );
+          io.to(room).emit("addToken", newToken);
+        }
+      );
+    });
+
     socket.on("disconnect", () => {
       console.log("Client disconnected");
       socket.emit("broadcast", "user disconnected");
