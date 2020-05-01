@@ -8,16 +8,24 @@ This is a web application allowing multiple users to join in a private virtual r
 
 # Technical stack :
 
-- **MongoDB** for the database
+
+![End-to-end tests](https://github.com/gmrdn/rpgbattlemap/workflows/End-to-end%20tests/badge.svg?branch=master)
+ 
+- **MongoDB** for the database, hosted in atlas
 - **Express** for the API
-- **Nodejs** for the back end
-- **React** for the front end
-- **Redux** for the front end state management
-- **Socket.io** to manage real-time events
-- **Cypress** for the end to end tests
+- **Nodejs** for the back end environment
+- **React** for the front end, using classes and functional components (with hooks) when needed.
+- **Redux** for the front end state management (room, users, tokens are managed as redux states)
+- **Socket.io** to manage real-time events, so that multiple users can see the all changes in real time
+- **Jest** for redux unit tests
+- **Mocha and Chai** for the API tests
+- **Cypress** for the end to end "feature" tests
 - **Github** Actions to run continuous integration
 - **Heroku** for the deployments and hosting
 
 Also tried Golang for the backend but I finally decided to focus on javascript for this project.
 
-![End-to-end tests](https://github.com/gmrdn/rpgbattlemap/workflows/End-to-end%20tests/badge.svg?branch=master)
+# Credits
+
+All images (map and tokens) are from Ross McConnell @ https://2minutetabletop.com/
+
