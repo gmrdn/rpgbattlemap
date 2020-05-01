@@ -1,3 +1,7 @@
+import mongoose from "mongoose";
+import { RoomSchema } from "./src/models/roomModel";
+
+const Room = mongoose.model("Room", RoomSchema);
 const socketIo = require("socket.io");
 
 export function listen(server) {
@@ -28,24 +32,62 @@ export function listen(server) {
     });
 
     socket.on("/msg", function ({ room, nickname, message }) {
+      let newMessage = { nickname: nickname, message: message };
       console.log(
         `Received message ${message} from ${nickname} in room ${room}`
       );
-      io.to(room).emit("/msg", { nickname: nickname, message: message });
+      io.to(room).emit("/msg", newMessage);
     });
 
     socket.on("moveToken", function ({ room, user, tokenId, x, y }) {
       console.log(
         `Received moveToken from ${user} in room ${room} for token id ${tokenId} to ${x}, ${y}`
       );
-      io.to(room).emit("moveToken", { tokenId, x, y });
+
+      Room.findOneAndUpdate(
+        { _id: room, "grid.tokens._id": tokenId },
+        {
+          $set: {
+            "grid.tokens.$.x": x,
+            "grid.tokens.$.y": y,
+          },
+        },
+        { new: true, useFindAndModify: false },
+        (err, _) => {
+          if (err) {
+            console.log(err);
+          }
+          console.log(
+            `Database updated : moved token ${tokenId} in room ${room}`
+          );
+          io.to(room).emit("moveToken", { tokenId, x, y });
+        }
+      );
     });
 
     socket.on("deleteToken", function ({ room, user, tokenId }) {
       console.log(
         `Received deleteToken from ${user} in room ${room} for token id ${tokenId}`
       );
-      io.to(room).emit("deleteToken", { tokenId });
+
+      Room.findOneAndUpdate(
+        { _id: room },
+        {
+          $pull: {
+            "grid.tokens": { _id: tokenId },
+          },
+        },
+        { new: true, useFindAndModify: false },
+        (err, _) => {
+          if (err) {
+            console.log(err);
+          }
+          console.log(
+            `Database updated : deleted token ${tokenId} from room ${room}`
+          );
+          io.to(room).emit("deleteToken", { tokenId });
+        }
+      );
     });
 
     socket.on("disconnect", () => {
