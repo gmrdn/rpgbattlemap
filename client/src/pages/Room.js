@@ -81,7 +81,12 @@ class Room extends React.Component {
           </div>
         </div>
 
-        <Drawer variant="persistent" anchor="bottom" open={this.state.chatOpen}>
+        <Drawer
+          variant="persistent"
+          anchor="bottom"
+          open={this.state.chatOpen}
+          style={{ opacity: "0.5;" }}
+        >
           <Chatbox
             className="flex-grow-1"
             socket={socket}
