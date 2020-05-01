@@ -17,7 +17,7 @@ export function listen(server) {
       socket.join(room, () => {
         let rooms = Object.keys(socket.rooms);
         console.log(rooms);
-        io.to(room).emit("/join", `${nickname} has joined the room.`); // broadcast to everyone in the room
+        io.to(room).emit("/join", `${nickname} has joined the room.`);
       });
     });
 
@@ -27,7 +27,7 @@ export function listen(server) {
       socket.leave(room, () => {
         let rooms = Object.keys(socket.rooms);
         console.log(rooms);
-        io.to(room).emit("/leave", `${nickname} has left the room.`); // broadcast to everyone in the room
+        io.to(room).emit("/leave", `${nickname} has left the room.`);
       });
     });
 
@@ -36,7 +36,23 @@ export function listen(server) {
       console.log(
         `Received message ${message} from ${nickname} in room ${room}`
       );
-      io.to(room).emit("/msg", newMessage);
+
+      Room.findOneAndUpdate(
+        { _id: room },
+        {
+          $push: {
+            chatMessages: newMessage,
+          },
+        },
+        { new: true, useFindAndModify: false },
+        (err, _) => {
+          if (err) {
+            console.log(err);
+          }
+          console.log(`Database updated : added message in room ${room}`);
+          io.to(room).emit("/msg", newMessage);
+        }
+      );
     });
 
     socket.on("moveToken", function ({ room, user, tokenId, x, y }) {
