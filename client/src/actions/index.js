@@ -51,3 +51,16 @@ export function moveToken(tokenId, newPosition) {
     newPosition,
   };
 }
+
+export function openDeleteTokenDialog(tokenId) {
+  return {
+    type: "OPEN_DELETE_TOKEN_DIALOG",
+    tokenId,
+  };
+}
+
+export function openNewTokenDialog() {
+  return {
+    type: "OPEN_NEW_TOKEN_DIALOG",
+  };
+}

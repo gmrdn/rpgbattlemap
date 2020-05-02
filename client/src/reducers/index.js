@@ -16,6 +16,24 @@ function roomId(state = "", action) {
   }
 }
 
+function deleteTokenDialogOpen(state = false, action) {
+  switch (action.type) {
+    case "OPEN_DELETE_TOKEN_DIALOG":
+      return true;
+    default:
+      return state;
+  }
+}
+
+function newTokenDialogOpen(state = false, action) {
+  switch (action.type) {
+    case "OPEN_NEW_TOKEN_DIALOG":
+      return true;
+    default:
+      return state;
+  }
+}
+
 function tokens(state = [], action) {
   switch (action.type) {
     case "ADD_TOKEN":
@@ -72,6 +90,11 @@ export default function session(state = {}, action) {
   return {
     nickname: nickname(state.nickname, action),
     roomId: roomId(state.roomId, action),
+    deleteTokenDialogOpen: deleteTokenDialogOpen(
+      state.deleteTokenDialogOpen,
+      action
+    ),
+    newTokenDialogOpen: newTokenDialogOpen(state.newTokenDialogOpen, action),
     tokens: tokens(state.tokens, action),
   };
 }

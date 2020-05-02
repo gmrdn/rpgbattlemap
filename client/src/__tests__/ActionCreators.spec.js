@@ -87,4 +87,20 @@ describe("actions", () => {
     };
     expect(actions.deleteToken(id)).toEqual(expectedAction);
   });
+
+  it("should create an action to open the delete token dialog", () => {
+    const id = "5e9a1a39152f9a9ce03b9343";
+    const expectedAction = {
+      type: "OPEN_DELETE_TOKEN_DIALOG",
+      tokenId: id,
+    };
+    expect(actions.openDeleteTokenDialog(id)).toEqual(expectedAction);
+  });
+
+  it("should create an action to open the add token dialog", () => {
+    const expectedAction = {
+      type: "OPEN_NEW_TOKEN_DIALOG",
+    };
+    expect(actions.openNewTokenDialog()).toEqual(expectedAction);
+  });
 });

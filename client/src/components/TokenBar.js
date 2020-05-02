@@ -10,19 +10,19 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
 const TokenBar = (props) => {
-  const [open, setOpen] = React.useState(false);
+  const [openNew, setOpenNew] = React.useState(false);
 
   const handleAddToken = (e) => {
-    setOpen(true);
+    setOpenNew(true);
     console.log("Clicked add token");
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleAddTokenClose = () => {
+    setOpenNew(false);
   };
 
   const handleCreateToken = () => {
-    setOpen(false);
+    setOpenNew(false);
     console.log("Saving token");
     let newToken = {
       name: "new token",
@@ -38,7 +38,7 @@ const TokenBar = (props) => {
     });
   };
   return (
-    <div className="container-fluid mt-3 p-0">
+    <div className="container-fluid mt-3 p-0" style={{ opacity: "0.8" }}>
       <div
         className="container-fluid overflow-auto p-0"
         style={{ height: "50vh" }}
@@ -62,8 +62,8 @@ const TokenBar = (props) => {
       </div>
       <button onClick={handleAddToken}>Add</button>
       <Dialog
-        open={open}
-        onClose={handleClose}
+        open={openNew}
+        onClose={handleAddTokenClose}
         aria-labelledby="add-token-dialog"
       >
         <DialogTitle id="add-token-dialog">Add a Token</DialogTitle>
@@ -71,7 +71,7 @@ const TokenBar = (props) => {
           <DialogContentText>Token details</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
+          <Button autoFocus onClick={handleAddTokenClose} color="primary">
             Cancel
           </Button>
           <Button onClick={handleCreateToken} color="primary">

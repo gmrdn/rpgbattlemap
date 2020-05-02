@@ -1,324 +1,386 @@
 import reducer from "../reducers";
 
 describe("Session reducer", () => {
-  it("should return the initial state", () => {
-    expect(reducer(undefined, {})).toEqual({
-      nickname: "",
-      roomId: "",
-      tokens: [],
+  describe("Initial State", () => {
+    it("should return the initial state", () => {
+      expect(reducer(undefined, {})).toEqual({
+        nickname: "",
+        roomId: "",
+        tokens: [],
+        deleteTokenDialogOpen: false,
+        newTokenDialogOpen: false,
+      });
+    });
+  });
+  describe("RoomId", () => {
+    it("should handle SET_ROOMID", () => {
+      expect(
+        reducer(
+          {},
+          {
+            type: "SET_ROOMID",
+            roomId: "ABCDEFG",
+          }
+        )
+      ).toEqual({
+        nickname: "",
+        roomId: "ABCDEFG",
+        deleteTokenDialogOpen: false,
+        newTokenDialogOpen: false,
+        tokens: [],
+      });
     });
   });
 
-  it("should handle SET_NICKNAME", () => {
-    expect(
-      reducer(
-        {},
-        {
-          type: "SET_NICKNAME",
-          nickname: "Jest User",
-        }
-      )
-    ).toEqual({
-      nickname: "Jest User",
-      roomId: "",
-      tokens: [],
+  describe("Nickname", () => {
+    it("should handle SET_NICKNAME", () => {
+      expect(
+        reducer(
+          {},
+          {
+            type: "SET_NICKNAME",
+            nickname: "Jest User",
+          }
+        )
+      ).toEqual({
+        nickname: "Jest User",
+        roomId: "",
+        deleteTokenDialogOpen: false,
+        newTokenDialogOpen: false,
+        tokens: [],
+      });
     });
   });
 
-  it("should handle SET_ROOMID", () => {
-    expect(
-      reducer(
-        {},
-        {
-          type: "SET_ROOMID",
-          roomId: "ABCDEFG",
-        }
-      )
-    ).toEqual({
-      nickname: "",
-      roomId: "ABCDEFG",
-      tokens: [],
+  describe("Dialogs", () => {
+    it("should handle OPEN_DELETE_TOKEN_DIALOG", () => {
+      expect(
+        reducer(
+          {},
+          {
+            type: "OPEN_DELETE_TOKEN_DIALOG",
+            tokenId: "5e9a1a39152f9a9ce03b9343",
+          }
+        )
+      ).toEqual({
+        nickname: "",
+        roomId: "",
+        deleteTokenDialogOpen: true,
+        newTokenDialogOpen: false,
+        tokens: [],
+      });
+    });
+
+    it("should handle OPEN_NEW_TOKEN_DIALOG", () => {
+      expect(
+        reducer(
+          {},
+          {
+            type: "OPEN_NEW_TOKEN_DIALOG",
+          }
+        )
+      ).toEqual({
+        nickname: "",
+        roomId: "",
+        deleteTokenDialogOpen: false,
+        newTokenDialogOpen: true,
+        tokens: [],
+      });
     });
   });
 
-  it("should handle ADD_TOKEN", () => {
-    const token1 = {
-      _id: "54321abcd",
-      x: 1,
-      y: 1,
-      color: "green",
-      name: "Jest Token 1",
-    };
+  describe("Tokens", () => {
+    it("should handle ADD_TOKEN", () => {
+      const token1 = {
+        _id: "54321abcd",
+        x: 1,
+        y: 1,
+        color: "green",
+        name: "Jest Token 1",
+      };
 
-    expect(
-      reducer(
-        {},
-        {
-          type: "ADD_TOKEN",
-          _id: token1._id,
-          x: token1.x,
-          y: token1.y,
-          name: token1.name,
-          color: token1.color,
-          selected: false,
-        }
-      )
-    ).toEqual({
-      nickname: "",
-      roomId: "",
-      tokens: [
-        {
-          _id: "54321abcd",
-          x: 1,
-          y: 1,
-          image: undefined,
-          color: "green",
-          name: "Jest Token 1",
-          selected: false,
-        },
-      ],
+      expect(
+        reducer(
+          {},
+          {
+            type: "ADD_TOKEN",
+            _id: token1._id,
+            x: token1.x,
+            y: token1.y,
+            name: token1.name,
+            color: token1.color,
+            selected: false,
+          }
+        )
+      ).toEqual({
+        nickname: "",
+        roomId: "",
+        deleteTokenDialogOpen: false,
+        newTokenDialogOpen: false,
+        tokens: [
+          {
+            _id: "54321abcd",
+            x: 1,
+            y: 1,
+            image: undefined,
+            color: "green",
+            name: "Jest Token 1",
+            selected: false,
+          },
+        ],
+      });
     });
-  });
 
-  it("should handle RESET_TOKENS", () => {
-    expect(
-      reducer(
-        {},
-        {
-          type: "RESET_TOKENS",
-        }
-      )
-    ).toEqual({
-      nickname: "",
-      roomId: "",
-      tokens: [],
+    it("should handle RESET_TOKENS", () => {
+      expect(
+        reducer(
+          {},
+          {
+            type: "RESET_TOKENS",
+          }
+        )
+      ).toEqual({
+        nickname: "",
+        roomId: "",
+        deleteTokenDialogOpen: false,
+        newTokenDialogOpen: false,
+        tokens: [],
+      });
     });
-  });
 
-  it("should handle SELECT_TOKEN when no token is selected", () => {
-    expect(
-      reducer(
-        {
-          nickname: "",
-          roomId: "",
-          tokens: [
-            {
-              _id: "54321abcd",
-              x: 1,
-              y: 2,
-              image: undefined,
-              color: "green",
-              name: "Jest Token 1",
-              selected: false,
+    it("should handle SELECT_TOKEN when no token is selected", () => {
+      expect(
+        reducer(
+          {
+            nickname: "",
+            roomId: "",
+            tokens: [
+              {
+                _id: "54321abcd",
+                x: 1,
+                y: 2,
+                image: undefined,
+                color: "green",
+                name: "Jest Token 1",
+                selected: false,
+              },
+              {
+                _id: "12345zyxw",
+                x: 3,
+                y: 4,
+                image: "2.png",
+                color: "blue",
+                name: "Jest Token 2",
+                selected: false,
+              },
+            ],
+          },
+          {
+            type: "SELECT_TOKEN",
+            tokenId: "54321abcd",
+          }
+        )
+      ).toEqual({
+        nickname: "",
+        roomId: "",
+        deleteTokenDialogOpen: false,
+        newTokenDialogOpen: false,
+        tokens: [
+          {
+            _id: "54321abcd",
+            x: 1,
+            y: 2,
+            image: undefined,
+            color: "green",
+            name: "Jest Token 1",
+            selected: true,
+          },
+          {
+            _id: "12345zyxw",
+            x: 3,
+            y: 4,
+            image: "2.png",
+            color: "blue",
+            name: "Jest Token 2",
+            selected: false,
+          },
+        ],
+      });
+    });
+
+    it("should handle SELECT_TOKEN when one token is already selected", () => {
+      expect(
+        reducer(
+          {
+            nickname: "",
+            roomId: "",
+            tokens: [
+              {
+                _id: "54321abcd",
+                x: 1,
+                y: 2,
+                image: undefined,
+                color: "green",
+                name: "Jest Token 1",
+                selected: true,
+              },
+              {
+                _id: "12345zyxw",
+                x: 3,
+                y: 4,
+                image: "2.png",
+                color: "blue",
+                name: "Jest Token 2",
+                selected: false,
+              },
+            ],
+          },
+          {
+            type: "SELECT_TOKEN",
+            tokenId: "12345zyxw",
+          }
+        )
+      ).toEqual({
+        nickname: "",
+        roomId: "",
+        deleteTokenDialogOpen: false,
+        newTokenDialogOpen: false,
+        tokens: [
+          {
+            _id: "54321abcd",
+            x: 1,
+            y: 2,
+            image: undefined,
+            color: "green",
+            name: "Jest Token 1",
+            selected: false,
+          },
+          {
+            _id: "12345zyxw",
+            x: 3,
+            y: 4,
+            image: "2.png",
+            color: "blue",
+            name: "Jest Token 2",
+            selected: true,
+          },
+        ],
+      });
+    });
+
+    it("should handle MOVE_TOKEN", () => {
+      expect(
+        reducer(
+          {
+            nickname: "",
+            roomId: "",
+            tokens: [
+              {
+                _id: "54321abcd",
+                x: 1,
+                y: 2,
+                image: undefined,
+                color: "green",
+                name: "Jest Token 1",
+                selected: true,
+              },
+              {
+                _id: "12345zyxw",
+                x: 3,
+                y: 4,
+                image: "2.png",
+                color: "blue",
+                name: "Jest Token 2",
+                selected: false,
+              },
+            ],
+          },
+          {
+            type: "MOVE_TOKEN",
+            tokenId: "54321abcd",
+            newPosition: {
+              x: 21,
+              y: 22,
             },
-            {
-              _id: "12345zyxw",
-              x: 3,
-              y: 4,
-              image: "2.png",
-              color: "blue",
-              name: "Jest Token 2",
-              selected: false,
-            },
-          ],
-        },
-        {
-          type: "SELECT_TOKEN",
-          tokenId: "54321abcd",
-        }
-      )
-    ).toEqual({
-      nickname: "",
-      roomId: "",
-      tokens: [
-        {
-          _id: "54321abcd",
-          x: 1,
-          y: 2,
-          image: undefined,
-          color: "green",
-          name: "Jest Token 1",
-          selected: true,
-        },
-        {
-          _id: "12345zyxw",
-          x: 3,
-          y: 4,
-          image: "2.png",
-          color: "blue",
-          name: "Jest Token 2",
-          selected: false,
-        },
-      ],
-    });
-  });
-
-  it("should handle SELECT_TOKEN when one token is already selected", () => {
-    expect(
-      reducer(
-        {
-          nickname: "",
-          roomId: "",
-          tokens: [
-            {
-              _id: "54321abcd",
-              x: 1,
-              y: 2,
-              image: undefined,
-              color: "green",
-              name: "Jest Token 1",
-              selected: true,
-            },
-            {
-              _id: "12345zyxw",
-              x: 3,
-              y: 4,
-              image: "2.png",
-              color: "blue",
-              name: "Jest Token 2",
-              selected: false,
-            },
-          ],
-        },
-        {
-          type: "SELECT_TOKEN",
-          tokenId: "12345zyxw",
-        }
-      )
-    ).toEqual({
-      nickname: "",
-      roomId: "",
-      tokens: [
-        {
-          _id: "54321abcd",
-          x: 1,
-          y: 2,
-          image: undefined,
-          color: "green",
-          name: "Jest Token 1",
-          selected: false,
-        },
-        {
-          _id: "12345zyxw",
-          x: 3,
-          y: 4,
-          image: "2.png",
-          color: "blue",
-          name: "Jest Token 2",
-          selected: true,
-        },
-      ],
-    });
-  });
-
-  it("should handle MOVE_TOKEN", () => {
-    expect(
-      reducer(
-        {
-          nickname: "",
-          roomId: "",
-          tokens: [
-            {
-              _id: "54321abcd",
-              x: 1,
-              y: 2,
-              image: undefined,
-              color: "green",
-              name: "Jest Token 1",
-              selected: true,
-            },
-            {
-              _id: "12345zyxw",
-              x: 3,
-              y: 4,
-              image: "2.png",
-              color: "blue",
-              name: "Jest Token 2",
-              selected: false,
-            },
-          ],
-        },
-        {
-          type: "MOVE_TOKEN",
-          tokenId: "54321abcd",
-          newPosition: {
+          }
+        )
+      ).toEqual({
+        nickname: "",
+        roomId: "",
+        deleteTokenDialogOpen: false,
+        newTokenDialogOpen: false,
+        tokens: [
+          {
+            _id: "54321abcd",
             x: 21,
             y: 22,
+            image: undefined,
+            color: "green",
+            name: "Jest Token 1",
+            selected: true,
           },
-        }
-      )
-    ).toEqual({
-      nickname: "",
-      roomId: "",
-      tokens: [
-        {
-          _id: "54321abcd",
-          x: 21,
-          y: 22,
-          image: undefined,
-          color: "green",
-          name: "Jest Token 1",
-          selected: true,
-        },
-        {
-          _id: "12345zyxw",
-          x: 3,
-          y: 4,
-          image: "2.png",
-          color: "blue",
-          name: "Jest Token 2",
-          selected: false,
-        },
-      ],
+          {
+            _id: "12345zyxw",
+            x: 3,
+            y: 4,
+            image: "2.png",
+            color: "blue",
+            name: "Jest Token 2",
+            selected: false,
+          },
+        ],
+      });
     });
-  });
 
-  it("should handle DELETE_TOKEN", () => {
-    expect(
-      reducer(
-        {
-          nickname: "",
-          roomId: "",
-          tokens: [
-            {
-              _id: "54321abcd",
-              x: 1,
-              y: 2,
-              image: undefined,
-              color: "green",
-              name: "Jest Token 1",
-              selected: true,
-            },
-            {
-              _id: "12345zyxw",
-              x: 3,
-              y: 4,
-              image: "2.png",
-              color: "blue",
-              name: "Jest Token 2",
-              selected: false,
-            },
-          ],
-        },
-        {
-          type: "DELETE_TOKEN",
-          tokenId: "54321abcd",
-        }
-      )
-    ).toEqual({
-      nickname: "",
-      roomId: "",
-      tokens: [
-        {
-          _id: "12345zyxw",
-          x: 3,
-          y: 4,
-          image: "2.png",
-          color: "blue",
-          name: "Jest Token 2",
-          selected: false,
-        },
-      ],
+    it("should handle DELETE_TOKEN", () => {
+      expect(
+        reducer(
+          {
+            nickname: "",
+            roomId: "",
+            tokens: [
+              {
+                _id: "54321abcd",
+                x: 1,
+                y: 2,
+                image: undefined,
+                color: "green",
+                name: "Jest Token 1",
+                selected: true,
+              },
+              {
+                _id: "12345zyxw",
+                x: 3,
+                y: 4,
+                image: "2.png",
+                color: "blue",
+                name: "Jest Token 2",
+                selected: false,
+              },
+            ],
+          },
+          {
+            type: "DELETE_TOKEN",
+            tokenId: "54321abcd",
+          }
+        )
+      ).toEqual({
+        nickname: "",
+        roomId: "",
+        deleteTokenDialogOpen: false,
+        newTokenDialogOpen: false,
+        tokens: [
+          {
+            _id: "12345zyxw",
+            x: 3,
+            y: 4,
+            image: "2.png",
+            color: "blue",
+            name: "Jest Token 2",
+            selected: false,
+          },
+        ],
+      });
     });
   });
 });
