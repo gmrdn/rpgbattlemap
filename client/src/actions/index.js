@@ -52,6 +52,13 @@ export function moveToken(tokenId, newPosition) {
   };
 }
 
+export function prepareDeleteTokens(tokenIds) {
+  return {
+    type: "PREPARE_DELETE_TOKENS",
+    tokenIds,
+  };
+}
+
 export function openDeleteTokenDialog(tokenId) {
   return {
     type: "OPEN_DELETE_TOKEN_DIALOG",

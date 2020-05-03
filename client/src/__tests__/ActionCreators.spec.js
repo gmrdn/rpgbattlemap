@@ -103,4 +103,14 @@ describe("actions", () => {
     };
     expect(actions.openNewTokenDialog()).toEqual(expectedAction);
   });
+
+  it("should create an action to add tokens to the list of tokens to delete", () => {
+    const ids = ["5e9a1a39152f9a9ce03b9343", "5e9a1a39152f9a9ce03b9342"];
+
+    const expectedAction = {
+      type: "PREPARE_DELETE_TOKENS",
+      tokenIds: ids,
+    };
+    expect(actions.prepareDeleteTokens(ids)).toEqual(expectedAction);
+  });
 });
