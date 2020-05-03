@@ -59,7 +59,7 @@ describe("Session reducer", () => {
           {},
           {
             type: "OPEN_DELETE_TOKEN_DIALOG",
-            tokenId: "5e9a1a39152f9a9ce03b9343",
+            open: true,
           }
         )
       ).toEqual({
@@ -77,6 +77,7 @@ describe("Session reducer", () => {
           {},
           {
             type: "OPEN_NEW_TOKEN_DIALOG",
+            open: true,
           }
         )
       ).toEqual({
@@ -126,6 +127,7 @@ describe("Session reducer", () => {
             color: "green",
             name: "Jest Token 1",
             selected: false,
+            toBeDeleted: false,
           },
         ],
       });
@@ -378,6 +380,89 @@ describe("Session reducer", () => {
             color: "blue",
             name: "Jest Token 2",
             selected: false,
+          },
+        ],
+      });
+    });
+    it("should handle PREPARE_DELETE_TOKENS", () => {
+      expect(
+        reducer(
+          {
+            nickname: "",
+            roomId: "",
+            tokens: [
+              {
+                _id: "54321abcd",
+                x: 1,
+                y: 2,
+                image: undefined,
+                color: "green",
+                name: "Jest Token 1",
+                selected: true,
+                toBeDeleted: false,
+              },
+              {
+                _id: "12345zyxw",
+                x: 3,
+                y: 4,
+                image: "2.png",
+                color: "blue",
+                name: "Jest Token 2",
+                selected: false,
+                toBeDeleted: false,
+              },
+              {
+                _id: "66666aacc",
+                x: 5,
+                y: 6,
+                image: "3.png",
+                color: "red",
+                name: "Jest Token 3",
+                selected: false,
+                toBeDeleted: false,
+              },
+            ],
+          },
+          {
+            type: "PREPARE_DELETE_TOKENS",
+            tokenIds: ["54321abcd", "12345zyxw"],
+          }
+        )
+      ).toEqual({
+        nickname: "",
+        roomId: "",
+        deleteTokenDialogOpen: false,
+        newTokenDialogOpen: false,
+        tokens: [
+          {
+            _id: "54321abcd",
+            x: 1,
+            y: 2,
+            image: undefined,
+            color: "green",
+            name: "Jest Token 1",
+            selected: true,
+            toBeDeleted: true,
+          },
+          {
+            _id: "12345zyxw",
+            x: 3,
+            y: 4,
+            image: "2.png",
+            color: "blue",
+            name: "Jest Token 2",
+            selected: false,
+            toBeDeleted: true,
+          },
+          {
+            _id: "66666aacc",
+            x: 5,
+            y: 6,
+            image: "3.png",
+            color: "red",
+            name: "Jest Token 3",
+            selected: false,
+            toBeDeleted: false,
           },
         ],
       });

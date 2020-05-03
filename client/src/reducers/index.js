@@ -19,7 +19,7 @@ function roomId(state = "", action) {
 function deleteTokenDialogOpen(state = false, action) {
   switch (action.type) {
     case "OPEN_DELETE_TOKEN_DIALOG":
-      return true;
+      return action.open;
     default:
       return state;
   }
@@ -28,7 +28,7 @@ function deleteTokenDialogOpen(state = false, action) {
 function newTokenDialogOpen(state = false, action) {
   switch (action.type) {
     case "OPEN_NEW_TOKEN_DIALOG":
-      return true;
+      return action.open;
     default:
       return state;
   }
@@ -47,6 +47,7 @@ function tokens(state = [], action) {
           color: action.color,
           image: action.image,
           selected: false,
+          toBeDeleted: false,
         },
       ];
     case "RESET_TOKENS":
@@ -62,6 +63,20 @@ function tokens(state = [], action) {
           return {
             ...token,
             selected: false,
+          };
+        }
+      });
+    case "PREPARE_DELETE_TOKENS":
+      return state.map((token) => {
+        if (action.tokenIds.indexOf(token._id) > -1) {
+          return {
+            ...token,
+            toBeDeleted: true,
+          };
+        } else {
+          return {
+            ...token,
+            toBeDeleted: false,
           };
         }
       });
@@ -81,6 +96,7 @@ function tokens(state = [], action) {
           return { ...token };
         }
       });
+
     default:
       return state;
   }

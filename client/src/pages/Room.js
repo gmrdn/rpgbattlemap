@@ -7,6 +7,8 @@ import Grid from "../components/Grid";
 import Drawer from "@material-ui/core/Drawer";
 import Chatbox from "../components/Chatbox";
 import TokenBar from "../components/TokenBar";
+import DialogDeleteToken from "../components/DialogDeleteToken";
+import DialogNewToken from "../components/DialogNewToken";
 
 var socket;
 class Room extends React.Component {
@@ -81,6 +83,8 @@ class Room extends React.Component {
           </div>
         </div>
 
+        <DialogDeleteToken socket={socket}></DialogDeleteToken>
+        <DialogNewToken socket={socket}></DialogNewToken>
         <Drawer
           variant="persistent"
           anchor="bottom"

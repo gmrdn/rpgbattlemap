@@ -89,19 +89,19 @@ describe("actions", () => {
   });
 
   it("should create an action to open the delete token dialog", () => {
-    const id = "5e9a1a39152f9a9ce03b9343";
     const expectedAction = {
       type: "OPEN_DELETE_TOKEN_DIALOG",
-      tokenId: id,
+      open: true,
     };
-    expect(actions.openDeleteTokenDialog(id)).toEqual(expectedAction);
+    expect(actions.openDeleteTokenDialog(true)).toEqual(expectedAction);
   });
 
   it("should create an action to open the add token dialog", () => {
     const expectedAction = {
       type: "OPEN_NEW_TOKEN_DIALOG",
+      open: true,
     };
-    expect(actions.openNewTokenDialog()).toEqual(expectedAction);
+    expect(actions.openNewTokenDialog(true)).toEqual(expectedAction);
   });
 
   it("should create an action to add tokens to the list of tokens to delete", () => {

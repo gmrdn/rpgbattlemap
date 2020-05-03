@@ -59,15 +59,16 @@ export function prepareDeleteTokens(tokenIds) {
   };
 }
 
-export function openDeleteTokenDialog(tokenId) {
+export function openDeleteTokenDialog(open) {
   return {
     type: "OPEN_DELETE_TOKEN_DIALOG",
-    tokenId,
+    open: open,
   };
 }
 
-export function openNewTokenDialog() {
+export function openNewTokenDialog(open) {
   return {
     type: "OPEN_NEW_TOKEN_DIALOG",
+    open: open,
   };
 }
