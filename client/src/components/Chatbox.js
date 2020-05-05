@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import { connect } from "react-redux";
 import { setUserName, setRoomId, addToken } from "../actions";
@@ -153,4 +154,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = { setUserName, setRoomId, addToken };
 
+Chatbox.propTypes = {
+  socket: PropTypes.object,
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Chatbox);

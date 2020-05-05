@@ -64,7 +64,7 @@ class Room extends React.Component {
 
           <button
             id="btn-tokenbar"
-            class="btn"
+            className="btn"
             type="button"
             data-toggle="collapse"
             data-target="#token-bar"
