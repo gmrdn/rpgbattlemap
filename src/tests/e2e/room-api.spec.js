@@ -19,7 +19,7 @@ describe("Rooms", () => {
     });
 
     it("should get a single room record", (done) => {
-      const id = "jIvEPTjGW";
+      const id = "5eb3006a6fb25ec2e272a290";
       chai
         .request(app)
         .get(`/api/room/${id}`)
@@ -31,7 +31,7 @@ describe("Rooms", () => {
     });
 
     it("should return 404 when room is not found", (done) => {
-      const id = "aaaaa";
+      const id = "5eb3006a6fb25ec2e272a299";
       chai
         .request(app)
         .get(`/api/room/${id}`)
