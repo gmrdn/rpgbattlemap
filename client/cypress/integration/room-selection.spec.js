@@ -14,8 +14,8 @@ context("Room Selection", () => {
   it("should display the room's list", () => {
     cy.wait("@getRooms");
     cy.get("#room-list").should("be.visible");
-    cy.get("#room-0").should("have.text", "dIAHyZ55S");
-    cy.get("#room-3").should("have.text", "dIAHccx5S");
+    cy.get("#room-0").should("have.text", "5eb3006a6fb25ec2e272a290");
+    cy.get("#room-3").should("have.text", "5eb3031917deb2c39cc84ba9");
   });
 
   it("should navigate to the selected room", () => {
@@ -27,7 +27,7 @@ context("Room Selection", () => {
       .get("#btn-join")
       .click()
       .get("#room-name")
-      .should("have.text", "Newly created grid");
+      .should("have.text", "Temple of elemental evil");
 
     cy.visit("/roomselection");
 
@@ -38,6 +38,6 @@ context("Room Selection", () => {
       .get("#btn-join")
       .click()
       .get("#header-room-id")
-      .should("have.text", "dIAHccx5S");
+      .should("have.text", "5eb3031917deb2c39cc84ba9");
   });
 });

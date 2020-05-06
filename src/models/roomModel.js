@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import shortid from "shortid";
 
 const Schema = mongoose.Schema;
 
@@ -23,10 +22,6 @@ const Grid = new Schema({
 });
 
 export const RoomSchema = new Schema({
-  _id: {
-    type: String,
-    default: shortid.generate(),
-  },
   creationDate: {
     type: Date,
     default: Date.now,

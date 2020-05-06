@@ -8,7 +8,7 @@ context("Chatbox", () => {
       response: "fixture:rooms/room-with-chatmessages.json",
     }).as("getChatMessages");
 
-    cy.visit("/room/dIAHyZ55S");
+    cy.visit("/room/5eb3006a6fb25ec2e272a290");
     cy.get("#nickname").type("Cypress FakeUser").get("#btn-join").click();
   });
 

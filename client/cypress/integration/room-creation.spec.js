@@ -16,8 +16,16 @@ context("Room Creation", () => {
     cy.get("#txt-room-name")
       .should("be.visible")
       .type("Mansion on the Cypress Hill");
-    cy.get("#background-grass").should("be.visible");
+    cy.get("#background-grass").click();
     cy.get("#btn-create").should("be.visible").click();
-    // cy.wait("@newRoom").should("have.any.keys", "name");
+
+    cy.wait("@newRoom")
+      .its("request.body")
+      .should("deep.equal", {
+        grid: {
+          name: "Mansion on the Cypress Hill",
+          background: "bg-grass.jpg",
+        },
+      });
   });
 });
