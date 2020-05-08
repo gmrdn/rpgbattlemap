@@ -1,5 +1,6 @@
 import React from "react";
 import TokenChip from "./TokenChip";
+import Avatar from "@material-ui/core/Avatar";
 import { connect } from "react-redux";
 import { addToken } from "../actions";
 import Button from "@material-ui/core/Button";
@@ -11,6 +12,14 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 
 const TokenBar = (props) => {
   const [openNew, setOpenNew] = React.useState(false);
+
+  const handleNameChange = (e) => {
+    console.log("name changed");
+  };
+
+  const handleColorChange = (e) => {
+    console.log("color changed");
+  };
 
   const handleAddToken = (e) => {
     setOpenNew(true);
@@ -68,7 +77,48 @@ const TokenBar = (props) => {
       >
         <DialogTitle id="add-token-dialog">Add a Token</DialogTitle>
         <DialogContent>
-          <DialogContentText>Token details</DialogContentText>
+          <DialogContentText>
+            <form>
+              <div className="form-group">
+                <input
+                  id="txt-token-name"
+                  className="form-control mb-3 border-secondary"
+                  placeholder="Represents"
+                  aria-label="Represents"
+                  required
+                  onChange={handleNameChange}
+                ></input>
+
+                <div className="form-group">
+                  <input
+                    id="txt-token-color"
+                    className="form-control mb-3 border-secondary"
+                    placeholder="Color"
+                    aria-label="Color"
+                    required
+                    onChange={handleColorChange}
+                  ></input>
+                </div>
+
+                <div className="form-group">
+                  <Avatar
+                    alt="/tokens/1.png"
+                    src="/tokens/1.png"
+                    style={{
+                      backgroundColor: "yellow",
+                    }}
+                  />
+                  <input
+                    type="range"
+                    class="custom-range"
+                    min="1"
+                    max="32"
+                    id="image-range"
+                  />
+                </div>
+              </div>
+            </form>
+          </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleAddTokenClose} color="primary">
