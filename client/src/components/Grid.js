@@ -86,8 +86,12 @@ class Grid extends React.Component {
     this.props.selectToken(tokenId);
   };
 
-  handleMouseDown(event) {
-    if (event.button === 0) {
+  handleRightClick(e) {
+    e.preventDefault();
+  }
+
+  handleMouseDown(e) {
+    if (e.button === 0) {
       const selectedToken = this.props.tokens.filter((token) => {
         return token.selected === true;
       })[0];
@@ -98,8 +102,8 @@ class Grid extends React.Component {
         const offsetY = BB.top;
 
         const newPosition = {
-          x: Math.floor((event.clientX - offsetX) / 40),
-          y: Math.floor((event.clientY - offsetY) / 40),
+          x: Math.floor((e.clientX - offsetX) / 40),
+          y: Math.floor((e.clientY - offsetY) / 40),
         };
         console.log(newPosition);
 
@@ -117,7 +121,7 @@ class Grid extends React.Component {
     }
   }
 
-  handleMouseUp(event) {}
+  handleMouseUp(e) {}
 
   render() {
     return (
@@ -133,6 +137,7 @@ class Grid extends React.Component {
           style={{ position: "relative" }}
         >
           <canvas
+            onContextMenu={this.handleRightClick.bind(this)}
             ref="gridCanvas"
             width="2400"
             height="2400"
