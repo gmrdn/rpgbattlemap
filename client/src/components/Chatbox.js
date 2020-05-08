@@ -102,7 +102,10 @@ class Chatbox extends React.Component {
     } else {
       return (
         <small>
-          <b>{nickname} :</b> {message}
+          <span id="chat-nickname">
+            <b>{nickname} :</b>
+          </span>
+          <span id="chat-message"> {message}</span>
         </small>
       );
     }
