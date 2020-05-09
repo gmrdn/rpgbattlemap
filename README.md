@@ -15,9 +15,10 @@ This is a web application allowing multiple users to join in a private virtual r
 - **Express** for the API
 - **Nodejs** for the back end environment
 - **React** for the front end, using classes and functional components (with hooks) when needed.
+- **React Router** for the navigation
 - **Redux** for the front end state management (room, users, tokens are managed as redux states)
 - **Socket.io** to manage real-time events, so that multiple users can see the all changes in real time
-- **Jest** for redux unit tests
+- **Jest / React Testing Library** for redux unit tests
 - **Mocha and Chai** for the API tests
 - **Cypress** for the end to end "feature" tests
 - **Github** Actions to run continuous integration
