@@ -12,10 +12,14 @@ jobs:
           node-version: "12.x"
       - name: Install server dependencies
         run: yarn install
-      - name: Server side e2e tests
+      - name: Server side unit tests
         run: yarn run e2e
         env:
           MONGODB_URL: ${{ secrets.MONGODB_URL }}
+      - name: Client side unit tests
+        run: yarn run test
+        with:
+          working-directory: client
       - name: Start server for e2e tests
         run: yarn run start &
         env:
