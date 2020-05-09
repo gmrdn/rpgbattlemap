@@ -17,8 +17,8 @@ jobs:
         env:
           MONGODB_URL: ${{ secrets.MONGODB_URL }}
       - name: Client side unit tests
-        working-directory: client
         run: yarn run test
+        working-directory: ./client
       - name: Start server for e2e tests
         run: yarn run start &
         env:
