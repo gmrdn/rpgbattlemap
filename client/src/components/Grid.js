@@ -11,6 +11,7 @@ import {
   deleteToken,
 } from "../actions";
 import Token from "../components/Token";
+import canvasUtils from "../utils/canvasUtils";
 
 const gridSize = { width: 60, height: 60 };
 const tileSide = 40;
@@ -32,7 +33,7 @@ class Grid extends React.Component {
     this.fetchGrid(this.props.roomId);
     canvas = this.refs.gridCanvas;
     ctx = canvas.getContext("2d");
-    this.drawGrid(ctx);
+    canvasUtils.drawGrid(ctx, gridSize, tileSide);
 
     this.props.socket.on("moveToken", ({ tokenId, x, y }) => {
       console.log(`move token received from server for token ${tokenId}`);
@@ -52,25 +53,27 @@ class Grid extends React.Component {
     });
   }
 
-  drawGrid(ctx) {
-    for (var y = 0; y < gridSize.height; y++) {
-      for (var x = 0; x < gridSize.width; x++) {
-        ctx.lineWidth = 0.2;
-        ctx.beginPath();
-        ctx.rect(x * tileSide, y * tileSide, tileSide, tileSide);
-        ctx.stroke();
-      }
-    }
-  }
+  // async fetchGrid(roomId) {
+  //   try {
+  //     const response = await axios(`/api/room/${roomId}`);
+  //     this.setState({ gridData: await response.data.grid });
+  //     response.data.grid.tokens.map((token) => this.props.addToken(token));
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
   async fetchGrid(roomId) {
-    try {
-      const response = await axios(`/api/room/${roomId}`);
-      this.setState({ gridData: await response.data.grid });
-      response.data.grid.tokens.map((token) => this.props.addToken(token));
-    } catch (error) {
-      console.error(error);
-    }
+    axios
+      .get(`/api/room/${roomId}`)
+      .then((response) => {
+        this.setState({ gridData: response.data.grid });
+        response.data.grid.tokens.map((token) => this.props.addToken(token));
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
   }
 
   handleClickOnToken = (e) => {

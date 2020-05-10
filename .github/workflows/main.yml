@@ -1,4 +1,4 @@
-name: End-to-end tests
+name: Build and Test
 on: [push]
 jobs:
   build-and-test:
