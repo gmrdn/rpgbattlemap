@@ -9,7 +9,7 @@ const divStyle = {
   overflowY: "scroll",
 };
 
-class Chatbox extends React.Component {
+export class Chatbox extends React.Component {
   constructor(props) {
     super(props);
 
