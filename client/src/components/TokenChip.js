@@ -36,7 +36,7 @@ class TokenChip extends React.Component {
               />
             }
             label={this.props.token.name}
-            color={this.props.token.selected ? "primary" : ""}
+            color={this.props.token.selected ? "primary" : "default"}
             id={this.props.token._id}
             onClick={this.handleClick}
             onDelete={this.handleDelete}
