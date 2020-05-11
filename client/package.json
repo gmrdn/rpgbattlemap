@@ -18,10 +18,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --runInBand --env=jsdom",
     "eject": "react-scripts eject",
     "cy:open": "./node_modules/cypress/bin/cypress open",
-    "coverage": "yarn test --coverage --watchAll=false"
+    "coverage": "yarn test --coverage --watchAll=false --runInBand --env=jsdom"
   },
   "proxy": "http://localhost:5000/",
   "eslintConfig": {

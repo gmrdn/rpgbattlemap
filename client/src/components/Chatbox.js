@@ -60,7 +60,6 @@ class Chatbox extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log("unmounting chat box");
     this.props.socket.emit("/leave", {
       nickname: this.props.nickname,
       room: this.props.roomId,
