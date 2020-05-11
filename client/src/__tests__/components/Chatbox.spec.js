@@ -1,6 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
-import { Chatbox } from "../components/Chatbox";
+import { Chatbox } from "../../components/Chatbox";
+import { act } from "react-dom/test-utils";
 import axios from "axios";
 
 const roomId = "5eb3006a6fb25ec2e272a290";
@@ -26,14 +27,15 @@ describe("ChatBox", () => {
       .mockImplementation(() => Promise.resolve(fakeMessages));
 
     Element.prototype.scrollIntoView = jest.fn();
-
-    wrapper = await mount(
-      <Chatbox roomId={roomId} nickname={nickname} socket={socket} />
-    );
   });
 
   describe("Renders messages", () => {
     it("renders previous chat messages", async () => {
+      await act(async () => {
+        wrapper = mount(
+          <Chatbox roomId={roomId} nickname={nickname} socket={socket} />
+        );
+      });
       expect(axiosSpy).toHaveBeenCalled();
       expect(wrapper.text()).toBe("John Lennon : Hello world");
     });
@@ -41,6 +43,11 @@ describe("ChatBox", () => {
 
   describe("Emits socket messages", () => {
     it("emits /join with roomId and nickname", async () => {
+      await act(async () => {
+        wrapper = mount(
+          <Chatbox roomId={roomId} nickname={nickname} socket={socket} />
+        );
+      });
       expect(socket.emit).toHaveBeenCalled();
       expect(socket.emit.mock.calls[0]).toMatchObject([
         "/join",

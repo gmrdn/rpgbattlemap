@@ -3,11 +3,11 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import rootReducer from "../reducers";
-import Grid from "../components/Grid";
-import canvasUtils from "../utils/canvasUtils";
+import rootReducer from "../../reducers";
+import Grid from "../../components/Grid";
+import canvasUtils from "../../utils/canvasUtils";
 import axios from "axios";
-import * as data from "./mocks/room-with-tokens.json";
+import * as data from "../mocks/room-with-tokens.json";
 
 const store = createStore(rootReducer);
 

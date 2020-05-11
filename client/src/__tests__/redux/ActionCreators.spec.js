@@ -1,4 +1,4 @@
-import * as actions from "../actions";
+import * as actions from "../../actions";
 
 describe("actions", () => {
   it("should create an action to set a nickname", () => {

@@ -1,8 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { TokenChip } from "../components/TokenChip";
+import { act } from "react-dom/test-utils";
+import { TokenChip } from "../../components/TokenChip";
 import Chip from "@material-ui/core/Chip";
 
+let wrapper;
 describe("TokenChip", () => {
   describe("renders a selected or unselected chip", () => {
     it("renders an unselected token chip", () => {
@@ -16,7 +18,9 @@ describe("TokenChip", () => {
         selected: false,
       };
 
-      const wrapper = shallow(<TokenChip token={token} />);
+      act(() => {
+        wrapper = shallow(<TokenChip token={token} />);
+      });
 
       expect(wrapper.find(Chip).prop("label")).toBe("Jest Token");
       expect(wrapper.find(Chip).prop("color")).toBe("default");
@@ -32,7 +36,9 @@ describe("TokenChip", () => {
         selected: true,
       };
 
-      const wrapper = shallow(<TokenChip token={token} />);
+      act(() => {
+        wrapper = shallow(<TokenChip token={token} />);
+      });
 
       expect(wrapper.find(Chip).prop("label")).toBe("Jest Token");
       expect(wrapper.find(Chip).prop("color")).toBe("primary");
