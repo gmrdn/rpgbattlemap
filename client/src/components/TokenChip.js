@@ -8,7 +8,7 @@ import {
   openDeleteTokenDialog,
 } from "../actions";
 
-class TokenChip extends React.Component {
+export class TokenChip extends React.Component {
   handleDelete = (e) => {
     this.props.prepareDeleteTokens(this.props.token._id);
     this.props.openDeleteTokenDialog(true);
@@ -22,26 +22,24 @@ class TokenChip extends React.Component {
 
   render() {
     return (
-      <div>
-        <div id={`tokenchip-${this.props.token.x}-${this.props.token.y}`}>
-          <Chip
-            size="small"
-            avatar={
-              <Avatar
-                alt={this.props.token.name}
-                src={`/tokens/${this.props.token.image}`}
-                style={{
-                  backgroundColor: this.props.token.color,
-                }}
-              />
-            }
-            label={this.props.token.name}
-            color={this.props.token.selected ? "primary" : "default"}
-            id={this.props.token._id}
-            onClick={this.handleClick}
-            onDelete={this.handleDelete}
-          />
-        </div>
+      <div id={`tokenchip-${this.props.token.x}-${this.props.token.y}`}>
+        <Chip
+          size="small"
+          avatar={
+            <Avatar
+              alt={this.props.token.name}
+              src={`/tokens/${this.props.token.image}`}
+              style={{
+                backgroundColor: this.props.token.color,
+              }}
+            />
+          }
+          label={this.props.token.name}
+          color={this.props.token.selected ? "primary" : "default"}
+          id={this.props.token._id}
+          onClick={this.handleClick}
+          onDelete={this.handleDelete}
+        />
       </div>
     );
   }

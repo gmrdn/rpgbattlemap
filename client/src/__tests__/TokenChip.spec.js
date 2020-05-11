@@ -1,11 +1,7 @@
 import React from "react";
-import { mount } from "enzyme";
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-import rootReducer from "../reducers";
-import TokenChip from "../components/TokenChip";
-
-const store = createStore(rootReducer);
+import { shallow } from "enzyme";
+import { TokenChip } from "../components/TokenChip";
+import Chip from "@material-ui/core/Chip";
 
 it("renders an unselected token chip", () => {
   const token = {
@@ -18,13 +14,10 @@ it("renders an unselected token chip", () => {
     selected: false,
   };
 
-  const wrapper = mount(
-    <Provider store={store}>
-      <TokenChip token={token} />
-    </Provider>
-  );
+  const wrapper = shallow(<TokenChip token={token} />);
 
-  expect(wrapper.text()).toBe("Jest Token");
+  expect(wrapper.find(Chip).prop("label")).toBe("Jest Token");
+  expect(wrapper.find(Chip).prop("color")).toBe("default");
 });
 
 it("renders a selected token chip", () => {
@@ -37,11 +30,8 @@ it("renders a selected token chip", () => {
     selected: true,
   };
 
-  const wrapper = mount(
-    <Provider store={store}>
-      <TokenChip token={token} />
-    </Provider>
-  );
+  const wrapper = shallow(<TokenChip token={token} />);
 
-  expect(wrapper.text()).toBe("Jest Token");
+  expect(wrapper.find(Chip).prop("label")).toBe("Jest Token");
+  expect(wrapper.find(Chip).prop("color")).toBe("primary");
 });
