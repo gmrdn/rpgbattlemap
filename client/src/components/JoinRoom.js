@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { setRoomId } from "../actions";
 
-const JoinRoom = (props) => {
+export const JoinRoom = (props) => {
   const handleChange = (event) => {
     props.setRoomId(event.target.value);
   };
