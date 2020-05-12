@@ -18,17 +18,18 @@ describe("Rooms", () => {
         });
     });
 
-    it("should get a single room record", (done) => {
-      const id = "5eb3006a6fb25ec2e272a290";
-      chai
-        .request(app)
-        .get(`/api/room/${id}`)
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.body.should.be.a("object");
-          done();
-        });
-    });
+    // should be mocked
+    // it("should get a single room record", (done) => {
+    //   const id = "5eb3006a6fb25ec2e272a290";
+    //   chai
+    //     .request(app)
+    //     .get(`/api/room/${id}`)
+    //     .end((err, res) => {
+    //       res.should.have.status(200);
+    //       res.body.should.be.a("object");
+    //       done();
+    //     });
+    // });
 
     it("should return 404 when room is not found", (done) => {
       const id = "5eb3006a6fb25ec2e272a299";
