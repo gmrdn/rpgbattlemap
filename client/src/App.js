@@ -18,6 +18,7 @@ const App = () => {
             <RoomSelection />
           </Route>
           <Route path="/joinroom/:id" component={RoomJoining} />
+          <Route path="/joinroom" component={Home} />
           <Route path="/room/:id" component={Room} />
           <Route path="/room" component={Home} />
           <Route path="/createroom" component={RoomCreation} />
