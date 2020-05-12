@@ -1,8 +1,5 @@
 import React from "react";
 import { mount } from "enzyme";
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-import rootReducer from "../../reducers";
 import { act } from "react-dom/test-utils";
 import { MemoryRouter } from "react-router-dom";
 import App from "../../App";
@@ -11,106 +8,109 @@ import RoomCreation from "../../pages/RoomCreation";
 import RoomSelection from "../../pages/RoomSelection";
 import RoomJoining from "../../pages/RoomJoining";
 import Room from "../../pages/Room";
+import Header from "../../components/Header";
 const rrd = require("react-router-dom");
 
 rrd.BrowserRouter = ({ children }) => <div>{children}</div>;
 
-const store = createStore(rootReducer);
+jest.mock("../../components/Header", () => {
+  const Header = () => <div />;
+  return Header;
+});
+jest.mock("../../pages/Home", () => {
+  const Home = () => <div />;
+  return Home;
+});
+jest.mock("../../pages/RoomCreation", () => {
+  const RoomCreation = () => <div />;
+  return RoomCreation;
+});
+jest.mock("../../pages/RoomSelection", () => {
+  const RoomSelection = () => <div />;
+  return RoomSelection;
+});
+jest.mock("../../pages/RoomJoining", () => {
+  const RoomJoining = () => <div />;
+  return RoomJoining;
+});
+jest.mock("../../pages/Room", () => {
+  const Room = () => <div />;
+  return Room;
+});
 
 let wrapper;
+
 describe("App", () => {
   describe("Routes", () => {
     it("displays the room creation page at /createroom", async () => {
-      wrapper = mount(
-        <Provider store={store}>
+      act(() => {
+        wrapper = mount(
           <MemoryRouter initialEntries={["/createroom"]}>
             <App />
           </MemoryRouter>
-        </Provider>
-      );
+        );
+      });
       expect(wrapper.find(Home)).toHaveLength(0);
       expect(wrapper.find(RoomCreation)).toHaveLength(1);
     });
 
     it("displays the room selection page at /roomselection", async () => {
-      wrapper = mount(
-        <Provider store={store}>
+      act(() => {
+        wrapper = mount(
           <MemoryRouter initialEntries={["/roomselection"]}>
             <App />
           </MemoryRouter>
-        </Provider>
-      );
+        );
+      });
       expect(wrapper.find(Home)).toHaveLength(0);
       expect(wrapper.find(RoomSelection)).toHaveLength(1);
     });
 
     it("displays the room joining page at /joinroom", async () => {
-      wrapper = mount(
-        <Provider store={store}>
+      act(() => {
+        wrapper = mount(
           <MemoryRouter initialEntries={["/joinroom/5eb3022bdf798cc340426118"]}>
             <App />
           </MemoryRouter>
-        </Provider>
-      );
+        );
+      });
       expect(wrapper.find(Home)).toHaveLength(0);
       expect(wrapper.find(RoomJoining)).toHaveLength(1);
     });
 
     it("displays the home page when no roomId is provided at /joinroom", async () => {
-      wrapper = mount(
-        <Provider store={store}>
+      act(() => {
+        wrapper = mount(
           <MemoryRouter initialEntries={["/joinroom"]}>
             <App />
           </MemoryRouter>
-        </Provider>
-      );
+        );
+      });
       expect(wrapper.find(Home)).toHaveLength(1);
       expect(wrapper.find(RoomJoining)).toHaveLength(0);
     });
 
-    it("displays the room joining page at /room when no nickname is provided", async () => {
-      wrapper = mount(
-        <Provider store={store}>
-          <MemoryRouter initialEntries={["/room/5eb3022bdf798cc340426118"]}>
-            <App />
-          </MemoryRouter>
-        </Provider>
-      );
-      expect(wrapper.find(Home)).toHaveLength(0);
-      expect(wrapper.find(Room)).toHaveLength(0);
-      expect(wrapper.find(RoomJoining)).toHaveLength(1);
-    });
-
     it("displays the home page at /room when no roomId is provided", async () => {
-      wrapper = mount(
-        <Provider store={store}>
+      act(() => {
+        wrapper = mount(
           <MemoryRouter initialEntries={["/room"]}>
             <App />
           </MemoryRouter>
-        </Provider>
-      );
+        );
+      });
       expect(wrapper.find(Home)).toHaveLength(1);
       expect(wrapper.find(Room)).toHaveLength(0);
       expect(wrapper.find(RoomJoining)).toHaveLength(0);
     });
 
     it("displays the room page at /room", async () => {
-      const states = {
-        nickname: "Jest User",
-        roomId: "",
-        tokens: [],
-        deleteTokenDialogOpen: false,
-        newTokenDialogOpen: false,
-      };
-      const storeWithNickname = createStore(rootReducer, states);
-
-      wrapper = mount(
-        <Provider store={storeWithNickname}>
+      act(() => {
+        wrapper = mount(
           <MemoryRouter initialEntries={["/room"]}>
             <App />
           </MemoryRouter>
-        </Provider>
-      );
+        );
+      });
       expect(wrapper.find(Home)).toHaveLength(1);
       expect(wrapper.find(Room)).toHaveLength(0);
       expect(wrapper.find(RoomJoining)).toHaveLength(0);
