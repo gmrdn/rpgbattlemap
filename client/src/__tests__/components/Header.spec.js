@@ -3,9 +3,9 @@ import { shallow } from "enzyme";
 
 import { Header } from "../../components/Header";
 
-describe("components", () => {
+describe("Components", () => {
   describe("Header", () => {
-    it("should render self and subcomponents", () => {
+    it("renders self and subcomponents", () => {
       // const enzymeWrapper = shallow(<Header />);
       const props = {
         nickname: "Enzyme User",
@@ -21,7 +21,5 @@ describe("components", () => {
       expect(enzymeWrapper.find("#header-nickname").text()).toBe("Enzyme User");
       expect(enzymeWrapper.find("#header-room-id").text()).toBe("ABCDEFG");
     });
-
-    // it("should display the current user name", () => {});
   });
 });

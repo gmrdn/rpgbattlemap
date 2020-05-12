@@ -20,39 +20,41 @@ const fakeMessages = {
 let wrapper;
 let axiosSpy;
 
-describe("ChatBox", () => {
-  beforeEach(async () => {
-    axiosSpy = jest
-      .spyOn(axios, "get")
-      .mockImplementation(() => Promise.resolve(fakeMessages));
+describe("Components", () => {
+  describe("ChatBox", () => {
+    beforeEach(async () => {
+      axiosSpy = jest
+        .spyOn(axios, "get")
+        .mockImplementation(() => Promise.resolve(fakeMessages));
 
-    Element.prototype.scrollIntoView = jest.fn();
-  });
-
-  describe("Renders messages", () => {
-    it("renders previous chat messages", async () => {
-      await act(async () => {
-        wrapper = mount(
-          <Chatbox roomId={roomId} nickname={nickname} socket={socket} />
-        );
-      });
-      expect(axiosSpy).toHaveBeenCalled();
-      expect(wrapper.text()).toBe("John Lennon : Hello world");
+      Element.prototype.scrollIntoView = jest.fn();
     });
-  });
 
-  describe("Emits socket messages", () => {
-    it("emits /join with roomId and nickname", async () => {
-      await act(async () => {
-        wrapper = mount(
-          <Chatbox roomId={roomId} nickname={nickname} socket={socket} />
-        );
+    describe("Renders messages", () => {
+      it("renders previous chat messages", async () => {
+        await act(async () => {
+          wrapper = mount(
+            <Chatbox roomId={roomId} nickname={nickname} socket={socket} />
+          );
+        });
+        expect(axiosSpy).toHaveBeenCalled();
+        expect(wrapper.text()).toBe("John Lennon : Hello world");
       });
-      expect(socket.emit).toHaveBeenCalled();
-      expect(socket.emit.mock.calls[0]).toMatchObject([
-        "/join",
-        { nickname: nickname, room: roomId },
-      ]);
+    });
+
+    describe("Emits socket messages", () => {
+      it("emits /join with roomId and nickname", async () => {
+        await act(async () => {
+          wrapper = mount(
+            <Chatbox roomId={roomId} nickname={nickname} socket={socket} />
+          );
+        });
+        expect(socket.emit).toHaveBeenCalled();
+        expect(socket.emit.mock.calls[0]).toMatchObject([
+          "/join",
+          { nickname: nickname, room: roomId },
+        ]);
+      });
     });
   });
 });
