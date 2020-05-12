@@ -8,6 +8,12 @@ context("Room Selection", () => {
       response: "fixture:rooms/rooms.json",
     }).as("getRooms");
 
+    cy.route({
+      method: "GET",
+      url: "api/room/5eb3006a6fb25ec2e272a290",
+      response: "fixture:rooms/room-with-one-token.json",
+    }).as("getRooms");
+
     cy.visit("/roomselection");
   });
 

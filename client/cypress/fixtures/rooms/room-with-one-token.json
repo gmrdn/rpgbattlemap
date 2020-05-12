@@ -1,0 +1,37 @@
+{
+  "_id": "5eb3006a6fb25ec2e272a290",
+  "grid": {
+    "_id": "5eb3006a6fb25ec2e272a291",
+    "tokens": [
+      {
+        "_id": "5eb300816fb25ec2e272a297",
+        "name": "new token",
+        "x": 6,
+        "y": 0,
+        "color": "green",
+        "image": "1.png"
+      }
+    ],
+    "name": "Temple of elemental evil",
+    "background": ""
+  },
+  "creationDate": "2020-05-06T18:22:34.682Z",
+  "chatMessages": [
+    {
+      "_id": "5eb300796fb25ec2e272a295",
+      "nickname": "GmRdn",
+      "message": "Hi there"
+    },
+    {
+      "_id": "5eb3029adf798cc340426121",
+      "nickname": "Cypress FakeUser",
+      "message": "New message"
+    },
+    {
+      "_id": "5eb302ca17deb2c39cc84ba0",
+      "nickname": "Cypress FakeUser",
+      "message": "New message"
+    }
+  ],
+  "__v": 0
+}
