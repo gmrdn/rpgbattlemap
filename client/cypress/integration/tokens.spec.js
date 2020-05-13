@@ -28,10 +28,8 @@ context("Tokens", () => {
     cy.wait("@getTokens1");
     cy.get("#avatar-1-1").should("be.visible");
     cy.get("#avatar-5-5").should("be.visible");
-    cy.get("#nav-home").click();
+    cy.visit("/joinroom");
     cy.get("#txt-room-id").type("5eb3006a6fb25ec2e272a290");
-    cy.get("#btn-join").click();
-    cy.get("#nickname").type("No Token Expected");
     cy.get("#btn-join").click();
     cy.get("#avatar-1-1").should("not.exist");
     cy.get("#avatar-5-5").should("not.exist");
