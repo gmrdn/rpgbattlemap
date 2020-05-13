@@ -33,15 +33,13 @@ export class JoinRoom extends React.Component {
               onChange={this.handleChange}
             ></input>
           </div>
-          <div className="row justify-content-center">
-            <button
-              type="submit"
-              className="btn btn-dark btn-lg w-100"
-              id="btn-join"
-            >
-              <strong>Enter</strong>
-            </button>
-          </div>
+          <button
+            type="submit"
+            className="btn btn-dark btn-lg btn-block"
+            id="btn-join"
+          >
+            <strong>Enter</strong>
+          </button>
         </form>
       </div>
     );
