@@ -57,12 +57,8 @@ describe("Components", () => {
           name: "Jest Token",
           selected: false,
         };
-        const updateReduxState = jest.fn();
-        wrapper = shallow(
-          <TokenChip token={token} selectToken={updateReduxState} />
-        );
-        const chip = wrapper.find(Chip);
-        const mEvent = {
+        const selectTokenMock = jest.fn();
+        const mockEvent = {
           preventDefault: () => {},
           target: {
             parentNode: {
@@ -71,11 +67,55 @@ describe("Components", () => {
           },
         };
 
+        wrapper = shallow(
+          <TokenChip token={token} selectToken={selectTokenMock} />
+        );
+        const chip = wrapper.find(Chip);
+
         act(() => {
-          chip.simulate("click", mEvent);
+          chip.simulate("click", mockEvent);
         });
 
-        expect(updateReduxState).toHaveBeenCalled();
+        expect(selectTokenMock).toHaveBeenCalled();
+      });
+
+      it("handles token deletion", () => {
+        const token = {
+          _id: "1234567890",
+          x: 1,
+          y: 1,
+          image: "1.png",
+          color: "red",
+          name: "Jest Token",
+          selected: false,
+        };
+        const prepareDeleteTokensMock = jest.fn();
+        const openDeleteTokenDialogMock = jest.fn();
+
+        const mockEvent = {
+          preventDefault: () => {},
+          target: {
+            parentNode: {
+              getAttribute: jest.fn().mockReturnValueOnce("1234567890"),
+            },
+          },
+        };
+
+        wrapper = shallow(
+          <TokenChip
+            token={token}
+            prepareDeleteTokens={prepareDeleteTokensMock}
+            openDeleteTokenDialog={openDeleteTokenDialogMock}
+          />
+        );
+        const chip = wrapper.find(Chip);
+
+        act(() => {
+          chip.simulate("delete", mockEvent);
+        });
+
+        expect(prepareDeleteTokensMock).toHaveBeenCalled();
+        expect(openDeleteTokenDialogMock).toHaveBeenCalled();
       });
     });
   });
