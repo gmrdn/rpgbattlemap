@@ -45,5 +45,38 @@ describe("Components", () => {
         expect(wrapper.find(Chip).prop("color")).toBe("primary");
       });
     });
+
+    describe("handles user actions", () => {
+      it("handles token selection", () => {
+        const token = {
+          _id: "1234567890",
+          x: 1,
+          y: 1,
+          image: "1.png",
+          color: "red",
+          name: "Jest Token",
+          selected: false,
+        };
+        const updateReduxState = jest.fn();
+        wrapper = shallow(
+          <TokenChip token={token} selectToken={updateReduxState} />
+        );
+        const chip = wrapper.find(Chip);
+        const mEvent = {
+          preventDefault: () => {},
+          target: {
+            parentNode: {
+              getAttribute: jest.fn().mockReturnValueOnce("1234567890"),
+            },
+          },
+        };
+
+        act(() => {
+          chip.simulate("click", mEvent);
+        });
+
+        expect(updateReduxState).toHaveBeenCalled();
+      });
+    });
   });
 });

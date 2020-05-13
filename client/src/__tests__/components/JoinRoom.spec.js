@@ -1,5 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
+import { act } from "react-dom/test-utils";
 import { JoinRoom } from "../../components/JoinRoom";
 
 describe("Components", () => {
@@ -7,7 +8,9 @@ describe("Components", () => {
     it("updates the local state on change", () => {
       const wrapper = shallow(<JoinRoom />);
       const input = wrapper.find("input");
-      input.simulate("change", { target: { value: 2 } });
+      act(() => {
+        input.simulate("change", { target: { value: 2 } });
+      });
       expect(wrapper.state("roomId")).toBe(2);
     });
 
@@ -15,8 +18,10 @@ describe("Components", () => {
       const updateReduxState = jest.fn();
       const wrapper = shallow(<JoinRoom setRoomId={updateReduxState} />);
       const form = wrapper.find("form");
-      form.simulate("submit", {
-        preventDefault: () => {},
+      act(() => {
+        form.simulate("submit", {
+          preventDefault: () => {},
+        });
       });
       expect(updateReduxState).toHaveBeenCalled();
     });

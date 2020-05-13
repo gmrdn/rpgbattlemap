@@ -21,7 +21,7 @@
     "test": "react-scripts test --runInBand --env=jsdom --reporters=jest-spec-reporter",
     "eject": "react-scripts eject",
     "cy:open": "./node_modules/cypress/bin/cypress open",
-    "coverage": "yarn test --coverage --watchAll=false --runInBand --env=jsdom --reporters=jest-spec-reporter"
+    "coverage": "react-scripts test --coverage --watchAll=false --runInBand --env=jsdom --reporters=jest-spec-reporter"
   },
   "proxy": "http://localhost:5000/",
   "eslintConfig": {
