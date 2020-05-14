@@ -39,11 +39,11 @@ export class DialogNewToken extends React.Component {
     this.props.openNewTokenDialog(false);
     console.log("Saving token");
     let newToken = {
-      name: "new token",
+      name: this.state.tokenName,
       x: 1,
       y: 1,
-      color: "green",
-      image: "1.png",
+      color: this.state.tokenColor,
+      image: this.state.tokenImage,
     };
     this.props.socket.emit("addToken", {
       room: this.props.roomId,
@@ -107,10 +107,19 @@ export class DialogNewToken extends React.Component {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={this.handleAddTokenClose} color="primary">
+          <Button
+            autoFocus
+            onClick={this.handleAddTokenClose}
+            color="primary"
+            id="btn-cancel"
+          >
             Cancel
           </Button>
-          <Button onClick={this.handleCreateToken} color="primary">
+          <Button
+            onClick={this.handleCreateToken}
+            color="primary"
+            id="btn-confirm"
+          >
             Add Token
           </Button>
         </DialogActions>
