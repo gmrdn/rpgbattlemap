@@ -20,8 +20,14 @@ context("Room Selection", () => {
   it("should display the room's list", () => {
     cy.wait("@getRooms");
     cy.get("#room-list").should("be.visible");
-    cy.get("#room-0").should("have.text", "5eb3006a6fb25ec2e272a290");
-    cy.get("#room-3").should("have.text", "5eb3031917deb2c39cc84ba9");
+    cy.get("#room-0").should(
+      "have.text",
+      "5eb3006a6fb25ec2e272a290 - Temple of elemental evil"
+    );
+    cy.get("#room-3").should(
+      "have.text",
+      "5eb3031917deb2c39cc84ba9 - Mansion on the Cypress Hill"
+    );
   });
 
   it("should navigate to the selected room", () => {

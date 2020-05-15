@@ -23,7 +23,7 @@ const RoomList = () => {
       {roomList.map((room, key) => (
         <li key={key} id="room-list" className="list-group-item">
           <NavLink to={`/joinroom/${room._id}`} id={`room-${key}`}>
-            {room._id}
+            {`${room._id} - ${room.grid.name}`}
           </NavLink>
         </li>
       ))}
