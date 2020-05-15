@@ -45,7 +45,7 @@ context("Tokens", () => {
     cy.get("#avatar-2-3").should("be.visible");
     cy.get("#tokenchip-2-3 svg.MuiChip-deleteIcon").click();
     cy.get("#confirmation-popin").should("be.visible");
-    cy.get("#btn-confirm-delete").click();
+    cy.get("#btn-confirm").click();
     cy.get("#tokenchip-2-3 svg.MuiChip-deleteIcon").should("not.exist");
   });
 });
