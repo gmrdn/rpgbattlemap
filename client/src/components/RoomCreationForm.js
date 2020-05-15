@@ -1,6 +1,15 @@
 import React from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import BackgroundCard from "../components/BackgroundCard";
+
+const backgrounds = [
+  { id: "background-grass", image: "bg-grass.jpg", label: "Grass Background" },
+  { id: "background-stone", image: "bg-stone.png", label: "Stone Background" },
+  { id: "background-jail", image: "bg-jail.jpg", label: "Jail Dungeon" },
+  { id: "background-mountain", image: "bg-mountain.jpg", label: "Mountain" },
+  { id: "background-road", image: "bg-road.jpg", label: "Road" },
+];
 
 class RoomCreationForm extends React.Component {
   state = {
@@ -58,55 +67,15 @@ class RoomCreationForm extends React.Component {
             className="form-group mb-5"
             onChange={this.handleBackgroundChange.bind(this)}
           >
-            <div className="form-check form-check-inline">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="backgroundRadios"
-                id="background-grass"
-                value="bg-grass.jpg"
-              />
-              <label className="form-check-label" for="backgroundRadios1">
-                <div
-                  className="card"
-                  style={{ width: "12rem", height: "12rem" }}
-                >
-                  <img
-                    src="/bg-grass.jpg"
-                    className="card-img-top"
-                    alt="Grass background"
-                    style={{ minHeight: "100%" }}
-                  />
-                  <div className="card-body">
-                    <p className="card-text">Grass background</p>
-                  </div>
-                </div>
-              </label>
-            </div>
-            <div className="form-check form-check-inline">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="backgroundRadios"
-                id="background-stone"
-                value="bg-stone.png"
-              />
-              <label className="form-check-label" for="backgroundRadios2">
-                <div
-                  className="card"
-                  style={{ width: "12rem", height: "12rem" }}
-                >
-                  <img
-                    src="/bg-stone.png"
-                    className="card-img-top"
-                    alt="Stone background"
-                  />
-                  <div className="card-body">
-                    <p className="card-text">Stone background</p>
-                  </div>
-                </div>
-              </label>
-            </div>
+            {backgrounds.map((background) => {
+              return (
+                <BackgroundCard
+                  id={background.id}
+                  image={background.image}
+                  label={background.label}
+                ></BackgroundCard>
+              );
+            })}
 
             <div
               className="form-check form-check-inline"
