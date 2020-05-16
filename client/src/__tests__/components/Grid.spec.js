@@ -43,45 +43,51 @@ const socket = {
 const mockData = {
   data: data,
 };
-const resetTokens = jest.fn();
+const resetTokensMock = jest.fn();
+const selectTokenMock = jest.fn();
+const moveTokenMock = jest.fn();
 
 describe("Components", () => {
   describe("Grid", () => {
+    beforeEach(() => {
+      HTMLCanvasElement.prototype.getContext = jest.fn();
+
+      jest
+        .spyOn(axios, "get")
+        .mockImplementation(() => Promise.resolve(mockData));
+
+      jest.spyOn(canvasUtils, "drawGrid").mockImplementation(() => false);
+    });
+
     describe("General display", () => {
-      beforeEach(() => {
-        HTMLCanvasElement.prototype.getContext = jest.fn();
-
-        jest
-          .spyOn(axios, "get")
-          .mockImplementation(() => Promise.resolve(mockData));
-
-        jest.spyOn(canvasUtils, "drawGrid").mockImplementation(() => false);
-      });
       it("renders a grid name", async () => {
-        wrapper = await mount(
-          <Grid
-            roomId={roomId}
-            nickname={nickname}
-            socket={socket}
-            resetTokens={resetTokens}
-            tokens={mockTokens}
-          />
-        );
+        await act(async () => {
+          wrapper = await mount(
+            <Grid
+              roomId={roomId}
+              nickname={nickname}
+              socket={socket}
+              resetTokens={resetTokensMock}
+              tokens={mockTokens}
+            />
+          );
+        });
 
         expect(wrapper.find("#room-name").text()).toBe("Lair of the Spider");
       });
 
       it("renders all tokens", async () => {
-        wrapper = await mount(
-          <Grid
-            roomId={roomId}
-            nickname={nickname}
-            socket={socket}
-            resetTokens={resetTokens}
-            tokens={mockTokens}
-          />
-        );
-
+        await act(async () => {
+          wrapper = await mount(
+            <Grid
+              roomId={roomId}
+              nickname={nickname}
+              socket={socket}
+              resetTokens={resetTokensMock}
+              tokens={mockTokens}
+            />
+          );
+        });
         expect(wrapper.find(Token)).toHaveLength(3);
       });
 
@@ -90,46 +96,40 @@ describe("Components", () => {
           .spyOn(canvasUtils, "drawGrid")
           .mockImplementation(() => false);
 
-        wrapper = await mount(
-          <Grid
-            roomId={roomId}
-            nickname={nickname}
-            socket={socket}
-            resetTokens={resetTokens}
-            tokens={mockTokens}
-          />
-        );
-
+        await act(async () => {
+          wrapper = await mount(
+            <Grid
+              roomId={roomId}
+              nickname={nickname}
+              socket={socket}
+              resetTokens={resetTokensMock}
+              tokens={mockTokens}
+            />
+          );
+        });
         expect(spy).toHaveBeenCalled();
       });
     });
 
     describe("User events", () => {
       it("selects a token on left click", async () => {
-        const roomId = "5eb3006a6fb25ec2e272a290";
-        const nickname = "Jest User";
-        const socket = {
-          emit: jest.fn(),
-          on: jest.fn(),
-        };
-        const mockData = {
-          data: data,
-        };
-        const resetTokens = jest.fn();
-        HTMLCanvasElement.prototype.getContext = jest.fn();
-
-        jest
-          .spyOn(axios, "get")
-          .mockImplementation(() => Promise.resolve(mockData));
-
-        jest.spyOn(canvasUtils, "drawGrid").mockImplementation(() => false);
-
-        const selectTokenMock = jest.fn();
-        const mockEvent = {
+        //when the avatar has an image
+        const mockEventWithId = {
           preventDefault: () => {},
           target: {
+            id: "1234567890",
             parentNode: {
-              getAttribute: jest.fn().mockReturnValueOnce("2222222222"),
+              id: "",
+            },
+          },
+        };
+        //when avatar has no image, get the id from parent node
+        const mockEventWithoutId = {
+          preventDefault: () => {},
+          target: {
+            id: "",
+            parentNode: {
+              id: "1234567890",
             },
           },
         };
@@ -149,7 +149,7 @@ describe("Components", () => {
             roomId={roomId}
             nickname={nickname}
             socket={socket}
-            resetTokens={resetTokens}
+            resetTokens={resetTokensMock}
             selectToken={selectTokenMock}
             tokens={[token]}
           />
@@ -157,9 +157,35 @@ describe("Components", () => {
 
         const tokenElement = wrapper.find(Token);
 
-        act(() => {
-          tokenElement.simulate("click", mockEvent);
-        });
+        tokenElement.simulate("click", mockEventWithId);
+        expect(selectTokenMock).toHaveBeenCalledWith("1234567890");
+
+        tokenElement.simulate("click", mockEventWithoutId);
+        expect(selectTokenMock).toHaveBeenCalledWith("1234567890");
+      });
+
+      it("prevents right click context menu on the canvas", async () => {
+        const mockEvent = {
+          preventDefault: jest.fn(),
+        };
+
+        const spy = jest.spyOn(mockEvent, "preventDefault");
+
+        wrapper = await mount(
+          <Grid
+            roomId={roomId}
+            nickname={nickname}
+            socket={socket}
+            resetTokens={resetTokensMock}
+            selectToken={selectTokenMock}
+            tokens={mockTokens}
+          />
+        );
+
+        const canvas = wrapper.find("canvas");
+
+        canvas.simulate("contextmenu", mockEvent);
+        expect(spy).toHaveBeenCalled();
       });
     });
   });
