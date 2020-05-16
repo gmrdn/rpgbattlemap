@@ -53,16 +53,6 @@ export class Grid extends React.Component {
     });
   }
 
-  // async fetchGrid(roomId) {
-  //   try {
-  //     const response = await axios(`/api/room/${roomId}`);
-  //     this.setState({ gridData: await response.data.grid });
-  //     response.data.grid.tokens.map((token) => this.props.addToken(token));
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
   async fetchGrid(roomId) {
     axios
       .get(`/api/room/${roomId}`)
@@ -84,8 +74,6 @@ export class Grid extends React.Component {
     } else {
       tokenId = e.target.parentNode.id;
     }
-    console.info("You clicked the Token.");
-    console.log(tokenId);
     this.props.selectToken(tokenId);
   };
 
