@@ -18,7 +18,7 @@ const tileSide = 40;
 var canvas;
 var ctx;
 
-class Grid extends React.Component {
+export class Grid extends React.Component {
   constructor(props) {
     super(props);
     this.gridRef = React.createRef();
