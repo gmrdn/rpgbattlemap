@@ -45,6 +45,7 @@ const mockData = {
   data: data,
 };
 const resetTokensMock = jest.fn();
+const addTokenMock = jest.fn();
 const selectTokenMock = jest.fn();
 const moveTokenMock = jest.fn();
 
@@ -64,11 +65,12 @@ describe("Components", () => {
     describe("General display", () => {
       it("renders a grid name", async () => {
         await act(async () => {
-          wrapper = await mount(
+          wrapper = mount(
             <Grid
               roomId={roomId}
               nickname={nickname}
               socket={socket}
+              addToken={addTokenMock}
               resetTokens={resetTokensMock}
               tokens={mockTokens}
             />
@@ -80,11 +82,12 @@ describe("Components", () => {
 
       it("renders all tokens", async () => {
         await act(async () => {
-          wrapper = await mount(
+          wrapper = mount(
             <Grid
               roomId={roomId}
               nickname={nickname}
               socket={socket}
+              addToken={addTokenMock}
               resetTokens={resetTokensMock}
               tokens={mockTokens}
             />
@@ -99,11 +102,12 @@ describe("Components", () => {
           .mockImplementation(() => false);
 
         await act(async () => {
-          wrapper = await mount(
+          wrapper = mount(
             <Grid
               roomId={roomId}
               nickname={nickname}
               socket={socket}
+              addToken={addTokenMock}
               resetTokens={resetTokensMock}
               tokens={mockTokens}
             />
@@ -147,11 +151,12 @@ describe("Components", () => {
             selected: false,
           };
 
-          wrapper = await mount(
+          wrapper = mount(
             <Grid
               roomId={roomId}
               nickname={nickname}
               socket={socket}
+              addToken={addTokenMock}
               resetTokens={resetTokensMock}
               selectToken={selectTokenMock}
               tokens={[token]}
@@ -169,11 +174,12 @@ describe("Components", () => {
       });
       describe("Actions on the canvas", () => {
         beforeEach(async () => {
-          wrapper = await mount(
+          wrapper = mount(
             <Grid
               roomId={roomId}
               nickname={nickname}
               socket={socket}
+              addToken={addTokenMock}
               resetTokens={resetTokensMock}
               selectToken={selectTokenMock}
               moveToken={moveTokenMock}
@@ -238,11 +244,12 @@ describe("Components", () => {
               selected: false,
             },
           ];
-          wrapper = await mount(
+          wrapper = mount(
             <Grid
               roomId={roomId}
               nickname={nickname}
               socket={socket}
+              addToken={addTokenMock}
               resetTokens={resetTokensMock}
               selectToken={selectTokenMock}
               moveToken={moveTokenMock}
@@ -250,7 +257,7 @@ describe("Components", () => {
             />
           );
 
-          canvas = await wrapper.find("canvas");
+          canvas = wrapper.find("canvas");
 
           act(() => {
             canvas.prop("onMouseDown")({
