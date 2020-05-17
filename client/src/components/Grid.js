@@ -96,7 +96,6 @@ export class Grid extends React.Component {
           x: Math.floor((e.clientX - offsetX) / 40),
           y: Math.floor((e.clientY - offsetY) / 40),
         };
-        console.log(newPosition);
 
         let moveTokenData = {
           room: this.props.roomId,
