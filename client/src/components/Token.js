@@ -18,34 +18,34 @@ const useStyles = makeStyles({
 const Token = (props) => {
   const classes = useStyles(props);
 
+  const { x, y, name, image, _id, color, selected } = props.token;
+
   return (
     <div
-      id={`avatar-${props.token.x}-${props.token.y}`}
+      id={`avatar-${x}-${y}`}
       style={{
         position: "absolute",
-        left: `${props.token.x * props.tileSide}px`,
-        top: `${props.token.y * props.tileSide}px`,
+        left: `${x * props.tileSide}px`,
+        top: `${y * props.tileSide}px`,
       }}
       onClick={props.onClick}
     >
-      <Tooltip title={props.token.name}>
+      <Tooltip title={name}>
         <IconButton
-          alt={props.token.name}
+          alt={name}
           style={{
             width: props.tileSide,
             height: props.tileSide,
           }}
         >
           <Avatar
-            className={
-              props.token.selected ? classes.selected : classes.notselected
-            }
-            alt={props.token.name}
-            src={`/tokens/${props.token.image}`}
-            id={props.token._id}
+            className={selected ? classes.selected : classes.notselected}
+            alt={name}
+            src={`/tokens/${image}`}
+            id={_id}
             style={{
               position: "absolute",
-              backgroundColor: props.token.color,
+              backgroundColor: color,
             }}
           />
         </IconButton>
