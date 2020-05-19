@@ -34,22 +34,18 @@ export class Grid extends React.Component {
     canvas = this.refs.gridCanvas;
     ctx = canvas.getContext("2d");
     canvasUtils.drawGrid(ctx, gridSize, tileSide);
+    this.prepareSockets();
+  }
 
+  prepareSockets() {
     this.props.socket.on("moveToken", ({ tokenId, x, y }) => {
-      console.log(`move token received from server for token ${tokenId}`);
       this.props.moveToken(tokenId, { x, y });
     });
-
     this.props.socket.on("deleteToken", ({ tokenId }) => {
-      console.log(`delete token received from server for token ${tokenId}`);
       this.props.deleteToken(tokenId);
     });
-
-    this.props.socket.on("addToken", (token) => {
-      console.log(
-        `add token received from server for token with name ${token.name}`
-      );
-      this.props.addToken(token);
+    this.props.socket.on("addToken", (tokenId) => {
+      this.props.addToken(tokenId);
     });
   }
 
@@ -88,9 +84,9 @@ export class Grid extends React.Component {
       })[0];
 
       if (selectedToken) {
-        var BB = canvas.getBoundingClientRect();
-        const offsetX = BB.left;
-        const offsetY = BB.top;
+        const positionInView = canvas.getBoundingClientRect();
+        const offsetX = positionInView.left;
+        const offsetY = positionInView.top;
 
         const newPosition = {
           x: Math.floor((e.clientX - offsetX) / 40),
