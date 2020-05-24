@@ -12,6 +12,7 @@ import {
 } from "../actions";
 import Token from "../components/Token";
 import canvasUtils from "../utils/canvasUtils";
+import DrawingToolbar from "./DrawingToolbar";
 
 const gridSize = { width: 60, height: 60 };
 const tileSide = 40;
@@ -115,7 +116,10 @@ export class Grid extends React.Component {
         className="container-fluid overflow-auto mt-3"
         style={{ height: "80vh" }}
       >
-        <h5 id="room-name">{this.state.gridData.name}</h5>
+        <div className="row justify-content-between">
+          <div id="room-name">{this.state.gridData.name}</div>
+          <DrawingToolbar> </DrawingToolbar>
+        </div>
         <div
           id="canvas-container"
           width="2400"
