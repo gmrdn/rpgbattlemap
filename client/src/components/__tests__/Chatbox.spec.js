@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { Chatbox } from "../../components/Chatbox";
+import { Chatbox } from "../Chatbox";
 import { act } from "react-dom/test-utils";
 import axios from "axios";
 

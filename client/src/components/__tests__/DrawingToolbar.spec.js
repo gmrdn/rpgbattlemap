@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import DrawingToolbar from "../../components/DrawingToolbar";
+import DrawingToolbar from "../DrawingToolbar";
 
 describe("Components", () => {
   describe("DrawingToolbar", () => {

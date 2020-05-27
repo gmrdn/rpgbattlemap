@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { act } from "react-dom/test-utils";
-import { DialogDeleteToken } from "../../components/DialogDeleteToken";
+import { DialogDeleteToken } from "../DialogDeleteToken";
 
 let wrapper;
 

@@ -1,4 +1,4 @@
-import reducer from "../../reducers";
+import reducer from ".";
 describe("Redux", () => {
   describe("Reducer", () => {
     describe("Initial State", () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import { act } from "react-dom/test-utils";
-import CreateRoomButton from "../../components/CreateRoomButton";
+import CreateRoomButton from "../CreateRoomButton";
 import { NavLink } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 

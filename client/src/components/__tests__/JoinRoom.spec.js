@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { act } from "react-dom/test-utils";
-import { JoinRoom } from "../../components/JoinRoom";
+import { JoinRoom } from "../JoinRoom";
 
 describe("Components", () => {
   describe("JoinRoom", () => {

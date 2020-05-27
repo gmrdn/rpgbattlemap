@@ -1,4 +1,4 @@
-import * as actions from "../../actions";
+import * as actions from ".";
 describe("Redux", () => {
   describe("Actions", () => {
     it("creates an action to set a nickname", () => {

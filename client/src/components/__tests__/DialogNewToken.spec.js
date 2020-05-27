@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { act } from "react-dom/test-utils";
-import { DialogNewToken } from "../../components/DialogNewToken";
+import { DialogNewToken } from "../DialogNewToken";
 
 let wrapper;
 describe("Components", () => {

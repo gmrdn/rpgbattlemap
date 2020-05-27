@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { act } from "react-dom/test-utils";
-import { TokenChip } from "../../components/TokenChip";
+import { TokenChip } from "../TokenChip";
 import Chip from "@material-ui/core/Chip";
 
 let wrapper;

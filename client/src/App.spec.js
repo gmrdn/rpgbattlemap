@@ -2,38 +2,38 @@ import React from "react";
 import { mount } from "enzyme";
 import { act } from "react-dom/test-utils";
 import { MemoryRouter } from "react-router-dom";
-import App from "../../App";
-import Home from "../../pages/Home";
-import RoomCreation from "../../pages/RoomCreation";
-import RoomSelection from "../../pages/RoomSelection";
-import RoomJoining from "../../pages/RoomJoining";
-import Room from "../../pages/Room";
-import Header from "../../components/Header";
+import App from "./App";
+import Home from "./pages/Home";
+import RoomCreation from "./pages/RoomCreation";
+import RoomSelection from "./pages/RoomSelection";
+import RoomJoining from "./pages/RoomJoining";
+import Room from "./pages/Room";
+import Header from "./components/Header";
 const rrd = require("react-router-dom");
 
 rrd.BrowserRouter = ({ children }) => <div>{children}</div>;
 
-jest.mock("../../components/Header", () => {
+jest.mock("./components/Header", () => {
   const Header = () => <div />;
   return Header;
 });
-jest.mock("../../pages/Home", () => {
+jest.mock("./pages/Home", () => {
   const Home = () => <div />;
   return Home;
 });
-jest.mock("../../pages/RoomCreation", () => {
+jest.mock("./pages/RoomCreation", () => {
   const RoomCreation = () => <div />;
   return RoomCreation;
 });
-jest.mock("../../pages/RoomSelection", () => {
+jest.mock("./pages/RoomSelection", () => {
   const RoomSelection = () => <div />;
   return RoomSelection;
 });
-jest.mock("../../pages/RoomJoining", () => {
+jest.mock("./pages/RoomJoining", () => {
   const RoomJoining = () => <div />;
   return RoomJoining;
 });
-jest.mock("../../pages/Room", () => {
+jest.mock("./pages/Room", () => {
   const Room = () => <div />;
   return Room;
 });

@@ -1,12 +1,12 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
 import { act } from "react-dom/test-utils";
-import { Grid } from "../../components/Grid";
-import Token from "../../components/Token";
-import DrawingToolbar from "../../components/DrawingToolbar";
+import { Grid } from "../Grid";
+import Token from "../Token";
+import DrawingToolbar from "../DrawingToolbar";
 import canvasUtils from "../../utils/canvasUtils";
 import axios from "axios";
-import * as data from "../mocks/room-with-tokens.json";
+import * as data from "./mocks/room-with-tokens.json";
 
 let wrapper;
 let canvas;
