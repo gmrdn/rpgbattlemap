@@ -78,6 +78,26 @@ export class Grid extends React.Component {
     e.preventDefault();
   }
 
+  getScrollingOffSet(canvas) {
+    const positionInView = canvas.getBoundingClientRect();
+
+    const offsetX = positionInView.left;
+    const offsetY = positionInView.top;
+
+    return { offsetX, offsetY };
+  }
+
+  getNewPositionByTileSideWithScrollingOffset(
+    clickedPosition,
+    tileSide,
+    scrollingOffset
+  ) {
+    return {
+      x: Math.floor((clickedPosition.x - scrollingOffset.offsetX) / tileSide),
+      y: Math.floor((clickedPosition.y - scrollingOffset.offsetY) / tileSide),
+    };
+  }
+
   handleMouseDown(e) {
     if (e.button === 0) {
       const selectedToken = this.props.tokens.filter((token) => {
@@ -85,14 +105,15 @@ export class Grid extends React.Component {
       })[0];
 
       if (selectedToken) {
-        const positionInView = canvas.getBoundingClientRect();
-        const offsetX = positionInView.left;
-        const offsetY = positionInView.top;
+        const scrollingOffset = this.getScrollingOffSet(canvas);
 
-        const newPosition = {
-          x: Math.floor((e.clientX - offsetX) / 40),
-          y: Math.floor((e.clientY - offsetY) / 40),
-        };
+        const clickedPosition = { x: e.clientX, y: e.clientY };
+
+        const newPosition = this.getNewPositionByTileSideWithScrollingOffset(
+          clickedPosition,
+          tileSide,
+          scrollingOffset
+        );
 
         let moveTokenData = {
           room: this.props.roomId,
