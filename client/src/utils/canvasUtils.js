@@ -21,7 +21,13 @@ const drawCell = (canvas, currentCol, tileSide, currentRow) => {
   canvas.rect(startingPositionLeft, startingPositionTop, tileSide, tileSide);
 };
 
+const getScrollingOffSet = (canvas) => {
+  const positionInView = canvas.getBoundingClientRect();
+  return { offsetX: positionInView.left, offsetY: positionInView.top };
+};
+
 const canvasUtils = {
   drawGrid,
+  getScrollingOffSet,
 };
 export default canvasUtils;

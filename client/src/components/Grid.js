@@ -78,15 +78,6 @@ export class Grid extends React.Component {
     e.preventDefault();
   }
 
-  getScrollingOffSet(canvas) {
-    const positionInView = canvas.getBoundingClientRect();
-
-    const offsetX = positionInView.left;
-    const offsetY = positionInView.top;
-
-    return { offsetX, offsetY };
-  }
-
   getNewPositionByTileSideWithScrollingOffset(
     clickedPosition,
     tileSide,
@@ -105,10 +96,8 @@ export class Grid extends React.Component {
       })[0];
 
       if (selectedToken) {
-        const scrollingOffset = this.getScrollingOffSet(canvas);
-
         const clickedPosition = { x: e.clientX, y: e.clientY };
-
+        const scrollingOffset = canvasUtils.getScrollingOffSet(canvas);
         const newPosition = this.getNewPositionByTileSideWithScrollingOffset(
           clickedPosition,
           tileSide,
@@ -123,7 +112,6 @@ export class Grid extends React.Component {
           y: newPosition.y,
         };
         this.props.socket.emit("moveToken", moveTokenData);
-
         this.props.moveToken(selectedToken._id, newPosition);
       }
     }
