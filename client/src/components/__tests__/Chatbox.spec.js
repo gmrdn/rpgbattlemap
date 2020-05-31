@@ -1,5 +1,5 @@
 import React from "react";
-import { mount } from "enzyme";
+import { mount, shallow } from "enzyme";
 import { Chatbox } from "../Chatbox";
 import { act } from "react-dom/test-utils";
 import axios from "axios";
@@ -23,6 +23,7 @@ let axiosSpy;
 describe("Components", () => {
   describe("ChatBox", () => {
     beforeEach(async () => {
+      jest.clearAllMocks();
       axiosSpy = jest
         .spyOn(axios, "get")
         .mockImplementation(() => Promise.resolve(fakeMessages));
@@ -53,6 +54,42 @@ describe("Components", () => {
         expect(socket.emit.mock.calls[0]).toMatchObject([
           "/join",
           { nickname: nickname, room: roomId },
+        ]);
+      });
+    });
+
+    describe("User events", () => {
+      it("changes the internal state when typing messages", () => {
+        const wrapper = mount(
+          <Chatbox roomId={roomId} nickname={nickname} socket={socket} />
+        );
+
+        const input = wrapper.find("#message-input");
+        act(() => {
+          input.simulate("change", { target: { value: "A" } });
+        });
+        expect(wrapper.state("currentMessage")).toBe("A");
+      });
+
+      it("emits a socket message on submit", () => {
+        const wrapper = mount(
+          <Chatbox roomId={roomId} nickname={nickname} socket={socket} />
+        );
+
+        const input = wrapper.find("#message-input");
+        input.simulate("change", { target: { value: "A" } });
+        const form = wrapper.find("form");
+
+        act(() => {
+          form.simulate("submit", {
+            preventDefault: () => {},
+          });
+        });
+
+        expect(socket.emit).toHaveBeenCalled();
+        expect(socket.emit.mock.calls[1]).toMatchObject([
+          "/msg",
+          { nickname: nickname, room: roomId, message: "A" },
         ]);
       });
     });

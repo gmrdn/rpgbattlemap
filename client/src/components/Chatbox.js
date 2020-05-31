@@ -67,7 +67,6 @@ export class Chatbox extends React.Component {
   }
 
   addMessage = (nck, msg) => {
-    console.log("adding message in state : " + msg);
     this.setState((prevState) => ({
       chatlogs: [...prevState.chatlogs, { nickname: nck, message: msg }],
     }));
