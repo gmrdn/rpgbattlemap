@@ -11,7 +11,7 @@ import DialogDeleteToken from "../components/DialogDeleteToken";
 import DialogNewToken from "../components/DialogNewToken";
 
 var socket;
-class Room extends React.Component {
+export class Room extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
