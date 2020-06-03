@@ -3,10 +3,21 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { setUserName } from "../actions";
 
-class NicknameSelection extends React.Component {
+export class NicknameSelection extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      nickname: "",
+    };
+  }
+
   handleSetNickname = () => {
-    this.props.setUserName(this.nickname.value);
-    localStorage.setItem("nickname", this.nickname.value);
+    this.props.setUserName(this.state.nickname);
+    localStorage.setItem("nickname", this.state.nickname);
+  };
+
+  handleChangeNickname = (e) => {
+    this.setState({ nickname: e.target.value });
   };
 
   render() {
@@ -23,7 +34,7 @@ class NicknameSelection extends React.Component {
               placeholder="Nickname"
               aria-label="Nickname"
               required
-              ref={(input) => (this.nickname = input)}
+              onChange={this.handleChangeNickname}
             ></input>
           </div>
           <NavLink
