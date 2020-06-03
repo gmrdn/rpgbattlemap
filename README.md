@@ -8,9 +8,8 @@ This is a web application allowing multiple users to join in a private virtual r
 
 # Technical stack :
 
-
 ![End-to-end tests](https://github.com/gmrdn/rpgbattlemap/workflows/End-to-end%20tests/badge.svg?branch=master)
- 
+
 - **MongoDB** for the database, hosted in atlas
 - **Express** for the API
 - **Nodejs** for the back end environment
@@ -26,7 +25,20 @@ This is a web application allowing multiple users to join in a private virtual r
 
 Also tried Golang for the backend but I finally decided to focus on javascript for this project.
 
+# Features
+
+Create a room
+
+![](createroom.gif)
+
+Join the room and add tokens
+
+![](addtoken.gif)
+
+Move the tokens on the map
+
+![](movetokens.gif)
+
 # Credits
 
 All images (map and tokens) are from Ross McConnell @ https://2minutetabletop.com/
-
