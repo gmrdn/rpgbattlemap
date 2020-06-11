@@ -1,5 +1,5 @@
-import React from "react";
-import { mount } from "enzyme";
+import React, { FC } from "react";
+import { mount, ReactWrapper } from "enzyme";
 import { act } from "react-dom/test-utils";
 import { MemoryRouter } from "react-router-dom";
 import App from "./App";
@@ -11,7 +11,11 @@ import Room from "./pages/Room";
 import Header from "./components/Header";
 const rrd = require("react-router-dom");
 
-rrd.BrowserRouter = ({ children }) => <div>{children}</div>;
+interface IProps {
+  children: FC;
+}
+
+rrd.BrowserRouter = ({ children }: IProps) => <div>{children}</div>;
 
 jest.mock("./components/Header", () => {
   const Header = () => <div />;
@@ -38,7 +42,7 @@ jest.mock("./pages/Room", () => {
   return Room;
 });
 
-let wrapper;
+let wrapper: ReactWrapper;
 
 describe("App", () => {
   describe("Routes", () => {
