@@ -1,7 +1,8 @@
 import React from "react";
 import io from "socket.io-client";
-import { Redirect } from "react-router-dom";
-import { connect } from "react-redux";
+import { Redirect, RouteComponentProps } from "react-router-dom";
+
+import { connect, ConnectedProps } from "react-redux";
 import { setUserName, setRoomId } from "../actions";
 import Grid from "../components/Grid";
 import Drawer from "@material-ui/core/Drawer";
@@ -10,9 +11,38 @@ import TokenBar from "../components/TokenBar";
 import DialogDeleteToken from "../components/DialogDeleteToken";
 import DialogNewToken from "../components/DialogNewToken";
 
-var socket;
-export class Room extends React.Component {
-  constructor(props) {
+interface RootState {
+  nickname: string;
+  roomId: string;
+}
+
+const mapStateToProps = (state: RootState) => {
+  return {
+    nickname: state.nickname,
+    roomId: state.roomId,
+  };
+};
+
+const mapDispatchToProps = { setUserName, setRoomId };
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+interface IProps extends RouteComponentProps<{ id?: string }>, PropsFromRedux {
+  nickname: string;
+  roomId: string;
+}
+
+interface IState {
+  chatOpen: boolean;
+  tokenBarOpen: boolean;
+}
+
+let socket: object;
+
+export class Room extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
     this.state = {
       chatOpen: true,
@@ -45,7 +75,7 @@ export class Room extends React.Component {
     if (this.props.nickname === "") {
       this.props.setRoomId(this.props.match.params.id);
       if (localStorage.getItem("nickname")) {
-        this.props.setUserName(localStorage.getItem("nickname"));
+        this.props.setUserName(localStorage.getItem("nickname") || "");
       } else {
         return <Redirect to={`/joinroom/${this.props.match.params.id}`} />;
       }
@@ -103,13 +133,4 @@ export class Room extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    nickname: state.nickname,
-    roomId: state.roomId,
-  };
-};
-
-const mapDispatchToProps = { setUserName, setRoomId };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Room);
+export default connector(Room);

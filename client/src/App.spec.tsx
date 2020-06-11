@@ -8,7 +8,6 @@ import RoomCreation from "./pages/RoomCreation";
 import RoomSelection from "./pages/RoomSelection";
 import RoomJoining from "./pages/RoomJoining";
 import Room from "./pages/Room";
-import Header from "./components/Header";
 const rrd = require("react-router-dom");
 
 interface IProps {

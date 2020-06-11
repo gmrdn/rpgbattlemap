@@ -1,18 +1,27 @@
-export function setUserName(nickname) {
+interface Token {
+  _id: string;
+  x: number;
+  y: number;
+  name: string;
+  color: string;
+  image: string;
+}
+
+export function setUserName(nickname: string) {
   return {
     type: "SET_NICKNAME",
     nickname,
   };
 }
 
-export function setRoomId(roomId) {
+export function setRoomId(roomId: string) {
   return {
     type: "SET_ROOMID",
     roomId,
   };
 }
 
-export function addToken(token) {
+export function addToken(token: Token) {
   return {
     type: "ADD_TOKEN",
     _id: token._id,
@@ -30,21 +39,21 @@ export function resetTokens() {
   };
 }
 
-export function selectToken(tokenId) {
+export function selectToken(tokenId: string) {
   return {
     type: "SELECT_TOKEN",
     tokenId,
   };
 }
 
-export function deleteToken(tokenId) {
+export function deleteToken(tokenId: string) {
   return {
     type: "DELETE_TOKEN",
     tokenId,
   };
 }
 
-export function moveToken(tokenId, newPosition) {
+export function moveToken(tokenId: string, newPosition: Position) {
   return {
     type: "MOVE_TOKEN",
     tokenId,
@@ -52,21 +61,21 @@ export function moveToken(tokenId, newPosition) {
   };
 }
 
-export function prepareDeleteTokens(tokenIds) {
+export function prepareDeleteTokens(tokenIds: string[]) {
   return {
     type: "PREPARE_DELETE_TOKENS",
     tokenIds,
   };
 }
 
-export function openDeleteTokenDialog(open) {
+export function openDeleteTokenDialog(open: boolean) {
   return {
     type: "OPEN_DELETE_TOKEN_DIALOG",
     open: open,
   };
 }
 
-export function openNewTokenDialog(open) {
+export function openNewTokenDialog(open: boolean) {
   return {
     type: "OPEN_NEW_TOKEN_DIALOG",
     open: open,
