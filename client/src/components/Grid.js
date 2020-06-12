@@ -9,10 +9,13 @@ import {
   selectToken,
   moveToken,
   deleteToken,
+  openNewTokenDialog,
 } from "../actions";
 import Token from "../components/Token";
 import canvasUtils from "../utils/canvasUtils";
 import DrawingToolbar from "./DrawingToolbar";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
 
 const gridSize = { width: 60, height: 60 };
 const tileSide = 40;
@@ -62,6 +65,10 @@ export class Grid extends React.Component {
         console.log(error);
       });
   }
+
+  handleAddToken = () => {
+    this.props.openNewTokenDialog(true);
+  };
 
   handleClickOnToken = (e) => {
     e.preventDefault();
@@ -135,6 +142,14 @@ export class Grid extends React.Component {
           height="2400"
           style={{ position: "relative" }}
         >
+          <Fab
+            color="primary"
+            aria-label="add"
+            id="fab-addtoken"
+            onClick={this.handleAddToken}
+          >
+            <AddIcon />
+          </Fab>
           <canvas
             onContextMenu={this.handleRightClick.bind(this)}
             ref="gridCanvas"
@@ -180,6 +195,7 @@ const mapDispatchToProps = {
   selectToken,
   moveToken,
   deleteToken,
+  openNewTokenDialog,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Grid);
