@@ -15,7 +15,7 @@ const RoomList = () => {
   }, []);
 
   if (!roomList) {
-    return "loading...";
+    return <div>loading...</div>;
   }
 
   return (
