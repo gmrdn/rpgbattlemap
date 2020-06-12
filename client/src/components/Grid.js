@@ -22,6 +22,12 @@ const tileSide = 40;
 var canvas;
 var ctx;
 
+const fabStyle = {
+  position: "absolute",
+  top: "160px",
+  left: "16px",
+};
+
 export class Grid extends React.Component {
   constructor(props) {
     super(props);
@@ -142,14 +148,6 @@ export class Grid extends React.Component {
           height="2400"
           style={{ position: "relative" }}
         >
-          <Fab
-            color="primary"
-            aria-label="add"
-            id="fab-addtoken"
-            onClick={this.handleAddToken}
-          >
-            <AddIcon />
-          </Fab>
           <canvas
             onContextMenu={this.handleRightClick.bind(this)}
             ref="gridCanvas"
@@ -174,6 +172,15 @@ export class Grid extends React.Component {
             );
           })}
         </div>
+        <Fab
+          color="primary"
+          aria-label="add"
+          id="fab-addtoken"
+          style={fabStyle}
+          onClick={this.handleAddToken}
+        >
+          <AddIcon />
+        </Fab>
       </div>
     );
   }

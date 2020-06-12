@@ -96,10 +96,11 @@ export class Room extends React.Component<IProps, IState> {
             id="btn-tokenbar"
             className="btn"
             type="button"
-            data-toggle="collapse"
+            // data-toggle="collapse"
             data-target="#token-bar"
             aria-expanded="true"
             aria-controls="token-bar"
+            onClick={this.handleDrawerOpenTokenBar}
           >
             Token Bar
           </button>
@@ -108,9 +109,18 @@ export class Room extends React.Component<IProps, IState> {
           <div className="p-2 w-100 bd-highlight">
             <Grid socket={socket} roomId={this.props.roomId}></Grid>
           </div>
-          <div id="token-bar" className="collapse">
+          {/* <div id="token-bar" className="collapse"> */}
+
+          <Drawer
+            variant="persistent"
+            anchor="right"
+            open={this.state.tokenBarOpen}
+            style={{ opacity: "0.8" }}
+          >
             <TokenBar socket={socket}></TokenBar>
-          </div>
+          </Drawer>
+
+          {/* </div> */}
         </div>
 
         <DialogDeleteToken socket={socket}></DialogDeleteToken>
