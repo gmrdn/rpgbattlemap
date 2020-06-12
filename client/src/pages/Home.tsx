@@ -4,7 +4,17 @@ import { Redirect } from "react-router-dom";
 import JoinRoom from "../components/JoinRoom";
 import CreateRoomButton from "../components/CreateRoomButton";
 
-export class Home extends React.Component {
+interface RootState {
+  roomId: string;
+}
+
+interface IProps {
+  roomId: string;
+}
+
+interface IState {}
+
+export class Home extends React.Component<IProps, IState> {
   render() {
     if (this.props.roomId !== "") {
       return <Redirect to={`/room/${this.props.roomId}`} />;
@@ -18,9 +28,8 @@ export class Home extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: RootState) => {
   return {
-    nickname: state.nickname,
     roomId: state.roomId,
   };
 };
