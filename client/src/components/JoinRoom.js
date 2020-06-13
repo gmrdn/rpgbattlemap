@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setRoomId } from "../actions";
+import EnterButton from "./EnterButton/EnterButton";
 
 export class JoinRoom extends React.Component {
   constructor(props) {
@@ -33,13 +34,7 @@ export class JoinRoom extends React.Component {
               onChange={this.handleChange}
             ></input>
           </div>
-          <button
-            type="submit"
-            className="btn btn-dark btn-lg btn-block"
-            id="btn-join"
-          >
-            <strong>Enter</strong>
-          </button>
+          <EnterButton text="Enter"></EnterButton>
         </form>
       </div>
     );
