@@ -4,12 +4,9 @@ import { Redirect, RouteComponentProps } from "react-router-dom";
 import { connect, ConnectedProps } from "react-redux";
 import { setUserName, setRoomId } from "../actions";
 import Chatbox from "../components/Chatbox";
-import ChatIcon from "@material-ui/icons/Chat";
 import DialogDeleteToken from "../components/DialogDeleteToken";
 import DialogNewToken from "../components/DialogNewToken";
-import Drawer from "@material-ui/core/Drawer";
 import Grid from "../components/Grid";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 interface RootState {
   nickname: string;
@@ -83,8 +80,6 @@ export class Room extends React.Component<IProps, IState> {
 
         <DialogDeleteToken socket={socket}></DialogDeleteToken>
         <DialogNewToken socket={socket}></DialogNewToken>
-        {/* <Drawer variant="persistent" anchor="bottom" open={this.state.chatOpen}> */}
-        {/* <ExpandMoreIcon onClick={this.toggleChatDrawer}></ExpandMoreIcon> */}
         <Chatbox
           socket={socket}
           nickname={this.props.nickname}
