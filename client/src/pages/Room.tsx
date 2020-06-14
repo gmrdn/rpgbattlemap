@@ -1,16 +1,16 @@
 import React from "react";
 import io from "socket.io-client";
 import { Redirect, RouteComponentProps } from "react-router-dom";
-
 import { connect, ConnectedProps } from "react-redux";
 import { setUserName, setRoomId } from "../actions";
-import Grid from "../components/Grid";
-import Drawer from "@material-ui/core/Drawer";
 import Chatbox from "../components/Chatbox";
-import TokenBar from "../components/TokenBar";
+import ChatIcon from "@material-ui/icons/Chat";
 import DialogDeleteToken from "../components/DialogDeleteToken";
 import DialogNewToken from "../components/DialogNewToken";
+import Drawer from "@material-ui/core/Drawer";
+import Grid from "../components/Grid";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import TokenBar from "../components/TokenBar";
 
 interface RootState {
   nickname: string;
@@ -84,28 +84,6 @@ export class Room extends React.Component<IProps, IState> {
 
     return (
       <>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <button
-            id="btn-chatbox"
-            className="btn"
-            onClick={this.toggleChatDrawer}
-          >
-            Chatbox
-          </button>
-          {/* 
-          <button
-            id="btn-tokenbar"
-            className="btn"
-            type="button"
-            // data-toggle="collapse"
-            data-target="#token-bar"
-            aria-expanded="true"
-            aria-controls="token-bar"
-            onClick={this.handleDrawerOpenTokenBar}
-          >
-            Token Bar
-          </button> */}
-        </nav>
         <div className="d-flex bd-highlight">
           <div className="p-2 w-100 bd-highlight">
             <Grid socket={socket} roomId={this.props.roomId}></Grid>
@@ -125,6 +103,9 @@ export class Room extends React.Component<IProps, IState> {
             roomId={this.props.roomId}
           />
         </Drawer>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <ChatIcon id="btn-chatbox" onClick={this.toggleChatDrawer}></ChatIcon>
+        </nav>
       </>
     );
   }

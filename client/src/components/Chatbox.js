@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import { connect } from "react-redux";
 import { setUserName, setRoomId, addToken } from "../actions";
+import Box from "@material-ui/core/Box";
+import Paper from "@material-ui/core/Paper";
 
 const divStyle = {
   height: "20vh",
@@ -108,36 +110,38 @@ export class Chatbox extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div id="messages-log" className="container mb-0" style={divStyle}>
-          {this.state.chatlogs.map((log, key) => (
-            <div key={key} className="row d-flex">
-              <div className="align-center ml-3">
-                <div className="mb-1">
-                  {this.renderMessage(log.nickname, log.message)}
+      <Box width="50%">
+        <Paper elevation={13} variant="outlined">
+          <div id="messages-log" className="container mb-0" style={divStyle}>
+            {this.state.chatlogs.map((log, key) => (
+              <div key={key} className="row d-flex">
+                <div className="align-center ml-3">
+                  <div className="mb-1">
+                    {this.renderMessage(log.nickname, log.message)}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-          <div
-            style={{ float: "left", clear: "both" }}
-            ref={(el) => {
-              this.messagesEnd = el;
-            }}
-          ></div>
-        </div>
-        <div>
-          <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <input
-              id="message-input"
-              type="text"
-              className="form-control mt-3 mb-1 bg-light rounded-pill"
-              value={this.state.currentMessage}
-              onChange={this.handleChange}
-            ></input>
-          </form>
-        </div>
-      </div>
+            ))}
+            <div
+              style={{ float: "left", clear: "both" }}
+              ref={(el) => {
+                this.messagesEnd = el;
+              }}
+            ></div>
+          </div>
+          <div>
+            <form autoComplete="off" onSubmit={this.handleSubmit}>
+              <input
+                id="message-input"
+                type="text"
+                className="form-control mt-3 mb-1 bg-light rounded-pill"
+                value={this.state.currentMessage}
+                onChange={this.handleChange}
+              ></input>
+            </form>
+          </div>
+        </Paper>
+      </Box>
     );
   }
 }

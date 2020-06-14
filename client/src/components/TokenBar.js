@@ -4,10 +4,6 @@ import { connect } from "react-redux";
 import { openNewTokenDialog } from "../actions";
 
 const TokenBar = (props) => {
-  const handleAddToken = (e) => {
-    props.openNewTokenDialog(true);
-  };
-
   return (
     <div className="container-fluid mt-3 p-0" style={{ opacity: "0.8" }}>
       <div
@@ -31,9 +27,6 @@ const TokenBar = (props) => {
           })}
         </ul>
       </div>
-      <button className="btn" onClick={handleAddToken}>
-        Add
-      </button>
     </div>
   );
 };
