@@ -10,6 +10,7 @@ import Chatbox from "../components/Chatbox";
 import TokenBar from "../components/TokenBar";
 import DialogDeleteToken from "../components/DialogDeleteToken";
 import DialogNewToken from "../components/DialogNewToken";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 interface RootState {
   nickname: string;
@@ -51,7 +52,7 @@ export class Room extends React.Component<IProps, IState> {
     socket = io();
   }
 
-  handleDrawerOpenChat = () => {
+  toggleChatDrawer = () => {
     if (this.state.chatOpen) {
       this.setState({ chatOpen: false });
     } else {
@@ -59,13 +60,13 @@ export class Room extends React.Component<IProps, IState> {
     }
   };
 
-  handleDrawerOpenTokenBar = () => {
-    if (this.state.tokenBarOpen) {
-      this.setState({ tokenBarOpen: false });
-    } else {
-      this.setState({ tokenBarOpen: true });
-    }
-  };
+  // handleDrawerOpenTokenBar = () => {
+  //   if (this.state.tokenBarOpen) {
+  //     this.setState({ tokenBarOpen: false });
+  //   } else {
+  //     this.setState({ tokenBarOpen: true });
+  //   }
+  // };
 
   render() {
     if (!this.props.match.params.id) {
@@ -87,11 +88,11 @@ export class Room extends React.Component<IProps, IState> {
           <button
             id="btn-chatbox"
             className="btn"
-            onClick={this.handleDrawerOpenChat}
+            onClick={this.toggleChatDrawer}
           >
             Chatbox
           </button>
-
+          {/* 
           <button
             id="btn-tokenbar"
             className="btn"
@@ -103,36 +104,22 @@ export class Room extends React.Component<IProps, IState> {
             onClick={this.handleDrawerOpenTokenBar}
           >
             Token Bar
-          </button>
+          </button> */}
         </nav>
         <div className="d-flex bd-highlight">
           <div className="p-2 w-100 bd-highlight">
             <Grid socket={socket} roomId={this.props.roomId}></Grid>
           </div>
-          {/* <div id="token-bar" className="collapse"> */}
-
-          <Drawer
-            variant="persistent"
-            anchor="right"
-            open={this.state.tokenBarOpen}
-            style={{ opacity: "0.8" }}
-          >
+          <div id="token-bar">
             <TokenBar socket={socket}></TokenBar>
-          </Drawer>
-
-          {/* </div> */}
+          </div>
         </div>
 
         <DialogDeleteToken socket={socket}></DialogDeleteToken>
         <DialogNewToken socket={socket}></DialogNewToken>
-        <Drawer
-          variant="persistent"
-          anchor="bottom"
-          open={this.state.chatOpen}
-          style={{ opacity: "0.8" }}
-        >
+        <Drawer variant="persistent" anchor="bottom" open={this.state.chatOpen}>
+          <ExpandMoreIcon onClick={this.toggleChatDrawer}></ExpandMoreIcon>
           <Chatbox
-            className="flex-grow-1"
             socket={socket}
             nickname={this.props.nickname}
             roomId={this.props.roomId}
