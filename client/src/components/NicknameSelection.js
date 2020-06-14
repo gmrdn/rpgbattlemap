@@ -1,7 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setUserName } from "../actions";
+import EnterButton from "../components/EnterButton/EnterButton";
 
 export class NicknameSelection extends React.Component {
   constructor(props) {
@@ -37,16 +38,15 @@ export class NicknameSelection extends React.Component {
               onChange={this.handleChangeNickname}
             ></input>
           </div>
-          <NavLink
+          <Link
             id="btn-join"
             to={{
               pathname: `/room/${this.props.roomId}`,
             }}
-            className="btn btn-dark btn-lg"
             onClick={this.handleSetNickname}
           >
-            <strong>Join</strong>
-          </NavLink>
+            <EnterButton text="Join"></EnterButton>
+          </Link>
         </div>
       </>
     );
