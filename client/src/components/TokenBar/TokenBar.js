@@ -16,10 +16,11 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "3px",
     backgroundColor: theme.palette.background.default,
     position: "absolute",
-    "max-height": "240px",
+    "max-height": "258px",
     overflowY: "auto",
-    top: "200px",
+    top: "180px",
     right: "0px",
+    opacity: "0.8",
   },
 }));
 

@@ -7,7 +7,7 @@ import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 
 const divStyle = {
-  height: "20vh",
+  height: "19vh",
   overflowY: "scroll",
 };
 
@@ -110,7 +110,15 @@ export class Chatbox extends React.Component {
 
   render() {
     return (
-      <Box width="50%">
+      <Box
+        width="50%"
+        style={{
+          position: "absolute",
+          bottom: "0px",
+          left: "0px",
+          opacity: "0.8",
+        }}
+      >
         <Paper elevation={13} variant="outlined">
           <div id="messages-log" className="container mb-0" style={divStyle}>
             {this.state.chatlogs.map((log, key) => (
@@ -137,6 +145,7 @@ export class Chatbox extends React.Component {
                 className="form-control mt-3 mb-1 bg-light rounded-pill"
                 value={this.state.currentMessage}
                 onChange={this.handleChange}
+                style={{ opacity: "1" }}
               ></input>
             </form>
           </div>

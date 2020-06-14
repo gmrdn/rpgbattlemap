@@ -83,17 +83,13 @@ export class Room extends React.Component<IProps, IState> {
 
         <DialogDeleteToken socket={socket}></DialogDeleteToken>
         <DialogNewToken socket={socket}></DialogNewToken>
-        <Drawer variant="persistent" anchor="bottom" open={this.state.chatOpen}>
-          <ExpandMoreIcon onClick={this.toggleChatDrawer}></ExpandMoreIcon>
-          <Chatbox
-            socket={socket}
-            nickname={this.props.nickname}
-            roomId={this.props.roomId}
-          />
-        </Drawer>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <ChatIcon id="btn-chatbox" onClick={this.toggleChatDrawer}></ChatIcon>
-        </nav>
+        {/* <Drawer variant="persistent" anchor="bottom" open={this.state.chatOpen}> */}
+        {/* <ExpandMoreIcon onClick={this.toggleChatDrawer}></ExpandMoreIcon> */}
+        <Chatbox
+          socket={socket}
+          nickname={this.props.nickname}
+          roomId={this.props.roomId}
+        />
       </>
     );
   }

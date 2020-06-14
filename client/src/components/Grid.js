@@ -24,8 +24,8 @@ var ctx;
 
 const fabStyle = {
   position: "absolute",
-  top: "160px",
-  left: "16px",
+  bottom: "100px",
+  right: "54px",
 };
 
 export class Grid extends React.Component {
