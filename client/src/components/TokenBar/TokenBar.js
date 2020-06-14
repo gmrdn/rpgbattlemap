@@ -9,6 +9,7 @@ import ListItem from "@material-ui/core/ListItem";
 import { ListItemText } from "@material-ui/core";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
+import Collapse from "@material-ui/core/Collapse";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,19 +37,21 @@ export const TokenBar = (props) => {
         <ListItemText primary="Tokens" />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
-      <List dense>
-        {props.tokens.map((token) => {
-          return (
-            <ListItem key={token._id}>
-              <TokenChip
-                token={token}
-                tileSide={40}
-                socket={props.socket}
-              ></TokenChip>
-            </ListItem>
-          );
-        })}
-      </List>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List dense>
+          {props.tokens.map((token) => {
+            return (
+              <ListItem key={token._id}>
+                <TokenChip
+                  token={token}
+                  tileSide={40}
+                  socket={props.socket}
+                ></TokenChip>
+              </ListItem>
+            );
+          })}
+        </List>
+      </Collapse>
     </Box>
   );
 };
