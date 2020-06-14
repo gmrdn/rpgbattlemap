@@ -3,7 +3,6 @@ import { mount } from "enzyme";
 import { act } from "react-dom/test-utils";
 import { Grid } from "../Grid";
 import Token from "../Token";
-import DrawingToolbar from "../DrawingToolbar";
 import canvasUtils from "../../utils/canvasUtils";
 import axios from "axios";
 import * as data from "./mocks/room-with-tokens.json";
@@ -79,23 +78,6 @@ describe("Components", () => {
         });
 
         expect(wrapper.find("#room-name").text()).toBe("Lair of the Spider");
-      });
-
-      it("renders a drawing toolbar", async () => {
-        await act(async () => {
-          wrapper = mount(
-            <Grid
-              roomId={roomId}
-              nickname={nickname}
-              socket={socket}
-              addToken={addTokenMock}
-              resetTokens={resetTokensMock}
-              tokens={mockTokens}
-            />
-          );
-        });
-
-        expect(wrapper.find(DrawingToolbar)).toExist();
       });
 
       it("renders all tokens", async () => {
