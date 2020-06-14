@@ -13,7 +13,6 @@ import {
 } from "../actions";
 import Token from "../components/Token";
 import canvasUtils from "../utils/canvasUtils";
-import DrawingToolbar from "./DrawingToolbar";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 
@@ -140,7 +139,6 @@ export class Grid extends React.Component {
       >
         <div className="row justify-content-between">
           <div id="room-name">{this.state.gridData.name}</div>
-          <DrawingToolbar> </DrawingToolbar>
         </div>
         <div
           id="canvas-container"
