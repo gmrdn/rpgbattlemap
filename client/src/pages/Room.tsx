@@ -72,8 +72,8 @@ export class Room extends React.Component<IProps, IState> {
 
     return (
       <>
-        <div className="d-flex bd-highlight">
-          <div className="p-2 w-100 bd-highlight">
+        <div className="d-flex">
+          <div className="w-100">
             <Grid socket={socket} roomId={this.props.roomId}></Grid>
           </div>
         </div>

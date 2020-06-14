@@ -8,6 +8,7 @@ import Paper from "@material-ui/core/Paper";
 
 const divStyle = {
   height: "19vh",
+  opacity: "0.8",
   overflowY: "scroll",
 };
 
@@ -111,7 +112,7 @@ export class Chatbox extends React.Component {
   render() {
     return (
       <Box
-        width="50%"
+        width="25%"
         style={{
           position: "absolute",
           bottom: "0px",

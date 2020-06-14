@@ -136,7 +136,7 @@ export class Grid extends React.Component {
     return (
       <div
         className="container-fluid overflow-auto mt-3"
-        style={{ height: "80vh" }}
+        style={{ height: "90vh" }}
       >
         <div className="row justify-content-between">
           <div id="room-name">{this.state.gridData.name}</div>
