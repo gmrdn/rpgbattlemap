@@ -5,9 +5,13 @@ import { Grid } from "../Grid";
 import Token from "../Token";
 import canvasUtils from "../../utils/canvasUtils";
 import axios from "axios";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import rootReducer from "../../reducers";
 import * as data from "./mocks/room-with-tokens.json";
 
 let wrapper;
+const store = createStore(rootReducer);
 let canvas;
 const mockTokens = [
   {
@@ -66,14 +70,16 @@ describe("Components", () => {
       it("renders a grid name", async () => {
         await act(async () => {
           wrapper = mount(
-            <Grid
-              roomId={roomId}
-              nickname={nickname}
-              socket={socket}
-              addToken={addTokenMock}
-              resetTokens={resetTokensMock}
-              tokens={mockTokens}
-            />
+            <Provider store={store}>
+              <Grid
+                roomId={roomId}
+                nickname={nickname}
+                socket={socket}
+                addToken={addTokenMock}
+                resetTokens={resetTokensMock}
+                tokens={mockTokens}
+              />
+            </Provider>
           );
         });
 
@@ -83,14 +89,16 @@ describe("Components", () => {
       it("renders all tokens", async () => {
         await act(async () => {
           wrapper = mount(
-            <Grid
-              roomId={roomId}
-              nickname={nickname}
-              socket={socket}
-              addToken={addTokenMock}
-              resetTokens={resetTokensMock}
-              tokens={mockTokens}
-            />
+            <Provider store={store}>
+              <Grid
+                roomId={roomId}
+                nickname={nickname}
+                socket={socket}
+                addToken={addTokenMock}
+                resetTokens={resetTokensMock}
+                tokens={mockTokens}
+              />
+            </Provider>
           );
         });
         expect(wrapper.find(Token)).toHaveLength(3);
@@ -103,14 +111,16 @@ describe("Components", () => {
 
         await act(async () => {
           wrapper = mount(
-            <Grid
-              roomId={roomId}
-              nickname={nickname}
-              socket={socket}
-              addToken={addTokenMock}
-              resetTokens={resetTokensMock}
-              tokens={mockTokens}
-            />
+            <Provider store={store}>
+              <Grid
+                roomId={roomId}
+                nickname={nickname}
+                socket={socket}
+                addToken={addTokenMock}
+                resetTokens={resetTokensMock}
+                tokens={mockTokens}
+              />
+            </Provider>
           );
         });
         expect(spy).toHaveBeenCalled();
@@ -119,14 +129,16 @@ describe("Components", () => {
       it("displays a floating action button to add tokens", async () => {
         await act(async () => {
           wrapper = mount(
-            <Grid
-              roomId={roomId}
-              nickname={nickname}
-              socket={socket}
-              addToken={addTokenMock}
-              resetTokens={resetTokensMock}
-              tokens={mockTokens}
-            />
+            <Provider store={store}>
+              <Grid
+                roomId={roomId}
+                nickname={nickname}
+                socket={socket}
+                addToken={addTokenMock}
+                resetTokens={resetTokensMock}
+                tokens={mockTokens}
+              />
+            </Provider>
           );
         });
         expect(wrapper.find("#fab-addtoken")).toExist();
@@ -145,18 +157,19 @@ describe("Components", () => {
           };
 
           wrapper = mount(
-            <Grid
-              roomId={roomId}
-              nickname={nickname}
-              socket={socket}
-              addToken={addTokenMock}
-              resetTokens={resetTokensMock}
-              selectToken={selectTokenMock}
-              tokens={mockTokens}
-              openNewTokenDialog={openNewTokenDialog}
-            />
+            <Provider store={store}>
+              <Grid
+                roomId={roomId}
+                nickname={nickname}
+                socket={socket}
+                addToken={addTokenMock}
+                resetTokens={resetTokensMock}
+                selectToken={selectTokenMock}
+                tokens={mockTokens}
+                openNewTokenDialog={openNewTokenDialog}
+              />
+            </Provider>
           );
-
           const fab = wrapper.find("button#fab-addtoken");
           fab.simulate("click", mockEvent);
           expect(openNewTokenDialog).toHaveBeenCalledWith(true);
@@ -196,15 +209,17 @@ describe("Components", () => {
           };
 
           wrapper = mount(
-            <Grid
-              roomId={roomId}
-              nickname={nickname}
-              socket={socket}
-              addToken={addTokenMock}
-              resetTokens={resetTokensMock}
-              selectToken={selectTokenMock}
-              tokens={[token]}
-            />
+            <Provider store={store}>
+              <Grid
+                roomId={roomId}
+                nickname={nickname}
+                socket={socket}
+                addToken={addTokenMock}
+                resetTokens={resetTokensMock}
+                selectToken={selectTokenMock}
+                tokens={[token]}
+              />
+            </Provider>
           );
 
           const tokenElement = wrapper.find(Token);
@@ -219,16 +234,18 @@ describe("Components", () => {
       describe("Actions on the canvas", () => {
         beforeEach(async () => {
           wrapper = mount(
-            <Grid
-              roomId={roomId}
-              nickname={nickname}
-              socket={socket}
-              addToken={addTokenMock}
-              resetTokens={resetTokensMock}
-              selectToken={selectTokenMock}
-              moveToken={moveTokenMock}
-              tokens={mockTokens}
-            />
+            <Provider store={store}>
+              <Grid
+                roomId={roomId}
+                nickname={nickname}
+                socket={socket}
+                addToken={addTokenMock}
+                resetTokens={resetTokensMock}
+                selectToken={selectTokenMock}
+                moveToken={moveTokenMock}
+                tokens={mockTokens}
+              />
+            </Provider>
           );
 
           canvas = wrapper.find("canvas");
@@ -253,7 +270,7 @@ describe("Components", () => {
               button: 0,
             });
           });
-          expect(wrapper.prop("moveToken")).toHaveBeenCalled();
+          expect(moveTokenMock).toHaveBeenCalled();
           expect(socket.emit).toHaveBeenCalled();
           expect(socket.emit.mock.calls[0]).toMatchObject([
             "moveToken",
@@ -289,16 +306,18 @@ describe("Components", () => {
             },
           ];
           wrapper = mount(
-            <Grid
-              roomId={roomId}
-              nickname={nickname}
-              socket={socket}
-              addToken={addTokenMock}
-              resetTokens={resetTokensMock}
-              selectToken={selectTokenMock}
-              moveToken={moveTokenMock}
-              tokens={mockTokens}
-            />
+            <Provider store={store}>
+              <Grid
+                roomId={roomId}
+                nickname={nickname}
+                socket={socket}
+                addToken={addTokenMock}
+                resetTokens={resetTokensMock}
+                selectToken={selectTokenMock}
+                moveToken={moveTokenMock}
+                tokens={mockTokens}
+              />
+            </Provider>
           );
 
           canvas = wrapper.find("canvas");
@@ -310,7 +329,7 @@ describe("Components", () => {
               button: 0,
             });
           });
-          expect(wrapper.prop("moveToken")).not.toHaveBeenCalled();
+          expect(moveTokenMock).not.toHaveBeenCalled();
           expect(socket.emit).not.toHaveBeenCalled();
         });
         it("doesn't change coordinates when the click is not the left button", async () => {
@@ -321,7 +340,7 @@ describe("Components", () => {
               button: 1,
             });
           });
-          expect(wrapper.prop("moveToken")).not.toHaveBeenCalled();
+          expect(moveTokenMock).not.toHaveBeenCalled();
           expect(socket.emit).not.toHaveBeenCalled();
         });
       });

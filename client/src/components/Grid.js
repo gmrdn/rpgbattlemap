@@ -15,6 +15,7 @@ import Token from "../components/Token";
 import canvasUtils from "../utils/canvasUtils";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import TokenBar from "./TokenBar/TokenBar";
 
 const gridSize = { width: 60, height: 60 };
 const tileSide = 40;
@@ -170,6 +171,7 @@ export class Grid extends React.Component {
             );
           })}
         </div>
+        <TokenBar socket={this.props.socket}></TokenBar>
         <Fab
           color="primary"
           aria-label="add"

@@ -10,7 +10,6 @@ import DialogNewToken from "../components/DialogNewToken";
 import Drawer from "@material-ui/core/Drawer";
 import Grid from "../components/Grid";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import TokenBar from "../components/TokenBar";
 
 interface RootState {
   nickname: string;
@@ -60,14 +59,6 @@ export class Room extends React.Component<IProps, IState> {
     }
   };
 
-  // handleDrawerOpenTokenBar = () => {
-  //   if (this.state.tokenBarOpen) {
-  //     this.setState({ tokenBarOpen: false });
-  //   } else {
-  //     this.setState({ tokenBarOpen: true });
-  //   }
-  // };
-
   render() {
     if (!this.props.match.params.id) {
       return <Redirect to={`/`} />;
@@ -87,9 +78,6 @@ export class Room extends React.Component<IProps, IState> {
         <div className="d-flex bd-highlight">
           <div className="p-2 w-100 bd-highlight">
             <Grid socket={socket} roomId={this.props.roomId}></Grid>
-          </div>
-          <div id="token-bar">
-            <TokenBar socket={socket}></TokenBar>
           </div>
         </div>
 
