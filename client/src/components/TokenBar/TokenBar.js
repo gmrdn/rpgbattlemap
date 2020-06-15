@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     overflowY: "auto",
     top: "180px",
     right: "0px",
+    opacity: "0.8",
   },
 }));
 

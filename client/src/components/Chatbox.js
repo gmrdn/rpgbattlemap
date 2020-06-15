@@ -121,6 +121,7 @@ export class Chatbox extends React.Component {
           "padding-left": "2rem",
           "padding-right": "2rem",
           "border-radius": "3px",
+          opacity: "0.8",
         }}
       >
         <div id="messages-log" className="mb-0" style={divStyle}>
