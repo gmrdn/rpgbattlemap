@@ -110,16 +110,16 @@ export class Chatbox extends React.Component {
   render() {
     return (
       <Box
-        width="25%"
+        bgcolor="background.default"
+        width={300}
         style={{
           position: "absolute",
-          backgroundColor: "#fafafa",
           "box-shadow": "0px 4px 6px dimgray",
           bottom: "0px",
           left: "0px",
           opacity: "1",
-          "padding-left": "1rem",
-          "padding-right": "1rem",
+          "padding-left": "2rem",
+          "padding-right": "2rem",
           "border-radius": "3px",
         }}
       >
@@ -145,7 +145,7 @@ export class Chatbox extends React.Component {
             <input
               id="message-input"
               type="text"
-              className="form-control mt-3 mb-3 bg-light rounded-pill"
+              className="form-control mt-3 mb-3 rounded-pill"
               value={this.state.currentMessage}
               onChange={this.handleChange}
               style={{ opacity: "1" }}

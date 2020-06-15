@@ -6,12 +6,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   selected: {
-    border: "3px solid",
-    borderColor: "yellow",
-    "box-shadow": "0px 10px 24px dimgray",
+    "box-shadow": "inset 0 0 1px 3px hsla(0,0%,0%,0.3), 0px 10px 24px dimgray",
   },
   notselected: {
-    border: "3px solid",
+    "box-shadow": "inset 0 0 1px 3px hsla(0,0%,0%,0.3)",
   },
 });
 
