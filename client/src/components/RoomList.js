@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import axios from "axios";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Link from "@material-ui/core/Link";
 
 const RoomList = () => {
   const [roomList, setRoomList] = useState(null);
@@ -19,15 +22,19 @@ const RoomList = () => {
   }
 
   return (
-    <ul className="list-group">
+    <List>
       {roomList.map((room, key) => (
-        <li key={key} id="room-list" className="list-group-item">
-          <NavLink to={`/joinroom/${room._id}`} id={`room-${key}`}>
+        <ListItem key={key} id="room-list">
+          <Link
+            component={RouterLink}
+            to={`/joinroom/${room._id}`}
+            id={`room-${key}`}
+          >
             {`${room._id} - ${room.grid.name}`}
-          </NavLink>
-        </li>
+          </Link>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 };
 

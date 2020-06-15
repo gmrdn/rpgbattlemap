@@ -6,10 +6,20 @@ import Header from "./components/Header";
 import RoomSelection from "./pages/RoomSelection";
 import RoomCreation from "./pages/RoomCreation";
 import RoomJoining from "./pages/RoomJoining";
+import { createMuiTheme, CssBaseline } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/styles";
+
+const theme = createMuiTheme({
+  palette: {
+    type: "dark",
+  },
+});
 
 const App = () => {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+
       <Router>
         <Header></Header>
         <Switch>
@@ -24,7 +34,7 @@ const App = () => {
           <Route path="/createroom" component={RoomCreation} />
         </Switch>
       </Router>
-    </div>
+    </ThemeProvider>
   );
 };
 

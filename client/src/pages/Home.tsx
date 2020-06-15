@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import JoinRoom from "../components/JoinRoom";
 import CreateRoomButton from "../components/CreateRoomButton";
+import Box from "@material-ui/core/Box";
 
 interface RootState {
   roomId: string;
@@ -20,10 +21,10 @@ export class Home extends React.Component<IProps, IState> {
       return <Redirect to={`/room/${this.props.roomId}`} />;
     }
     return (
-      <div className="d-flex flex-column" style={{ minHeight: "85vh" }}>
+      <Box height="100vh">
         <JoinRoom></JoinRoom>
         <CreateRoomButton></CreateRoomButton>
-      </div>
+      </Box>
     );
   }
 }

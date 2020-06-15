@@ -37,12 +37,12 @@ export const TokenBar = (props) => {
   }
   return (
     <Box boxShadow={3} class={classes.root}>
-      <ListItem button onClick={handleClick}>
-        <ListItemText primary="Tokens" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List dense>
+      <List dense>
+        <ListItem button onClick={handleClick}>
+          <ListItemText primary="Tokens" />
+          {open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={open} timeout="auto" unmountOnExit>
           {props.tokens.map((token) => {
             return (
               <ListItem key={token._id}>
@@ -54,8 +54,8 @@ export const TokenBar = (props) => {
               </ListItem>
             );
           })}
-        </List>
-      </Collapse>
+        </Collapse>
+      </List>
     </Box>
   );
 };
