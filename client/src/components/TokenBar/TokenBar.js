@@ -14,13 +14,13 @@ import Collapse from "@material-ui/core/Collapse";
 const useStyles = makeStyles((theme) => ({
   root: {
     borderRadius: "3px",
+    "box-shadow": "0px 4px 6px dimgray",
     backgroundColor: theme.palette.background.default,
     position: "absolute",
     "max-height": "258px",
     overflowY: "auto",
     top: "180px",
     right: "0px",
-    opacity: "0.8",
   },
 }));
 
@@ -32,8 +32,11 @@ export const TokenBar = (props) => {
     setOpen(!open);
   };
 
+  if (props.tokens.length === 0) {
+    return <div></div>;
+  }
   return (
-    <Box class={classes.root}>
+    <Box boxShadow={3} class={classes.root}>
       <ListItem button onClick={handleClick}>
         <ListItemText primary="Tokens" />
         {open ? <ExpandLess /> : <ExpandMore />}

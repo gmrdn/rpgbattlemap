@@ -26,6 +26,7 @@ const fabStyle = {
   position: "absolute",
   bottom: "100px",
   right: "54px",
+  "box-shadow": "0px 4px 6px dimgray",
 };
 
 export class Grid extends React.Component {

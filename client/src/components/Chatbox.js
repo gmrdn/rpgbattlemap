@@ -4,11 +4,9 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { setUserName, setRoomId, addToken } from "../actions";
 import Box from "@material-ui/core/Box";
-import Paper from "@material-ui/core/Paper";
 
 const divStyle = {
   height: "19vh",
-  opacity: "0.8",
   overflowY: "scroll",
 };
 
@@ -115,42 +113,45 @@ export class Chatbox extends React.Component {
         width="25%"
         style={{
           position: "absolute",
+          backgroundColor: "#fafafa",
+          "box-shadow": "0px 4px 6px dimgray",
           bottom: "0px",
           left: "0px",
-          opacity: "0.8",
+          opacity: "1",
+          "padding-left": "1rem",
+          "padding-right": "1rem",
+          "border-radius": "3px",
         }}
       >
-        <Paper elevation={13} variant="outlined">
-          <div id="messages-log" className="container mb-0" style={divStyle}>
-            {this.state.chatlogs.map((log, key) => (
-              <div key={key} className="row d-flex">
-                <div className="align-center ml-3">
-                  <div className="mb-1">
-                    {this.renderMessage(log.nickname, log.message)}
-                  </div>
+        <div id="messages-log" className="mb-0" style={divStyle}>
+          {this.state.chatlogs.map((log, key) => (
+            <div key={key} className="row d-flex">
+              <div className="align-center ml-3">
+                <div className="mb-1">
+                  {this.renderMessage(log.nickname, log.message)}
                 </div>
               </div>
-            ))}
-            <div
-              style={{ float: "left", clear: "both" }}
-              ref={(el) => {
-                this.messagesEnd = el;
-              }}
-            ></div>
-          </div>
-          <div>
-            <form autoComplete="off" onSubmit={this.handleSubmit}>
-              <input
-                id="message-input"
-                type="text"
-                className="form-control mt-3 mb-1 bg-light rounded-pill"
-                value={this.state.currentMessage}
-                onChange={this.handleChange}
-                style={{ opacity: "1" }}
-              ></input>
-            </form>
-          </div>
-        </Paper>
+            </div>
+          ))}
+          <div
+            style={{ float: "left", clear: "both" }}
+            ref={(el) => {
+              this.messagesEnd = el;
+            }}
+          ></div>
+        </div>
+        <div>
+          <form autoComplete="off" onSubmit={this.handleSubmit}>
+            <input
+              id="message-input"
+              type="text"
+              className="form-control mt-3 mb-3 bg-light rounded-pill"
+              value={this.state.currentMessage}
+              onChange={this.handleChange}
+              style={{ opacity: "1" }}
+            ></input>
+          </form>
+        </div>
       </Box>
     );
   }
