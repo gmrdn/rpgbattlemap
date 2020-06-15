@@ -117,7 +117,6 @@ export class Chatbox extends React.Component {
           "box-shadow": "0px 4px 6px dimgray",
           bottom: "0px",
           left: "0px",
-          opacity: "1",
           "padding-left": "2rem",
           "padding-right": "2rem",
           "border-radius": "3px",
