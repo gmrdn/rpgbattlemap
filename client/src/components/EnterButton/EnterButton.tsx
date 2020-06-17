@@ -1,13 +1,13 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import { grey } from "@material-ui/core/colors";
+import { pink } from "@material-ui/core/colors";
 
 interface IProps {
   text: string;
 }
 
-const color = grey[800];
+const color = pink[800];
 
 const useStyles = makeStyles({
   root: {

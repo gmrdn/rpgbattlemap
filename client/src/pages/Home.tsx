@@ -21,7 +21,13 @@ export class Home extends React.Component<IProps, IState> {
       return <Redirect to={`/room/${this.props.roomId}`} />;
     }
     return (
-      <Box height="100vh">
+      <Box
+        height="100vh"
+        style={{
+          background:
+            "#212121 linear-gradient(140deg, #212121 60%, #880e4f 40%)",
+        }}
+      >
         <JoinRoom></JoinRoom>
         <CreateRoomButton></CreateRoomButton>
       </Box>
