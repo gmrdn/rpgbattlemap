@@ -27,6 +27,7 @@ const RoomList = () => {
         <ListItem key={key} id="room-list">
           <Link
             component={RouterLink}
+            color="inherit"
             to={`/joinroom/${room._id}`}
             id={`room-${key}`}
           >

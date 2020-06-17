@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import JoinRoom from "../components/JoinRoom";
+import Title from "../components/Title";
 import CreateRoomButton from "../components/CreateRoomButton";
 import Box from "@material-ui/core/Box";
 
@@ -24,10 +25,11 @@ export class Home extends React.Component<IProps, IState> {
       <Box
         height="100vh"
         style={{
-          background:
-            "#212121 linear-gradient(140deg, #212121 60%, #880e4f 40%)",
+          display: "grid",
+          placeItems: "center",
         }}
       >
+        <Title></Title>
         <JoinRoom></JoinRoom>
         <CreateRoomButton></CreateRoomButton>
       </Box>

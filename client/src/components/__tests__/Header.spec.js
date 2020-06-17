@@ -12,7 +12,6 @@ describe("Components", () => {
         roomId: "ABCDEFG",
       };
       const enzymeWrapper = shallow(<Header {...props} />);
-      expect(enzymeWrapper.find("header").hasClass("header")).toBe(true);
 
       expect(enzymeWrapper.find("#nav-home").text()).toBe("RPG Battle Map");
       expect(enzymeWrapper.find("#nav-room-selection").text()).toBe(

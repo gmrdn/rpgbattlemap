@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { setRoomId } from "../actions";
 import EnterButton from "./EnterButton/EnterButton";
+import Box from "@material-ui/core/Box";
 
 export class JoinRoom extends React.Component {
   constructor(props) {
@@ -20,10 +21,8 @@ export class JoinRoom extends React.Component {
   };
   render() {
     return (
-      <div
-        className="card mx-auto mb-5 border-0 d-flex justify-content-center bg-transparent"
-        style={{ width: "15rem", minHeight: "50vh" }}
-      >
+      <Box style={{ width: "15rem" }}>
+        {/* <div className="card mx-auto mb-5 border-0 d-flex justify-content-center bg-transparent"> */}
         <form onSubmit={this.handleSubmit}>
           <div className="input-group input-group-lg">
             <input
@@ -36,7 +35,8 @@ export class JoinRoom extends React.Component {
           </div>
           <EnterButton text="Enter"></EnterButton>
         </form>
-      </div>
+        {/* </div> */}
+      </Box>
     );
   }
 }
