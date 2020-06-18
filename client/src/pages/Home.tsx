@@ -17,7 +17,7 @@ interface IProps {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "calc(100vh - 64px)",
+    height: "100vh",
     display: "grid",
     placeItems: "center",
   },

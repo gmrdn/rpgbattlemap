@@ -7,6 +7,7 @@ import Chatbox from "../components/Chatbox";
 import DialogDeleteToken from "../components/DialogDeleteToken";
 import DialogNewToken from "../components/DialogNewToken";
 import Grid from "../components/Grid";
+import Header from "../components/Header";
 
 interface RootState {
   nickname: string;
@@ -72,6 +73,7 @@ export class Room extends React.Component<IProps, IState> {
 
     return (
       <>
+        <Header></Header>
         <div className="d-flex">
           <div className="w-100">
             <Grid socket={socket} roomId={this.props.roomId}></Grid>

@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Room from "./pages/Room";
 import Home from "./pages/Home";
-import Header from "./components/Header";
 import RoomSelection from "./pages/RoomSelection";
 import RoomCreation from "./pages/RoomCreation";
 import RoomJoining from "./pages/RoomJoining";
@@ -21,7 +20,6 @@ const App = () => {
       <CssBaseline />
 
       <Router>
-        <Header></Header>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/roomselection">
