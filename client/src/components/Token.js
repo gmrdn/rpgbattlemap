@@ -3,13 +3,22 @@ import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import { makeStyles } from "@material-ui/core/styles";
+import { pink } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
   selected: {
-    "box-shadow": "inset 0 0 1px 3px hsla(0,0%,0%,0.3), 0px 10px 24px dimgray",
+    animation: `$selectedEffect 700ms linear infinite alternate`,
   },
   notselected: {
     "box-shadow": "inset 0 0 1px 3px hsla(0,0%,0%,0.3)",
+  },
+  "@keyframes selectedEffect": {
+    "0%": {
+      "box-shadow": `inset 0 0 1px 3px hsla(0,0%,0%,0.3), 0px 10px 24px dimgray, 0 0 4px 4px ${pink["A200"]}`,
+    },
+    "100%": {
+      "box-shadow": `inset 0 0 1px 3px hsla(0,0%,0%,0.3), 0px 10px 24px dimgray, 0 0 4px 1px ${pink["A200"]}`,
+    },
   },
 });
 

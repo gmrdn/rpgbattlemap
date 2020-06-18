@@ -146,35 +146,6 @@ describe("Components", () => {
     });
 
     describe("User events", () => {
-      describe("Actions around the Grid", () => {
-        it("opens the add token dialog with the floating action button", async () => {
-          const openNewTokenDialog = jest.fn();
-          const mockEvent = {
-            preventDefault: () => {},
-            target: {
-              id: "fab-addtoken",
-            },
-          };
-
-          wrapper = mount(
-            <Provider store={store}>
-              <Grid
-                roomId={roomId}
-                nickname={nickname}
-                socket={socket}
-                addToken={addTokenMock}
-                resetTokens={resetTokensMock}
-                selectToken={selectTokenMock}
-                tokens={mockTokens}
-                openNewTokenDialog={openNewTokenDialog}
-              />
-            </Provider>
-          );
-          const fab = wrapper.find("button#fab-addtoken");
-          fab.simulate("click", mockEvent);
-          expect(openNewTokenDialog).toHaveBeenCalledWith(true);
-        });
-      });
       describe("Actions on Token", () => {
         it("selects a token on left click", async () => {
           //when the avatar has an image

@@ -13,21 +13,13 @@ import {
 } from "../actions";
 import Token from "../components/Token";
 import canvasUtils from "../utils/canvasUtils";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
 import TokenBar from "./TokenBar/TokenBar";
+import FloatingButton from "./FloatingButton/FloatingButton";
 
 const gridSize = { width: 60, height: 60 };
 const tileSide = 40;
 var canvas;
 var ctx;
-
-const fabStyle = {
-  position: "absolute",
-  bottom: "100px",
-  right: "54px",
-  "box-shadow": "0px 4px 6px dimgray",
-};
 
 export class Grid extends React.Component {
   constructor(props) {
@@ -72,10 +64,6 @@ export class Grid extends React.Component {
         console.log(error);
       });
   }
-
-  handleAddToken = () => {
-    this.props.openNewTokenDialog(true);
-  };
 
   handleClickOnToken = (e) => {
     e.preventDefault();
@@ -173,15 +161,7 @@ export class Grid extends React.Component {
           })}
         </div>
         <TokenBar socket={this.props.socket}></TokenBar>
-        <Fab
-          color="primary"
-          aria-label="add"
-          id="fab-addtoken"
-          style={fabStyle}
-          onClick={this.handleAddToken}
-        >
-          <AddIcon />
-        </Fab>
+        <FloatingButton></FloatingButton>
       </div>
     );
   }
