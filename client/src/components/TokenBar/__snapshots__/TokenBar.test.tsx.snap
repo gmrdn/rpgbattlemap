@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components TokenBar displays a button with a text as parameter 1`] = `
+<Styled(MuiBox)
+  boxShadow={3}
+  class="makeStyles-root-1"
+>
+  <WithStyles(ForwardRef(List))
+    dense={true}
+  >
+    <WithStyles(ForwardRef(ListItem))
+      button={true}
+      onClick={[Function]}
+    >
+      <WithStyles(ForwardRef(ListItemText))
+        primary="Tokens"
+      />
+      <ExpandLessIcon />
+    </WithStyles(ForwardRef(ListItem))>
+    <WithStyles(ForwardRef(Collapse))
+      in={true}
+      timeout="auto"
+      unmountOnExit={true}
+    >
+      <WithStyles(ForwardRef(ListItem))
+        key="1234"
+      >
+        <Connect(TokenChip)
+          socket={[Function]}
+          tileSide={40}
+          token={
+            Object {
+              "_id": "1234",
+              "color": "blue",
+              "image": "1.png",
+              "name": "Storybook",
+              "selected": false,
+              "x": 1,
+              "y": 1,
+            }
+          }
+        />
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(ListItem))
+        key="5678"
+      >
+        <Connect(TokenChip)
+          socket={[Function]}
+          tileSide={40}
+          token={
+            Object {
+              "_id": "5678",
+              "color": "green",
+              "image": "12.png",
+              "name": "Second token",
+              "selected": true,
+              "x": 1,
+              "y": 1,
+            }
+          }
+        />
+      </WithStyles(ForwardRef(ListItem))>
+    </WithStyles(ForwardRef(Collapse))>
+  </WithStyles(ForwardRef(List))>
+</Styled(MuiBox)>
+`;
