@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import JoinRoom from "../components/JoinRoom";
 import Title from "../components/Title";
+import Logo from "../components/Logo";
 import CreateRoomButton from "../components/CreateRoomButton";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
@@ -32,6 +33,7 @@ export const Home: React.FC<IProps> = (props) => {
   return (
     <Box className={classes.root}>
       <Title></Title>
+      <Logo></Logo>
       <JoinRoom></JoinRoom>
       <CreateRoomButton></CreateRoomButton>
     </Box>

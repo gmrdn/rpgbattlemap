@@ -3,8 +3,8 @@ import { Box } from "@material-ui/core";
 
 const Logo = () => {
   return (
-    <Box mt={5}>
-      <img src="logo.png"></img>
+    <Box mt={5} mb={5}>
+      <img src="undraw_hang_out_h9ud.svg" height="287px"></img>
     </Box>
   );
 };
