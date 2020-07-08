@@ -46,6 +46,12 @@ export function selectToken(tokenId: string) {
   };
 }
 
+export function unselectTokens() {
+  return {
+    type: "UNSELECT_TOKENS",
+  };
+}
+
 export function deleteToken(tokenId: string) {
   return {
     type: "DELETE_TOKEN",

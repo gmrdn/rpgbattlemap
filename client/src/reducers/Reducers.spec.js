@@ -270,6 +270,65 @@ describe("Redux", () => {
         });
       });
 
+      it("handles UNSELECT_TOKENS when one token is already selected", () => {
+        expect(
+          reducer(
+            {
+              nickname: "",
+              roomId: "",
+              tokens: [
+                {
+                  _id: "54321abcd",
+                  x: 1,
+                  y: 2,
+                  image: undefined,
+                  color: "green",
+                  name: "Jest Token 1",
+                  selected: true,
+                },
+                {
+                  _id: "12345zyxw",
+                  x: 3,
+                  y: 4,
+                  image: "2.png",
+                  color: "blue",
+                  name: "Jest Token 2",
+                  selected: false,
+                },
+              ],
+            },
+            {
+              type: "UNSELECT_TOKENS",
+            }
+          )
+        ).toEqual({
+          nickname: "",
+          roomId: "",
+          deleteTokenDialogOpen: false,
+          newTokenDialogOpen: false,
+          tokens: [
+            {
+              _id: "54321abcd",
+              x: 1,
+              y: 2,
+              image: undefined,
+              color: "green",
+              name: "Jest Token 1",
+              selected: false,
+            },
+            {
+              _id: "12345zyxw",
+              x: 3,
+              y: 4,
+              image: "2.png",
+              color: "blue",
+              name: "Jest Token 2",
+              selected: false,
+            },
+          ],
+        });
+      });
+
       it("handles MOVE_TOKEN", () => {
         expect(
           reducer(

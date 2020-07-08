@@ -7,6 +7,7 @@ import {
   addToken,
   resetTokens,
   selectToken,
+  unselectTokens,
   moveToken,
   deleteToken,
   openNewTokenDialog,
@@ -38,6 +39,11 @@ export class Grid extends React.Component {
     ctx = canvas.getContext("2d");
     canvasUtils.drawGrid(ctx, gridSize, tileSide);
     this.prepareSockets();
+    document.addEventListener("keydown", this.handleEscape, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleEscape, false);
   }
 
   prepareSockets() {
@@ -76,6 +82,12 @@ export class Grid extends React.Component {
     this.props.selectToken(tokenId);
   };
 
+  handleEscape = (event) => {
+    if (event.keyCode === 27) {
+      event.preventDefault();
+      this.props.unselectTokens();
+    }
+  };
   handleRightClick(e) {
     e.preventDefault();
   }
@@ -181,6 +193,7 @@ const mapDispatchToProps = {
   addToken,
   resetTokens,
   selectToken,
+  unselectTokens,
   moveToken,
   deleteToken,
   openNewTokenDialog,

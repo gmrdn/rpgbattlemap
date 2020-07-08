@@ -7,6 +7,7 @@ import { pink } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
   selected: {
+    // "box-shadow": "0 0 0 100vw rgba(0,0,0,0.9)",
     animation: `$selectedEffect 700ms linear infinite alternate`,
   },
   notselected: {

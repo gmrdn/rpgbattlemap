@@ -66,6 +66,10 @@ function tokens(state = [], action) {
           };
         }
       });
+    case "UNSELECT_TOKENS":
+      return state.map((token) => {
+        return { ...token, selected: false };
+      });
     case "PREPARE_DELETE_TOKENS":
       return state.map((token) => {
         if (action.tokenIds.indexOf(token._id) > -1) {

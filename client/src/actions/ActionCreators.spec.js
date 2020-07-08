@@ -65,6 +65,13 @@ describe("Redux", () => {
       expect(actions.selectToken(id)).toEqual(expectedAction);
     });
 
+    it("creates an action to unselect tokens", () => {
+      const expectedAction = {
+        type: "UNSELECT_TOKENS",
+      };
+      expect(actions.unselectTokens()).toEqual(expectedAction);
+    });
+
     it("creates an action to move a token", () => {
       const id = "5e9a1a39152f9a9ce03b9343";
       const newPosition = {
