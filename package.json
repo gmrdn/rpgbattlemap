@@ -29,7 +29,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.9.7",
     "nodemon": "^2.0.2",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.4.0"
   },
   "devDependencies": {
     "@babel/register": "^7.9.0",
